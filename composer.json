@@ -2,7 +2,7 @@
 	"name": "mediawiki/blue-spice-u-e-module-p-d-f",
 	"type": "mediawiki-extension",
 	"description": "Enables MediaWiki to export pages into PDF format",
-	"license": "GPL-3.0",
+	"license": "GPL-3.0-only",
 	"require": {
 		"composer/installers": "~1.0"
 	},
