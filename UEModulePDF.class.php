@@ -36,7 +36,6 @@ class UEModulePDF extends BsExtensionMW {
 	 * Initialization of UEModulePDF extension
 	 */
 	protected function initExt() {
-		wfProfileIn( 'BS::'.__METHOD__ );
 		//Variables
 		BsConfig::registerVar( 'MW::UEModulePDF::PdfServiceURL', 'http://localhost:8080/BShtml2PDF', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-uemodulepdf-pref-pdfserviceurl' );
 		BsConfig::registerVar( 'MW::UEModulePDF::DefaultTemplate', 'BlueSpice', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-uemodulepdf-pref-templatepath' );
@@ -50,7 +49,6 @@ class UEModulePDF extends BsExtensionMW {
 		$this->setHook('BSUniversalExportSpecialPageExecute');
 		$this->setHook('SkinTemplateOutputPageBeforeExec');
 		$this->setHook('BaseTemplateToolbox');
-		wfProfileOut( 'BS::'.__METHOD__ );
 	}
 
 	/**
