@@ -47,7 +47,6 @@ class UEModulePDF extends BsExtensionMW {
 		//Hooks
 		$this->setHook('BSUniversalExportGetWidget');
 		$this->setHook('BSUniversalExportSpecialPageExecute');
-		$this->setHook('SkinTemplateOutputPageBeforeExec');
 		$this->setHook('BaseTemplateToolbox');
 	}
 
@@ -174,22 +173,6 @@ class UEModulePDF extends BsExtensionMW {
 		}
 
 		$aModules[] = $oPdfView;
-		return true;
-	}
-
-	/**
-	 * Hook to insert the PDF-Export link if BlueSpiceSkin is active
-	 * @param SkinTemplate $oSkin
-	 * @param QuickTemplate $oTemplate
-	 * @return boolean
-	 */
-	public function onSkinTemplateOutputPageBeforeExec( &$oSkin, &$oTemplate ) {
-		if ( !$oTemplate instanceof BsBaseTemplate ) {
-			return true;
-		}
-
-		$oTemplate->data['bs_export_menu'][] = $this->buildContentAction();
-
 		return true;
 	}
 

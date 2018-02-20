@@ -18,6 +18,9 @@
 			"i18n"
 		]
 	},
+	"AutoloadNamespaces": {
+		"BlueSpice\\UEModulePDF\\": "src/"
+	},
 	"AutoloadClasses": {
 		"UEModulePDF": "UEModulePDF.class.php",
 		"BsPDFPageProvider": "includes/PDFPageProvider.class.php",
@@ -28,6 +31,7 @@
 		"PDFFileResolver": "includes/PDFFileResolver.php"
 	},
 	"Hooks": {
+		"SkinTemplateOutputPageBeforeExec": "\\BlueSpice\\UEModulePDF\\Hook\\SkinTemplateOutputPageBeforeExec\\AddUEModulePDF::callback",
 		"LoadExtensionSchemaUpdates": "UEModulePDF::getSchemaUpdates"
 	},
 	"manifest_version": 1,
