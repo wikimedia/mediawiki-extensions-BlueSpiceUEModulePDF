@@ -5,7 +5,6 @@
  * Part of BlueSpice MediaWiki
  *
  * @author     Robert Vogel <vogel@hallowelt.com>
-
  * @package    BlueSpiceUEModulePDF
  * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v3
@@ -34,6 +33,13 @@ class BsExportModulePDF implements BsUniversalExportModule {
 		$aPageParams['title']      = $oCaller->oRequestedTitle->getPrefixedText();
 		$aPageParams['article-id'] = $oCaller->oRequestedTitle->getArticleID();
 		$aPageParams['oldid']      = $wgRequest->getInt( 'oldid', 0 );
+
+		$redirectTarget = WikiPage::factory( $oCaller->oRequestedTitle )->getRedirectTarget();
+		if( $redirectTarget instanceof Title ) {
+			$aPageParams['title'] = $redirectTarget->getPrefixedText();
+			$aPageParams['article-id'] = $redirectTarget->getArticleID();
+		}
+
 		if( $config->get( 'UEModulePDFSuppressNS' ) ) {
 			$aPageParams['display-title'] = $oCaller->oRequestedTitle->getText();
 		}
