@@ -101,7 +101,7 @@ class UEModulePDF extends BsExtensionMW {
 	 */
 	public static function getSchemaUpdates( $updater ) {
 		//TODO: Create abstraction in Core/Adapter
-		$sTmpDir = BSDATADIR.DS.'UEModulePDF';
+		$sTmpDir = BSDATADIR . '/UEModulePDF';
 		if( !file_exists( $sTmpDir ) ) {
 			echo 'Directory "'.$sTmpDir.'" not found. Creating.'."\n";
 			wfMkdirParents( $sTmpDir );
@@ -109,10 +109,10 @@ class UEModulePDF extends BsExtensionMW {
 			echo 'Directory "'.$sTmpDir.'" found.'."\n";
 		}
 
-		$sDefaultTemplateDir = BSDATADIR.DS.'PDFTemplates';
+		$sDefaultTemplateDir = BSDATADIR . '/PDFTemplates';
 		if( !file_exists( $sDefaultTemplateDir ) ) {
 			echo 'Default template directory "'.$sDefaultTemplateDir.'" not found. Copying.'."\n";
-			BsFileSystemHelper::copyRecursive( __DIR__.DS.'data'.DS.'PDFTemplates', $sDefaultTemplateDir );
+			BsFileSystemHelper::copyRecursive( __DIR__ . '/data/PDFTemplates', $sDefaultTemplateDir );
 		}
 
 		return true;
