@@ -12,10 +12,17 @@
 			"BlueSpiceFoundation": "*"
 		}
 	},
-	"bsgExtensions": {
-		"BlueSpiceUEModulePDF": {
-			"className": "UEModulePDF",
-			"extPath": "/BlueSpiceUEModulePDF"
+	"attributes": {
+		"BlueSpiceFoundation": {
+			"Extensions": {
+				"BlueSpiceUEModulePDF": {
+					"className": "UEModulePDF",
+					"extPath": "/BlueSpiceUEModulePDF",
+					"configDefinitions": {
+						"UEModulePDFSuppressNS": "\\BlueSpice\\UEModulePDF\\ConfigDefinition\\SuppressNS::getInstance"
+					}
+				}
+			}
 		}
 	},
 	"callback": "UEModulePDF::onRegistration",
@@ -40,6 +47,23 @@
 		"SkinTemplateOutputPageBeforeExec": "\\BlueSpice\\UEModulePDF\\Hook\\SkinTemplateOutputPageBeforeExec\\AddUEModulePDF::callback",
 		"LoadExtensionSchemaUpdates": "UEModulePDF::getSchemaUpdates"
 	},
-	"manifest_version": 1,
+	"config_prefix": "bsg",
+	"config": {
+		"UEModulePDFSuppressNS": {
+			"value": false,
+			"descriptionmsg": "bs-uemodulepdf-pref-suppressns",
+			"public": true
+		},
+		"UEModulePDFPdfServiceURL": {
+			"value": "http://127.0.0.1:8080/BShtml2PDF"
+		},
+		"UEModulePDFDefaultTemplate": {
+			"value": "BlueSpice"
+		},
+		"UEModulePDFTemplatePath": {
+			"value": "extensions/BlueSpiceUEModulePDF/data/PDFTemplates"
+		}
+	},
+	"manifest_version": 2,
 	"load_composer_autoloader": true
 }

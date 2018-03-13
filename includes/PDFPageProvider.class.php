@@ -182,7 +182,13 @@ class BsPDFPageProvider {
 		}
 
 		Hooks::run( 'BSUEModulePDFcollectMetaData', array( $oTitle, $oPageDOM, &$aParams, $oDOMXPath, &$aMeta ) );
-		$aMetaDataOverrides = json_decode( BsConfig::get( 'MW::UniversalExport::MetadataOverrides' ), true );
+
+		$config = \BlueSpice\Services::getInstance()->getConfigFactory()
+			->makeConfig( 'bsg' );
+		$aMetaDataOverrides = json_decode(
+			$config->get( 'UniversalExportMetadataOverrides' ),
+			true
+		);
 		$aMeta = array_merge( $aMeta, $aMetaDataOverrides );
 
 		return array(

@@ -49,7 +49,10 @@ class BsPDFServlet {
 			)
 		);
 
-		if( BsConfig::get('MW::TestMode') ) {
+		$config = \BlueSpice\Services::getInstance()->getConfigFactory()
+			->makeConfig( 'bsg' );
+
+		if( $config->get( 'TestMode' ) ) {
 			$aOptions['postData']['debug'] = "true";
 		}
 
@@ -90,7 +93,7 @@ class BsPDFServlet {
 		file_put_contents( $sTmpPDFFile, $vPdfByteArray );
 
 		//Remove temporary file
-		if( !BsConfig::get('MW::TestMode') ) {
+		if( !$config->get( 'TestMode' ) ) {
 			unlink( $sTmpHtmlFile );
 			unlink( $sTmpPDFFile );
 		}

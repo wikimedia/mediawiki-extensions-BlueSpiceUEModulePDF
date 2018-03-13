@@ -28,10 +28,13 @@ class BsExportModulePDF implements BsUniversalExportModule {
 		global $wgUser, $wgRequest;
 		$aPageParams = $oCaller->aParams;
 
+		$config = \BlueSpice\Services::getInstance()->getConfigFactory()
+			->makeConfig( 'bsg' );
+
 		$aPageParams['title']      = $oCaller->oRequestedTitle->getPrefixedText();
 		$aPageParams['article-id'] = $oCaller->oRequestedTitle->getArticleID();
 		$aPageParams['oldid']      = $wgRequest->getInt( 'oldid', 0 );
-		if( BSConfig::get('MW::UEModulePDF::SuppressNS') ) {
+		if( $config->get( 'UEModulePDFSuppressNS' ) ) {
 			$aPageParams['display-title'] = $oCaller->oRequestedTitle->getText();
 		}
 		//If we are in history mode and we are relative to an oldid
@@ -55,8 +58,8 @@ class BsExportModulePDF implements BsUniversalExportModule {
 
 		//Prepare Template
 		$aTemplateParams = array(
-			'path'     => BsConfig::get( 'MW::UEModulePDF::TemplatePath' ),
-			'template' => BsConfig::get( 'MW::UEModulePDF::DefaultTemplate' ),
+			'path'     => $config->get( 'UEModulePDFTemplatePath' ),
+			'template' => $config->get( 'UEModulePDFDefaultTemplate' ),
 			'language' => $wgUser->getOption( 'language', 'en' ),
 			'meta'     => $aPage['meta']
 		);
@@ -99,8 +102,8 @@ class BsExportModulePDF implements BsUniversalExportModule {
 		}
 
 		$oCaller->aParams['document-token']   = md5( $oCaller->oRequestedTitle->getPrefixedText() ).'-'.$oCaller->aParams['oldid'];
-		$oCaller->aParams['soap-service-url'] = BsConfig::get( 'MW::UEModulePDF::PdfServiceURL' );
-		$oCaller->aParams['backend-url']      = BsConfig::get( 'MW::UEModulePDF::PdfServiceURL' ); //Duplicate to replace 'soap-service-url' in future
+		$oCaller->aParams['soap-service-url'] = $config->get( 'UEModulePDFPdfServiceURL' );
+		$oCaller->aParams['backend-url']      = $config->get( 'UEModulePDFPdfServiceURL' ); //Duplicate to replace 'soap-service-url' in future
 		$oCaller->aParams['resources']        = $aTemplate['resources'];
 
 		Hooks::run( 'BSUEModulePDFBeforeCreatePDF', array( $this, $oDOM, $oCaller ) );
@@ -123,8 +126,7 @@ class BsExportModulePDF implements BsUniversalExportModule {
 			return $aResponse;
 		}
 
-		$sBackendClass = BsConfig::get('MW::UEModulePDF::Backend');
-		$oPDFBackend = new $sBackendClass( $oCaller->aParams );
+		$oPDFBackend = new BsPDFServlet( $oCaller->aParams );
 		$aResponse['content'] = $oPDFBackend->createPDF( $oDOM );
 
 		$aResponse['filename'] = sprintf(
@@ -141,6 +143,8 @@ class BsExportModulePDF implements BsUniversalExportModule {
 	 * @return ViewExportModuleOverview
 	 */
 	public function getOverview() {
+		$config = \BlueSpice\Services::getInstance()->getConfigFactory()
+			->makeConfig( 'bsg' );
 		$oModuleOverviewView = new ViewExportModuleOverview();
 
 		$oModuleOverviewView->setOption( 'module-title', wfMessage( 'bs-uemodulepdf-overview-title' )->plain() );
@@ -152,7 +156,7 @@ class BsExportModulePDF implements BsUniversalExportModule {
 			'{LABEL}: <span style="font-weight: bold; color:{COLOR}">{STATE}</span>'
 			);
 
-		$sWebServiceUrl = BsConfig::get( 'MW::UEModulePDF::PdfServiceURL' );
+		$sWebServiceUrl = $config->get( 'UEModulePDFPdfServiceURL' );
 		$sWebserviceState = wfMessage( 'bs-uemodulepdf-overview-webservice-state-not-ok' )->plain();
 		$sColor = 'red';
 		if( BsConnectionHelper::testUrlForTimeout( $sWebServiceUrl ) ) {

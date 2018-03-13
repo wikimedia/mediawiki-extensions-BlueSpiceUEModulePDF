@@ -36,15 +36,6 @@ class UEModulePDF extends BsExtensionMW {
 	 * Initialization of UEModulePDF extension
 	 */
 	protected function initExt() {
-		//Variables
-		BsConfig::registerVar( 'MW::UEModulePDF::PdfServiceURL', 'http://localhost:8080/BShtml2PDF', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-uemodulepdf-pref-pdfserviceurl' );
-		BsConfig::registerVar( 'MW::UEModulePDF::DefaultTemplate', 'BlueSpice', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS, 'bs-uemodulepdf-pref-templatepath' );
-		BsConfig::registerVar( 'MW::UEModulePDF::SuppressNS', false, BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_BOOL, 'bs-uemodulepdf-pref-suppressns', 'toggle' );
-		/* This setting is no longer needed. We do not provide the old bn2pdf.war anymore */
-		BsConfig::registerVar( 'MW::UEModulePDF::Backend', 'BsPDFServlet', BsConfig::LEVEL_PRIVATE|BsConfig::TYPE_STRING|BsConfig::USE_PLUGIN_FOR_PREFS );
-		BsConfig::registerVar( 'MW::UEModulePDF::TemplatePath', 'extensions/BlueSpiceUEModulePDF/data/PDFTemplates', BsConfig::LEVEL_PUBLIC|BsConfig::TYPE_STRING, 'bs-uemodulepdf-pref-templatedir' );
-
-		//Hooks
 		$this->setHook('BSUniversalExportGetWidget');
 		$this->setHook('BSUniversalExportSpecialPageExecute');
 		$this->setHook('BaseTemplateToolbox');
@@ -70,28 +61,6 @@ class UEModulePDF extends BsExtensionMW {
 		if( !defined( 'CURLOPT_SAFE_UPLOAD' ) ) {
 			define( 'CURLOPT_SAFE_UPLOAD', -1 );
 		}
-	}
-
-	/**
-	 * Sets parameters for more complex options in preferences
-	 * @param string $sAdapterName Name of the adapter, e.g. MW
-	 * @param BsConfig $oVariable Instance of variable
-	 * @return array Preferences options
-	 */
-	public function runPreferencePlugin( $sAdapterName, $oVariable ) {
-		$aPrefs = array();
-		switch( $oVariable->getName() ) {
-			case 'DefaultTemplate':
-				$aParams = array( 'template-path' => BsConfig::get('MW::UEModulePDF::TemplatePath') );
-				$aPrefs = array(
-					'type' => 'select',
-					'options' => BsPDFTemplateProvider::getTemplatesForSelectOptions( $aParams )
-				);
-				break;
-			default:
-				break;
-		}
-		return $aPrefs;
 	}
 
 	/**
