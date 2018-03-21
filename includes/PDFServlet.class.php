@@ -35,7 +35,7 @@ class BsPDFServlet {
 		//Save temporary
 
 		$sTmpHtmlFile = BSDATADIR . "/UEModulePDF/{$this->aParams['document-token']}html";
-		$sTmpPDFFile  = BSDATADIR . "UEModulePDF/{$this->aParams['document-token']}.pdf";
+		$sTmpPDFFile  = BSDATADIR . "/UEModulePDF/{$this->aParams['document-token']}.pdf";
 		file_put_contents( $sTmpHtmlFile, $sHtmlDOM );
 
 		$aOptions = array(
