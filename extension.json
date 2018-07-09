@@ -1,7 +1,7 @@
 {
 	"name": "BlueSpiceUEModulePDF",
 	"license-name": "GPL-3.0-only",
-	"version": "3.0.0-alpha",
+	"version": "3.0.0-beta",
 	"url": "https://help.bluespice.com/index.php/UEModulePDF",
 	"author": "Robert Vogel",
 	"descriptionmsg": "bs-uemodulepdf-desc",
