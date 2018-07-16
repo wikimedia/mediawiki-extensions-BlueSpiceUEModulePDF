@@ -1,5 +1,7 @@
 <?php
 
+use BlueSpice\Tests\BSApiTestCase;
+
 /**
  * @group medium
  * @group BlueSpice
