@@ -39,7 +39,7 @@ class PDFFileResolverTest extends BSApiTestCase {
 			if( $sFileName == "Test.JPG" || $sFileName == "WithQS.JPG" ) {
 				$this->assertEquals( '137', $oImageElement->getAttribute( 'width' ) );
 			} else if ( $sFileName == "Template:Dummy.JPG" ) {
-				$this->assertEquals( '700', $oImageElement->getAttribute( 'width' ) );
+				$this->assertEquals( '650', $oImageElement->getAttribute( 'width' ) );
 			}
 		}
 	}
