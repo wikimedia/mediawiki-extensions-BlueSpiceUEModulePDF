@@ -48,8 +48,6 @@ return array(
 		)
 	),
 
-	/* http://markmail.org/message/3or4xlburtrd34lz <-- TABELLEN MIT BODERCOLLAPSE */
-
 	/**
 	 * Here you can define messages for internationalization of your template.
 	 */

@@ -61,12 +61,14 @@ return array(
 			'exportdate'  => 'Ausgabe:',
 			'page'        => 'Seite ',
 			'of'          => ' von ',
-			'disclaimer'  => 'Dieses Dokument wurde erzeugt mit BlueSpice'),
+			'disclaimer'  => 'Dieses Dokument wurde erzeugt mit BlueSpice'
+		),
 		'de-formal' => array(
 			'desc'        => 'Dies ist das Standard-PDFTemplate für Querformat von BlueSpice für den Export einzelner Artikel.',
 			'exportdate'  => 'Ausgabe:',
 			'page'        => 'Seite ',
 			'of'          => ' von ',
-			'disclaimer'  => 'Dieses Dokument wurde erzeugt mit BlueSpice'),
+			'disclaimer'  => 'Dieses Dokument wurde erzeugt mit BlueSpice'
+		),
 	)
 );
