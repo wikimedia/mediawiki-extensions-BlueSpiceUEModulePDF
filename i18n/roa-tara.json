@@ -4,5 +4,7 @@
 			"Joetaras"
 		]
 	},
-	"bs-uemodulepdf-pref-templatedir": "Cartelle d'u template:"
+	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "PDF cu 'na pàgena sole",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Esporte sta pàgene cumme PDF.",
+	"bs-uemodulepdf-overview-title": "Portable Document Format (PDF)"
 }
