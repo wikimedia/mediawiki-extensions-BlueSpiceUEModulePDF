@@ -40,7 +40,8 @@ class AddUEModulePDF extends SkinTemplateOutputPageBeforeExec {
 			'href' => $oSpecialPage->getLinkUrl( $aCurrentQueryParams ),
 			'title' => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-title' )->text(),
 			'text' => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-text' )->text(),
-			'class' => 'icon-file-pdf'
+			'class' => 'bs-ue-export-link',
+			'classes' => 'icon-file-pdf bs-ue-export-link'
 		];
 	}
 }
