@@ -36,9 +36,7 @@ class UEModulePDF extends BsExtensionMW {
 	 * Initialization of UEModulePDF extension
 	 */
 	protected function initExt() {
-		$this->setHook('BSUniversalExportGetWidget');
 		$this->setHook('BSUniversalExportSpecialPageExecute');
-		$this->setHook('BaseTemplateToolbox');
 	}
 
 	/**
@@ -111,96 +109,5 @@ class UEModulePDF extends BsExtensionMW {
 		$aModules['pdf'] = new BsExportModulePDF();
 		return $aModules;
 	}
-
-	/**
-	 * Hook-Handler method for the 'BSUniversalExportGetWidget' event.
-	 * @param UniversalExport $oUniversalExport
-	 * @param array $aModules
-	 * @param Title $oSpecialPage
-	 * @param Title $oCurrentTitle
-	 * @param array $aCurrentQueryParams
-	 * @return boolean Always true to keep hook running
-	 */
-	public function onBSUniversalExportGetWidget( $oUniversalExport, &$aModules, $oSpecialPage, $oCurrentTitle, $aCurrentQueryParams ) {
-		$aCurrentQueryParams['ue[module]'] = 'pdf';
-		$aLinks = array();
-		$aLinks['pdf-single-no-attachments'] = array(
-			'URL'     => htmlspecialchars( $oSpecialPage->getLinkUrl( $aCurrentQueryParams ) ),
-			'TITLE'   => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-title' )->plain(),
-			'CLASSES' => 'bs-uemodulepdf-single',
-			'TEXT'    => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-text' )->plain(),
-		);
-
-		Hooks::run( 'BSUEModulePDFBeforeCreateWidget', array( $this, $oSpecialPage, &$aLinks, $aCurrentQueryParams ) );
-
-		$oPdfView = new ViewBaseElement();
-		$oPdfView->setAutoWrap( '<ul>###CONTENT###</ul>' );
-		$oPdfView->setTemplate( '<li><a href="{URL}" rel="nofollow" title="{TITLE}" class="{CLASSES}">{TEXT}</a></li>' );#
-
-		foreach ( $aLinks as $sKey => $aData ) {
-			$oPdfView->addData( $aData );
-		}
-
-		$aModules[] = $oPdfView;
-		return true;
-	}
-
-	/**
-	 * Hook to be executed when the Vector Skin is activated to add the PDF-Export Link to the Toolbox
-	 * @param SkinTemplate $oTemplate
-	 * @param Array $aToolbox
-	 * @return boolean
-	 */
-	public function onBaseTemplateToolbox( &$oTemplate, &$aToolbox ) {
-		$oTitle = RequestContext::getMain()->getTitle();
-		//if the BlueSpiceSkin is activated we don't need to add the Link to the Toolbox,
-		//onSkinTemplateOutputPageBeforeExec will handle it
-		if ( $oTemplate instanceof BsBaseTemplate || !$oTitle->isContentPage() ) {
-			return true;
-		}
-
-		//if "print" is set insert pdf export afterwards
-		if ( isset( $aToolbox['print'] ) ) {
-			$aToolboxNew = array();
-			foreach ( $aToolbox as $sKey => $aValue ) {
-				$aToolboxNew[$sKey] = $aValue;
-				if ( $sKey === "print" ) {
-					$aToolboxNew['uemodulepdf'] = $this->buildContentAction();
-				}
-			}
-			$aToolbox = $aToolboxNew;
-		} else {
-			$aToolbox['uemodulepdf'] = $this->buildContentAction();
-		}
-
-		return true;
-	}
-
-	/**
-	 * Builds the ContentAction Array fort the current page
-	 * @return Array The ContentAction Array
-	 */
-	private function buildContentAction() {
-		$aCurrentQueryParams = $this->getRequest()->getValues();
-		if ( isset( $aCurrentQueryParams['title'] ) ) {
-			$sTitle = $aCurrentQueryParams['title'];
-		} else {
-			$sTitle = '';
-		}
-		$sSpecialPageParameter = BsCore::sanitize( $sTitle, '', BsPARAMTYPE::STRING );
-		$oSpecialPage = SpecialPage::getTitleFor( 'UniversalExport', $sSpecialPageParameter );
-		if ( isset( $aCurrentQueryParams['title'] ) ) {
-			unset( $aCurrentQueryParams['title'] );
-		}
-		$aCurrentQueryParams['ue[module]'] = 'pdf';
-		return array(
-			'id' => 'bs-ta-uemodulepdf',
-			'href' => $oSpecialPage->getLinkUrl( $aCurrentQueryParams ),
-			'title' => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-title' )->text(),
-			'text' => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-text' )->text(),
-			'class' => 'icon-file-pdf'
-		);
-	}
-
 
 }
