@@ -8,7 +8,7 @@ class SuppressNS extends \BlueSpice\ConfigDefinition\BooleanSetting {
 		return [
 			static::MAIN_PATH_FEATURE . '/' . static::FEATURE_EXPORT . '/BlueSpiceUEModulePDF',
 			static::MAIN_PATH_EXTENSION . '/BlueSpiceUEModulePDF/' . static::FEATURE_EXPORT,
-			static::MAIN_PATH_PACKAGE . '/' . static::FEATURE_EXPORT . '/BlueSpiceUEModulePDF',
+			static::MAIN_PATH_PACKAGE . '/' . static::PACKAGE_FREE . '/BlueSpiceUEModulePDF',
 		];
 	}
 
