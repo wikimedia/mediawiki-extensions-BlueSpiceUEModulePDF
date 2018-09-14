@@ -86,6 +86,7 @@ class BsPDFTemplateProvider {
 				$aResources[$sType][basename($sFile)] = $sTemplatePath.'/'.$sFile;
 			}
 		}
+		$aTemplate['resources'] = $aResources;
 
 		//Substitue MSG elements
 		$oMsgTags = $oTemplateDOM->getElementsByTagName( 'msg' );
@@ -168,7 +169,7 @@ class BsPDFTemplateProvider {
 		}
 
 		return array(
-			'resources' => $aResources,
+			'resources' => $aTemplate['resources'],
 			'dom'       => $oTemplateDOM,
 			'content-elements'  => $aContentTagRefs,
 			'bookmarks-element' => $oBookmarksNode,
