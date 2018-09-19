@@ -33,9 +33,12 @@ class BsPDFServlet {
 		$sHtmlDOM = $oHtmlDOM->saveXML( $oHtmlDOM->documentElement );
 
 		//Save temporary
-
-		$sTmpHtmlFile = BS_DATA_DIR . "/UEModulePDF/{$this->aParams['document-token']}.html";
-		$sTmpPDFFile  = BS_DATA_DIR . "/UEModulePDF/{$this->aParams['document-token']}.pdf";
+		$status = \BsFileSystemHelper::ensureCacheDirectory( 'UEModulePDF' );
+		if( !$status->isOK() ) {
+			throw new \MWException( $status->getMessage() );
+		}
+		$sTmpHtmlFile = "{$status->getValue()}/{$this->aParams['document-token']}.html";
+		$sTmpPDFFile  = "{$status->getValue()}/{$this->aParams['document-token']}.pdf";
 		file_put_contents( $sTmpHtmlFile, $sHtmlDOM );
 
 		$aOptions = array(

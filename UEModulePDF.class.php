@@ -67,19 +67,15 @@ class UEModulePDF extends BsExtensionMW {
 	 * @return boolean Always true to keep the hook running
 	 */
 	public static function getSchemaUpdates( $updater ) {
-		//TODO: Create abstraction in Core/Adapter
-		$sTmpDir = BS_DATA_DIR . '/UEModulePDF';
-		if( !file_exists( $sTmpDir ) ) {
-			echo 'Directory "'.$sTmpDir.'" not found. Creating.'."\n";
-			wfMkdirParents( $sTmpDir );
-		} else {
-			echo 'Directory "'.$sTmpDir.'" found.'."\n";
-		}
-
-		$sDefaultTemplateDir = BS_DATA_DIR . '/PDFTemplates';
-		if( !file_exists( $sDefaultTemplateDir ) ) {
-			echo 'Default template directory "'.$sDefaultTemplateDir.'" not found. Copying.'."\n";
-			BsFileSystemHelper::copyRecursive( __DIR__ . '/data/PDFTemplates', $sDefaultTemplateDir );
+		$dir = \BsFileSystemHelper::getDataDirectory( 'PDFTemplates' );
+		if( !is_dir( $dir ) ) {
+			$updater->output(
+				"Default template directory '$dir' not found. Copying.\n"
+			);
+			BsFileSystemHelper::copyRecursive(
+				"{$GLOBALS['wgExtensionDirectory']}/BlueSpiceUEModulePDF/data/PDFTemplates",
+				$dir
+			);
 		}
 
 		return true;
