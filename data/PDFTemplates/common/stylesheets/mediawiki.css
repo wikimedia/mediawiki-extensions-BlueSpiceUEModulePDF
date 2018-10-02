@@ -470,7 +470,7 @@ table {
 	font-weight: bold;
 }
 
-#toc #toctitle, .toc #toctitle, #toc .toctitle, .toc .toctitle {
+#toc .toctitle, .toc .toctitle {
 	text-align: center;
 }
 #toc ul, .toc ul {
