@@ -6,6 +6,14 @@ use BlueSpice\Hook\SkinTemplateOutputPageBeforeExec;
 use BlueSpice\SkinData;
 
 class AddUEModulePDF extends SkinTemplateOutputPageBeforeExec {
+	protected function skipProcessing() {
+		if ( $this->skin->getTitle()->isSpecialPage() === false ) {
+			return false;
+		}
+
+		return true;
+	}
+
 	protected function doProcess() {
 
 		$this->mergeSkinDataArray(
