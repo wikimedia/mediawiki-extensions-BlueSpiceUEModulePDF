@@ -36,7 +36,6 @@ class UEModulePDF extends BsExtensionMW {
 	 * Initialization of UEModulePDF extension
 	 */
 	protected function initExt() {
-		$this->setHook('BSUniversalExportSpecialPageExecute');
 	}
 
 	/**
@@ -79,31 +78,6 @@ class UEModulePDF extends BsExtensionMW {
 		}
 
 		return true;
-	}
-
-	/**
-	 *
-	 * @param SpecialUniversalExport $oSpecialPage
-	 * @param string $sParam
-	 * @param array $aModules
-	 * @return true
-	 */
-	public function onBSUniversalExportSpecialPageExecute( $oSpecialPage, $sParam, &$aModules ) {
-		$aModules['pdf'] = new BsExportModulePDF();
-		return true;
-	}
-
-	/**
-	 * Event-Handler method for the 'BSUniversalExportCreateWidget' event.
-	 * Registers the PDF Module with the UniversalExport Extension.
-	 * @param BsEvent $oEvent
-	 * @param array $aModules
-	 * @return array
-	 * @deprecated in 1.1.1
-	 */
-	public function onUniversalExportSpecialPageExecute( $oCurrentTitle, $oSpecialPage, $aCurrentQueryParams, $aModules) {
-		$aModules['pdf'] = new BsExportModulePDF();
-		return $aModules;
 	}
 
 }

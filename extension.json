@@ -46,7 +46,8 @@
 	"Hooks": {
 		"SkinTemplateOutputPageBeforeExec": "\\BlueSpice\\UEModulePDF\\Hook\\SkinTemplateOutputPageBeforeExec\\AddUEModulePDF::callback",
 		"LoadExtensionSchemaUpdates": "UEModulePDF::getSchemaUpdates",
-		"BSMigrateSettingsFromDeviatingNames": "\\BlueSpice\\UEModulePDF\\Hook\\BSMigrateSettingsFromDeviatingNames\\SkipServiceSettings::callback"
+		"BSMigrateSettingsFromDeviatingNames": "\\BlueSpice\\UEModulePDF\\Hook\\BSMigrateSettingsFromDeviatingNames\\SkipServiceSettings::callback",
+		"BSUniversalExportSpecialPageExecute": "\\BlueSpice\\UEModulePDF\\Hook\\BSUniversalExportSpecialPageExecute\\AddModulePDF::callback"
 	},
 	"config_prefix": "bsg",
 	"config": {
