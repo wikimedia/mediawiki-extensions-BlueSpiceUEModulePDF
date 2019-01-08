@@ -60,24 +60,4 @@ class UEModulePDF extends BsExtensionMW {
 		}
 	}
 
-	/**
-	 * Sets up requires directories
-	 * @param DatabaseUpdater $updater Provided by MediaWikis update.php
-	 * @return boolean Always true to keep the hook running
-	 */
-	public static function getSchemaUpdates( $updater ) {
-		$dir = \BsFileSystemHelper::getDataDirectory( 'PDFTemplates' );
-		if( !is_dir( $dir ) ) {
-			$updater->output(
-				"Default template directory '$dir' not found. Copying.\n"
-			);
-			BsFileSystemHelper::copyRecursive(
-				"{$GLOBALS['wgExtensionDirectory']}/BlueSpiceUEModulePDF/data/PDFTemplates",
-				$dir
-			);
-		}
-
-		return true;
-	}
-
 }
