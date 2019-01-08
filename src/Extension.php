@@ -22,21 +22,18 @@
  *
  * @author     Robert Vogel <vogel@hallowelt.com>
  * @package    BlueSpiceUEModulePDF
- * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2019 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v3
  * @filesource
  */
+
+namespace BlueSpice\UEModulePDF;
 
 /**
  * Base class for UniversalExport PDF Module extension
  * @package BlueSpiceUEModulePDF
  */
-class UEModulePDF extends BsExtensionMW {
-	/**
-	 * Initialization of UEModulePDF extension
-	 */
-	protected function initExt() {
-	}
+class Extension extends \BlueSpice\Extension {
 
 	/**
 	 * extension.json callback

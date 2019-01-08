@@ -16,7 +16,7 @@
 		"BlueSpiceFoundation": {
 			"Extensions": {
 				"BlueSpiceUEModulePDF": {
-					"className": "UEModulePDF",
+					"className": "\\BlueSpice\\UEModulePDF\\Extension",
 					"extPath": "/BlueSpiceUEModulePDF",
 					"configDefinitions": {
 						"UEModulePDFSuppressNS": "\\BlueSpice\\UEModulePDF\\ConfigDefinition\\SuppressNS::getInstance"
@@ -25,7 +25,7 @@
 			}
 		}
 	},
-	"callback": "UEModulePDF::onRegistration",
+	"callback": "\\BlueSpice\\UEModulePDF\\Extension::onRegistration",
 	"MessagesDirs": {
 		"UEModulePDF": [
 			"i18n"
@@ -35,7 +35,6 @@
 		"BlueSpice\\UEModulePDF\\": "src/"
 	},
 	"AutoloadClasses": {
-		"UEModulePDF": "UEModulePDF.class.php",
 		"BsPDFPageProvider": "includes/PDFPageProvider.class.php",
 		"BsPDFTemplateProvider": "includes/PDFTemplateProvider.class.php",
 		"BsPDFWebService": "includes/PDFWebService.class.php",
