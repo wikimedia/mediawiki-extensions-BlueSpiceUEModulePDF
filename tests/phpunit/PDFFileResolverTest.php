@@ -29,8 +29,15 @@ class PDFFileResolverTest extends BSApiTestCase {
 	public function testPDFFileResolver() {
 		$oImageElements = $this->oDOM->getElementsByTagName( 'img' );
 
+		$webrootPath = str_replace( '\\', '/', $GLOBALS['IP'] );
+		if( !empty( $GLOBALS['ScriptPath'] ) ) {
+			$parts = explode( '/', $webrootPath );
+			if( "/" . array_pop( $parts ) === $GLOBALS['ScriptPath'] ) {
+				$webrootPath = implode( '/', $parts );
+			}
+		}
 		foreach( $oImageElements as $oImageElement ) {
-			$oResolver = new PDFFileResolver( $oImageElement, BsCore::getMediaWikiWebrootPath() );
+			$oResolver = new PDFFileResolver( $oImageElement, $webrootPath );
 			$sFileName = $oResolver->getFileName();
 			$sAbsoluteFilesystemPath = $oResolver->getAbsoluteFilesystemPath();
 
