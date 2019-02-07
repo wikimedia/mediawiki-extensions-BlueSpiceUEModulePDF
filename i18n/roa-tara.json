@@ -4,6 +4,10 @@
 			"Joetaras"
 		]
 	},
+	"bs-uemodulepdf-desc": "Abbilite MediaUicchi a esporà pàggene jndr'à 'u formate PDF",
+	"prefs-uemodulepdf": "Module de esportazione universale de PDF",
+	"uemodulepdf": "Module de esportazione universale de PDF",
+	"bs-uemodulepdf-pref-suppressns": "Scunne 'u prefisse d'u namespace jndr'à 'u PDF",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "PDF cu 'na pàgena sole",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Esporte sta pàgene cumme PDF.",
 	"bs-uemodulepdf-overview-title": "Portable Document Format (PDF)"
