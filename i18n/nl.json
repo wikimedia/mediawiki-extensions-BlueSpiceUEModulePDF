@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Esketti",
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Xbaked potatox"
 		]
 	},
-	"bs-uemodulepdf-desc": "Laat MediaWiki te exporteren pagina ' s in PDF-formaat",
+	"bs-uemodulepdf-desc": "Hiermee kan MediaWiki pagina's exporteren naar PDF-indeling",
 	"prefs-uemodulepdf": "Universele exporteren van PDF-module",
 	"uemodulepdf": "Universele exporteren van PDF-module",
 	"bs-uemodulepdf-pref-suppressns": "Verbergen namespace prefix in PDF",
