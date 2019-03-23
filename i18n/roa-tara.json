@@ -10,5 +10,8 @@
 	"bs-uemodulepdf-pref-suppressns": "Scunne 'u prefisse d'u namespace jndr'à 'u PDF",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "PDF cu 'na pàgena sole",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Esporte sta pàgene cumme PDF.",
-	"bs-uemodulepdf-overview-title": "Portable Document Format (PDF)"
+	"bs-uemodulepdf-overview-title": "Portable Document Format (PDF)",
+	"bs-uemodulepdf-overview-desc": "Esporte le pàggene (pàggene speciale e pàggene de condenute) jndr'à 'nu PDF.",
+	"bs-uemodulepdf-overview-webservice-state-ok": "disponibbile",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "non disponibbile"
 }
