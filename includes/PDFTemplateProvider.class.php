@@ -91,10 +91,14 @@ class BsPDFTemplateProvider {
 		//Substitue MSG elements
 		$oMsgTags = $oTemplateDOM->getElementsByTagName( 'msg' );
 
-		//Get the message data; If not available use "en" as fallback
-		$aMsgs = isset($aTemplate['messages'][$aParams['language']])
-		? $aTemplate['messages'][$aParams['language']]
-		: $aTemplate['messages']['en'];
+		$messages = [];
+		list( $mainLang ) = explode( '-', $aParams['language'] );
+		foreach( ['en', $mainLang, $aParams['language']] as $lang ) {
+			if ( !isset( $aTemplate['messages'][$lang] ) ) {
+				continue;
+			}
+			$messages = array_merge( $messages, $aTemplate['messages'][$lang] );
+		}
 
 		//Be careful with "replaceChild" within "foreach"!
 		//HINT: http://stackoverflow.com/questions/7035202/why-does-getelementsbytagname-only-grab-every-other-element-here
@@ -103,7 +107,9 @@ class BsPDFTemplateProvider {
 			$oMsgTag = $oMsgTags->item($i);
 			$sKey = $oMsgTag->getAttribute('key');
 			$sReplacement = '';
-			if( isset($aMsgs[$sKey]) ) $sReplacement = $aMsgs[$sKey];
+			if( isset( $messages[$sKey] ) ) {
+				$sReplacement = $messages[$sKey];
+			}
 			$oReplacmentElement = $oTemplateDOM->createTextNode( $sReplacement );
 			$oMsgTag->parentNode->replaceChild( $oReplacmentElement, $oMsgTag );
 			$i--;
