@@ -23,7 +23,7 @@
  * @author     Robert Vogel <vogel@hallowelt.com>
  * @package    BlueSpiceUEModulePDF
  * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
- * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v3
+ * @license    http://www.gnu.org/copyleft/gpl.html GPL-3.0-only
  * @filesource
  */
 
@@ -46,7 +46,7 @@ class UEModulePDF extends BsExtensionMW {
 		 * Allows modification for CURL request. E.g. setting an CA file for
 		 * HTTPS
 		 */
-		$GLOBALS['bsgUEModulePDFCURLOptions'] = array();
+		$GLOBALS['bsgUEModulePDFCURLOptions'] = [];
 
 		/**
 		 * This value is considered when asseta are being uploaded to the PDF
@@ -55,7 +55,7 @@ class UEModulePDF extends BsExtensionMW {
 		$GLOBALS['bsgUEModulePDFUploadThreshold'] = 50 * 1024 * 1024;
 
 		// Remove if minimal system requirements of MW changes to PHP <= 5.5
-		if( !defined( 'CURLOPT_SAFE_UPLOAD' ) ) {
+		if ( !defined( 'CURLOPT_SAFE_UPLOAD' ) ) {
 			define( 'CURLOPT_SAFE_UPLOAD', -1 );
 		}
 	}
@@ -63,11 +63,11 @@ class UEModulePDF extends BsExtensionMW {
 	/**
 	 * Sets up requires directories
 	 * @param DatabaseUpdater $updater Provided by MediaWikis update.php
-	 * @return boolean Always true to keep the hook running
+	 * @return bool Always true to keep the hook running
 	 */
 	public static function getSchemaUpdates( $updater ) {
 		$dir = \BsFileSystemHelper::getDataDirectory( 'PDFTemplates' );
-		if( !is_dir( $dir ) ) {
+		if ( !is_dir( $dir ) ) {
 			$updater->output(
 				"Default template directory '$dir' not found. Copying.\n"
 			);
