@@ -8,7 +8,7 @@
 
  * @package    BlueSpiceUEModulePDF
  * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
- * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v3
+ * @license    http://www.gnu.org/copyleft/gpl.html GPL-3.0-only
  * @filesource
  */
 
@@ -24,55 +24,55 @@ class BsPDFPageProvider {
 	 * @return array
 	 */
 	public static function getPage( $aParams ) {
-		Hooks::run( 'BSUEModulePDFbeforeGetPage', array( &$aParams ) );
+		Hooks::run( 'BSUEModulePDFbeforeGetPage', [ &$aParams ] );
 
 		$oBookmarksDOM = new DOMDocument();
-		$oBookmarksDOM->loadXML('<bookmarks></bookmarks>');
+		$oBookmarksDOM->loadXML( '<bookmarks></bookmarks>' );
 
 		$oTitle = null;
-		if( isset($aParams['article-id']) ) {
-			$oTitle = Title::newFromID($aParams['article-id']);
+		if ( isset( $aParams['article-id'] ) ) {
+			$oTitle = Title::newFromID( $aParams['article-id'] );
 		}
-		if( $oTitle == null ){
-			//HINT: This is probably the wrong place for urldecode(); Should be
-			//done by caller. I.e. BookExportModulePDF
-			$oTitle = Title::newFromText(urldecode($aParams['title']));
+		if ( $oTitle == null ) {
+			// HINT: This is probably the wrong place for urldecode(); Should be
+			// done by caller. I.e. BookExportModulePDF
+			$oTitle = Title::newFromText( urldecode( $aParams['title'] ) );
 		}
 
 		$oPCP = new BsPageContentProvider();
 		$oPageDOM = $oPCP->getDOMDocumentContentFor(
 			$oTitle,
-			$aParams + array( 'follow-redirects' => true )
+			$aParams + [ 'follow-redirects' => true ]
 		); // TODO RBV (06.12.11 17:09): Follow Redirect... setting or default?
 
-		//Collect Metadata
+		// Collect Metadata
 		$aData = self::collectData( $oTitle, $oPageDOM, $aParams );
 
-		//Cleanup DOM
+		// Cleanup DOM
 		self::cleanUpDOM( $oTitle, $oPageDOM, $aParams );
 
 		$oBookmarkNode = BsUniversalExportHelper::getBookmarkElementForPageDOM( $oPageDOM );
-		//HINT: http://www.mm-newmedia.de/blog/2010/05/wrong-document-error-wtf/
+		// HINT: http://www.mm-newmedia.de/blog/2010/05/wrong-document-error-wtf/
 		$oBookmarksDOM->documentElement->appendChild(
 			$oBookmarksDOM->importNode( $oBookmarkNode, true )
 		);
 
 		$oDOMXPath = new DOMXPath( $oPageDOM );
-		$oFirstHeading = $oDOMXPath->query( "//*[contains(@class, 'firstHeading')]" )->item(0);
-		$oBodyContent  = $oDOMXPath->query( "//*[contains(@class, 'bodyContent')]" )->item(0);
+		$oFirstHeading = $oDOMXPath->query( "//*[contains(@class, 'firstHeading')]" )->item( 0 );
+		$oBodyContent  = $oDOMXPath->query( "//*[contains(@class, 'bodyContent')]" )->item( 0 );
 
 		// TODO RBV (01.02.12 11:28): What if no TOC?
-		$oTOCULElement = $oDOMXPath->query( "//*[contains(@class, 'toc')]//ul" )->item(0);
+		$oTOCULElement = $oDOMXPath->query( "//*[contains(@class, 'toc')]//ul" )->item( 0 );
 
-		if( isset($aParams['display-title'] ) ) {
+		if ( isset( $aParams['display-title'] ) ) {
 			$oBookmarkNode->setAttribute( 'name', $aParams['display-title'] );
 			$oTitleText = $oFirstHeading->ownerDocument->createTextNode( $aParams['display-title'] );
 			$oFirstHeading->nodeValue = '';
 			$oFirstHeading->replaceChild( $oTitleText, $oFirstHeading->firstChild );
-			$aData['meta']['title']   = $aParams['display-title'];
+			$aData['meta']['title'] = $aParams['display-title'];
 		}
 
-		$aPage = array(
+		$aPage = [
 			'resources' => $aData['resources'],
 			'dom' => $oPageDOM,
 			'firstheading-element' => $oFirstHeading,
@@ -81,9 +81,9 @@ class BsPDFPageProvider {
 			'bookmarks-dom'    => $oBookmarksDOM,
 			'bookmark-element' => $oBookmarkNode,
 			'meta'             => $aData['meta']
-		);
+		];
 
-		Hooks::run( 'BSUEModulePDFgetPage', array( $oTitle, &$aPage, &$aParams, $oDOMXPath ) );
+		Hooks::run( 'BSUEModulePDFgetPage', [ $oTitle, &$aPage, &$aParams, $oDOMXPath ] );
 		return $aPage;
 	}
 
@@ -95,38 +95,38 @@ class BsPDFPageProvider {
 	 * @return array array( 'meta' => ..., 'resources' => ...);
 	 */
 	private static function collectData( $oTitle, $oPageDOM, $aParams ) {
-		$aMeta      = array();
-		$aResources = array(
-			'ATTACHMENT' => array(),
-			'STYLESHEET' => array(),
-			'IMAGE' => array()
-		);
+		$aMeta      = [];
+		$aResources = [
+			'ATTACHMENT' => [],
+			'STYLESHEET' => [],
+			'IMAGE' => []
+		];
 
 		// TODO RBV (01.02.12 13:51): Handle oldid
-		$aCategories = array();
-		if( $oTitle->exists() ) {
+		$aCategories = [];
+		if ( $oTitle->exists() ) {
 			// TODO RBV (27.06.12 11:47): Throws an exception. Maybe better use try ... catch instead of $oTitle->exists()
-			$aAPIParams = new FauxRequest( array(
+			$aAPIParams = new FauxRequest( [
 					'action' => 'parse',
-					//'oldid'  => ,
+					// 'oldid'  => ,
 					'page'  => $oTitle->getPrefixedText(),
 					'prop'   => 'images|categories|links'
-			));
+			] );
 
 			$oAPI = new ApiMain( $aAPIParams );
 			$oAPI->execute();
 
 			if ( defined( 'ApiResult::META_CONTENT' ) ) {
-				$aResult = $oAPI->getResult()->getResultData( null, array(
-					'BC' => array(),
-					'Types' => array(),
+				$aResult = $oAPI->getResult()->getResultData( null, [
+					'BC' => [],
+					'Types' => [],
 					'Strip' => 'all',
-				) );
+				] );
 			} else {
 				$aResult = $oAPI->getResultData();
 			}
 
-			foreach($aResult['parse']['categories'] as $aCat ) {
+			foreach ( $aResult['parse']['categories'] as $aCat ) {
 				$aCategories[] = $aCat['*'];
 			}
 		}
@@ -140,33 +140,33 @@ class BsPDFPageProvider {
 		}
 		 */
 
-		//Dublin Core:
+		// Dublin Core:
 		$aMeta['DC.title'] = $oTitle->getPrefixedText();
 		$aMeta['DC.date']  = wfTimestamp( TS_ISO_8601 ); // TODO RBV (14.12.10 14:01): Check for conformity. Maybe there is a better way to acquire than wfTimestamp()?
 
-		//Custom
+		// Custom
 		global $wgLang;
 		$oDOMXPath = new DOMXPath( $oPageDOM );
 		$domTitles = $oDOMXPath->query( "//*[contains(@class, 'firstHeading')]" );
 		$sTitle = "";
-		foreach( $domTitles as $domTitle ) {
+		foreach ( $domTitles as $domTitle ) {
 			$sTitle = $domTitle->nodeValue;
 		}
 		$sCurrentTS = $wgLang->userAdjust( wfTimestampNow() );
-		$aMeta[ 'title' ] = empty( $sTitle ) ? $oTitle->getPrefixedText( ) : $sTitle;
-		$aMeta[ 'pagetitle' ] = $oTitle->getPrefixedText( );
+		$aMeta[ 'title' ] = empty( $sTitle ) ? $oTitle->getPrefixedText() : $sTitle;
+		$aMeta[ 'pagetitle' ] = $oTitle->getPrefixedText();
 		$aMeta['exportdate']      = $wgLang->sprintfDate( 'd.m.Y', $sCurrentTS );
 		$aMeta['exporttime']      = $wgLang->sprintfDate( 'H:i', $sCurrentTS );
 		$aMeta['exporttimeexact'] = $wgLang->sprintfDate( 'H:i:s', $sCurrentTS );
 
-		//Custom - Categories->Keywords
+		// Custom - Categories->Keywords
 		$aMeta['keywords'] = implode( ', ', $aCategories );
 
 		$oMetadataElements = $oDOMXPath->query( "//div[@class='bs-universalexport-meta']" );
-		foreach( $oMetadataElements as $oMetadataElement ) {
-			if( $oMetadataElement->hasAttributes() ) {
-				foreach( $oMetadataElement->attributes as $oAttribute ) {
-					if( $oAttribute->name !== 'class' ) {
+		foreach ( $oMetadataElements as $oMetadataElement ) {
+			if ( $oMetadataElement->hasAttributes() ) {
+				foreach ( $oMetadataElement->attributes as $oAttribute ) {
+					if ( $oAttribute->name !== 'class' ) {
 						$aMeta[ $oAttribute->name ] = $oAttribute->value;
 					}
 				}
@@ -174,14 +174,14 @@ class BsPDFPageProvider {
 			$oMetadataElement->parentNode->removeChild( $oMetadataElement );
 		}
 
-		//If it's a normal article
-		if( !in_array( $oTitle->getNamespace(), array( NS_SPECIAL, NS_FILE, NS_CATEGORY ) ) ) {
-			$oArticle = new Article($oTitle);
+		// If it's a normal article
+		if ( !in_array( $oTitle->getNamespace(), [ NS_SPECIAL, NS_FILE, NS_CATEGORY ] ) ) {
+			$oArticle = new Article( $oTitle );
 			$aMeta['author'] = $oArticle->getUserText(); // TODO RBV (14.12.10 12:19): Realname/Username -> DisplayName
 			$aMeta['date']   = $wgLang->sprintfDate( 'd.m.Y', $oArticle->getTouched() );
 		}
 
-		Hooks::run( 'BSUEModulePDFcollectMetaData', array( $oTitle, $oPageDOM, &$aParams, $oDOMXPath, &$aMeta ) );
+		Hooks::run( 'BSUEModulePDFcollectMetaData', [ $oTitle, $oPageDOM, &$aParams, $oDOMXPath, &$aMeta ] );
 
 		$config = \BlueSpice\Services::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' );
@@ -191,10 +191,10 @@ class BsPDFPageProvider {
 		);
 		$aMeta = array_merge( $aMeta, $aMetaDataOverrides );
 
-		return array(
+		return [
 			'meta'      => $aMeta,
 			'resources' => $aResources
-		);
+		];
 	}
 
 	/**
@@ -207,42 +207,41 @@ class BsPDFPageProvider {
 	 */
 	private static function cleanUpDOM( $oTitle, $oPageDOM, $aParams ) {
 		global $wgServer;
-		$aClassesToRemove = array( 'editsection', 'bs-universalexport-exportexclude' );
-		$oDOMXPath = new DOMXPath($oPageDOM );
-		Hooks::run( 'BSUEModulePDFcleanUpDOM', array( $oTitle, $oPageDOM, &$aParams, $oDOMXPath, &$aClassesToRemove ) );
+		$aClassesToRemove = [ 'editsection', 'bs-universalexport-exportexclude' ];
+		$oDOMXPath = new DOMXPath( $oPageDOM );
+		Hooks::run( 'BSUEModulePDFcleanUpDOM', [ $oTitle, $oPageDOM, &$aParams, $oDOMXPath, &$aClassesToRemove ] );
 
-		//Remove script-Tags
-		foreach( $oPageDOM->getElementsByTagName( 'script' ) as $oScriptElement ) {
+		// Remove script-Tags
+		foreach ( $oPageDOM->getElementsByTagName( 'script' ) as $oScriptElement ) {
 			$oScriptElement->parentNode->removeChild( $oScriptElement );
 		}
 
-		//Remove elements by class
-		$aContainsStmnts = array();
-		foreach( $aClassesToRemove as $sClass ){
-			$aContainsStmnts[] = "contains(@class, '".$sClass."')";
+		// Remove elements by class
+		$aContainsStmnts = [];
+		foreach ( $aClassesToRemove as $sClass ) {
+			$aContainsStmnts[] = "contains(@class, '" . $sClass . "')";
 		}
-		$sXPath = '//*['.implode(' or ', $aContainsStmnts ).']';
+		$sXPath = '//*[' . implode( ' or ', $aContainsStmnts ) . ']';
 
 		$oEditSectionElements = $oDOMXPath->query( $sXPath );
-		foreach( $oEditSectionElements as $oEditSectionElement ) {
+		foreach ( $oEditSectionElements as $oEditSectionElement ) {
 			$oEditSectionElement->parentNode->removeChild( $oEditSectionElement );
 		}
 
-		//Make internal hyperlinks absolute
-		$oInternalAnchorElements = $oDOMXPath->query( "//a[not(contains(@class, 'external')) and not(starts-with(@href, '#'))]" ); //No external and no jumplinks
-		foreach( $oInternalAnchorElements as $oInternalAnchorElement ) {
+		// Make internal hyperlinks absolute
+		$oInternalAnchorElements = $oDOMXPath->query( "//a[not(contains(@class, 'external')) and not(starts-with(@href, '#'))]" ); // No external and no jumplinks
+		foreach ( $oInternalAnchorElements as $oInternalAnchorElement ) {
 			$sRelativePath = $oInternalAnchorElement->getAttribute( 'href' );
 			$oInternalAnchorElement->setAttribute(
 				'href',
-				$wgServer.$sRelativePath
+				$wgServer . $sRelativePath
 			);
 		}
 
-
-		//<editor-fold defaultstate="collapsed" desc="Reference Tags">
+		// <editor-fold defaultstate="collapsed" desc="Reference Tags">
 		// TODO RBV (31.01.12 17:17): This should be in an extra extension like CiteConnector!
-		//$oReferenceTags = $oDOMXPath->query( "//a[contains(@class, 'references')]" );
-		//Old Code from Book.class.php
+		// $oReferenceTags = $oDOMXPath->query( "//a[contains(@class, 'references')]" );
+		// Old Code from Book.class.php
 		/*
 			$sOut = preg_replace_callback(
 						'#<ol class="references">(.*?)</ol>#si',
@@ -277,52 +276,52 @@ class BsPDFPageProvider {
 
 			return $listItemStartTag.$listItemContent.'</li>';
 		}*/
-		//</editor-fold>
+		// </editor-fold>
 
-		//Make tables paginatable
+		// Make tables paginatable
 		$oTableElements = $oPageDOM->getElementsByTagName( 'table' );
-		foreach( $oTableElements as $oTableElement ) {
+		foreach ( $oTableElements as $oTableElement ) {
 			self::correctTableWidth( $oTableElement );
 
-			$oTableRows = $oTableElement->childNodes; //We only want direct children, so we cannot use getElementsByTagName
-			$aRows = array();
-			foreach( $oTableRows as $oTableRow ){
-				//Filter for <tr>
-				if( $oTableRow instanceof DOMElement && $oTableRow->tagName == 'tr' )
+			$oTableRows = $oTableElement->childNodes; // We only want direct children, so we cannot use getElementsByTagName
+			$aRows = [];
+			foreach ( $oTableRows as $oTableRow ) {
+				// Filter for <tr>
+				if ( $oTableRow instanceof DOMElement && $oTableRow->tagName == 'tr' ) {
 				$aRows[] = $oTableRow;
+				}
 			}
 
-			$oTHead = $oPageDOM->createElement('thead');
-			$oTBody = $oPageDOM->createElement('tbody');
-			foreach( $aRows as $oTableRow ){
+			$oTHead = $oPageDOM->createElement( 'thead' );
+			$oTBody = $oPageDOM->createElement( 'tbody' );
+			foreach ( $aRows as $oTableRow ) {
 				// TODO RBV (06.02.12 15:07): Examine behavior when TH in row with TDs
-				$oTHs = $oTableRow->getElementsByTagName('th');
+				$oTHs = $oTableRow->getElementsByTagName( 'th' );
 
-				if( $oTHs->length != 0 ) {
-					if( $oTBody->hasChildNodes() ) {
-						$oTableElement->appendChild($oTBody);
-						$oTBody = $oPageDOM->createElement('tbody');
+				if ( $oTHs->length != 0 ) {
+					if ( $oTBody->hasChildNodes() ) {
+						$oTableElement->appendChild( $oTBody );
+						$oTBody = $oPageDOM->createElement( 'tbody' );
 					}
 					$oTHead->appendChild( $oTableRow );
-				}
-				else {
-					if( $oTHead->hasChildNodes() ) {
-						$oTableElement->appendChild($oTHead);
-						$oTHead = $oPageDOM->createElement('thead');
+				} else {
+					if ( $oTHead->hasChildNodes() ) {
+						$oTableElement->appendChild( $oTHead );
+						$oTHead = $oPageDOM->createElement( 'thead' );
 					}
 					$oTBody->appendChild( $oTableRow );
 				}
 			}
-			if( $oTHead->hasChildNodes() ) {
-					$oTableElement->appendChild($oTHead);
-				}
-			if( $oTBody->hasChildNodes() ) {
-				$oTableElement->appendChild($oTBody);
+			if ( $oTHead->hasChildNodes() ) {
+					$oTableElement->appendChild( $oTHead );
+			}
+			if ( $oTBody->hasChildNodes() ) {
+				$oTableElement->appendChild( $oTBody );
 			}
 		}
 
-		//Prevent "first page empty" bug
-		$oBodyContent  = $oDOMXPath->query( "//*[contains(@class, 'bodyContent')]" )->item(0);
+		// Prevent "first page empty" bug
+		$oBodyContent  = $oDOMXPath->query( "//*[contains(@class, 'bodyContent')]" )->item( 0 );
 		$oAntiBugP = $oPageDOM->createElement( 'p' );
 		$oAntiBugP->nodeValue = 'I am here to prevent the first-page-empty bug!';
 		$oAntiBugP->setAttribute( 'style', 'visibility:hidden;height:0px;margin:0px;padding:0px' );
@@ -330,7 +329,7 @@ class BsPDFPageProvider {
 	}
 
 	protected static function correctTableWidth( $oTableElement ) {
-		$sClassAttribute = $oTableElement->getAttribute ( 'class' );
+		$sClassAttribute = $oTableElement->getAttribute( 'class' );
 		$oTableElement->setAttribute( 'class', $sClassAttribute . ' bs-correct-table-width ' );
 	}
 }

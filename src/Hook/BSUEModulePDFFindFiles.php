@@ -21,7 +21,7 @@
  * @author     Robert Vogel <vogel@hallowelt.com>
  * @package    BlueSpiceUEModulePDF
  * @copyright  Copyright (C) 2018 Hallo Welt! GmbH, All rights reserved.
- * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v3
+ * @license    http://www.gnu.org/copyleft/gpl.html GPL-3.0-only
  * @filesource
  */
 namespace BlueSpice\UEModulePDF\Hook;
@@ -84,7 +84,6 @@ abstract class BSUEModulePDFFindFiles extends \BlueSpice\Hook {
 	 */
 	public function __construct( $context, $config, $pdfServlet, $imageEl, &$absoluteFsPath,
 			&$fileName ) {
-
 		parent::__construct( $context, $config );
 
 		$this->pdfServlet = $pdfServlet;

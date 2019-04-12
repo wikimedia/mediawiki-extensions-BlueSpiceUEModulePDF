@@ -21,7 +21,7 @@
  * @author     Patric Wirth <wirth@hallowelt.com>
  * @package    BlueSpiceFoundation
  * @copyright  Copyright (C) 2017 Hallo Welt! GmbH, All rights reserved.
- * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v3
+ * @license    http://www.gnu.org/copyleft/gpl.html GPL-3.0-only
  * @filesource
  */
 namespace BlueSpice\UEModulePDF\Hook;
@@ -42,11 +42,11 @@ abstract class BSUEModulePDFBeforeAddingStyleBlocks extends \BlueSpice\Hook {
 
 	/**
 	 *
-	 * @param array $template
-	 * @param array $styleBlocks
-	 * @return boolean
+	 * @param array &$template
+	 * @param array &$styleBlocks
+	 * @return bool
 	 */
-	public static function callback( &$template, &$styleBlocks  ) {
+	public static function callback( &$template, &$styleBlocks ) {
 		$className = static::class;
 		$hookHandler = new $className(
 			null,
@@ -61,8 +61,8 @@ abstract class BSUEModulePDFBeforeAddingStyleBlocks extends \BlueSpice\Hook {
 	 *
 	 * @param \IContextSource $context
 	 * @param \Config $config
-	 * @param array $template
-	 * @param array $styleBlocks
+	 * @param array &$template
+	 * @param array &$styleBlocks
 	 */
 	public function __construct( $context, $config, &$template, &$styleBlocks ) {
 		parent::__construct( $context, $config );
