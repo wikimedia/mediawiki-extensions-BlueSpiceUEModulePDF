@@ -21,7 +21,7 @@
  * @author     Patric Wirth <wirth@hallowelt.com>
  * @package    BlueSpiceFoundation
  * @copyright  Copyright (C) 2017 Hallo Welt! GmbH, All rights reserved.
- * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v3
+ * @license    http://www.gnu.org/copyleft/gpl.html GPL-3.0-only
  * @filesource
  */
 namespace BlueSpice\UEModulePDF\Hook;
@@ -55,12 +55,12 @@ abstract class BSUEModulePDFgetPage extends \BlueSpice\Hook {
 	/**
 	 *
 	 * @param \Title $title
-	 * @param array $page
-	 * @param array $params
+	 * @param array &$page
+	 * @param array &$params
 	 * @param \DOMXPath $DOMXPath
-	 * @return boolean
+	 * @return bool
 	 */
-	public static function callback( $title, &$page, &$params, $DOMXPath  ) {
+	public static function callback( $title, &$page, &$params, $DOMXPath ) {
 		$className = static::class;
 		$hookHandler = new $className(
 			null,
@@ -78,8 +78,8 @@ abstract class BSUEModulePDFgetPage extends \BlueSpice\Hook {
 	 * @param \IContextSource $context
 	 * @param \Config $config
 	 * @param \Title $title
-	 * @param array $page
-	 * @param array $params
+	 * @param array &$page
+	 * @param array &$params
 	 * @param \DOMXPath $DOMXPath
 	 */
 	public function __construct( $context, $config, $title, &$page, &$params, $DOMXPath ) {

@@ -21,7 +21,7 @@
  * @author     Patric Wirth <wirth@hallowelt.com>
  * @package    BlueSpiceUEModulePDF
  * @copyright  Copyright (C) 2018 Hallo Welt! GmbH, All rights reserved.
- * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v3
+ * @license    http://www.gnu.org/copyleft/gpl.html GPL-3.0-only
  * @filesource
  */
 namespace BlueSpice\UEModulePDF\Hook;
@@ -65,9 +65,9 @@ abstract class BSUEModulePDFcollectMetaData extends \BlueSpice\Hook {
 	 * @param array &$params
 	 * @param \DOMXPath $DOMXPath
 	 * @param array &$meta
-	 * @return boolean
+	 * @return bool
 	 */
-	public static function callback( $title, $pageDOM, &$params, $DOMXPath, &$meta  ) {
+	public static function callback( $title, $pageDOM, &$params, $DOMXPath, &$meta ) {
 		$className = static::class;
 		$hookHandler = new $className(
 			null,

@@ -4,24 +4,24 @@
  * information necessary to load and process the template.
  */
 
-return array(
+return [
 
 	/* A brief description. This information may be used in the user interface */
-	'info' => array(
+	'info' => [
 		'name'      => 'BlueSpice',
 		'author'    => 'Hallo Welt!',
 		'copyright' => 'Hallo Welt! GmbH',
 		'url'       => 'http://www.hallowelt.com',
 		'description'      => 'This is the default BlueSpice PDF Template'
-	),
+	],
 
 	/**
 	 * The following resources are used in the conversion from xhtml to PDF.
 	 * You may reference them in your template files
 	 */
-	'resources' => array(
-		'ATTACHMENT' => array(), //Some extra attachments to be included in every eport file
-		'STYLESHEET' => array(
+	'resources' => [
+		'ATTACHMENT' => [], // Some extra attachments to be included in every eport file
+		'STYLESHEET' => [
 			'../common/stylesheets/page.css',
 			'../common/stylesheets/mediawiki.css',
 			'stylesheets/styles.css',
@@ -30,7 +30,7 @@ return array(
 			'../common/stylesheets/tables.css',
 			'../common/stylesheets/fonts.css',
 			'../common/stylesheets/mediawiki.action.history.diff.css',
-			//'../common/stylesheets/debug.css',
+			// '../common/stylesheets/debug.css',
 			'../common/fonts/DejaVuSans.ttf',
 			'../common/fonts/DejaVuSans-Bold.ttf',
 			'../common/fonts/DejaVuSans-Oblique.ttf',
@@ -39,35 +39,35 @@ return array(
 			'../common/fonts/DejaVuSansMono-Bold.ttf',
 			'../common/fonts/DejaVuSansMono-Oblique.ttf',
 			'../common/fonts/DejaVuSansMono-BoldOblique.ttf'
-		),
-		'IMAGE' => array(
+		],
+		'IMAGE' => [
 			'images/bs-header.jpg',
 			'images/bs-page-background.png'
-		)
-	),
+		]
+	],
 
 	/**
 	 * Here you can define messages for internationalization of your template.
 	 */
-	'messages' => array(
-		'en' => array(
+	'messages' => [
+		'en' => [
 			'desc'        => 'This is the default PDFTemplate of BlueSpice for single article export.',
 			'exportdate'  => 'Export:',
 			'page'        => 'Page ',
 			'of'          => ' of ',
 			'disclaimer'  => 'This document was created with BlueSpice'
-		),
-		'de' => array(
+		],
+		'de' => [
 			'desc'        => 'Dies ist das Standard-PDFTemplate von BlueSpice für den Export einzelner Artikel.',
 			'exportdate'  => 'Ausgabe:',
 			'page'        => 'Seite ',
 			'of'          => ' von ',
-			'disclaimer'  => 'Dieses Dokument wurde erzeugt mit BlueSpice'),
-		'de-formal' => array(
+			'disclaimer'  => 'Dieses Dokument wurde erzeugt mit BlueSpice' ],
+		'de-formal' => [
 			'desc'        => 'Dies ist das Standard-PDFTemplate von BlueSpice für den Export einzelner Artikel.',
 			'exportdate'  => 'Ausgabe:',
 			'page'        => 'Seite ',
 			'of'          => ' von ',
-			'disclaimer'  => 'Dieses Dokument wurde erzeugt mit BlueSpice'),
-	)
-);
+			'disclaimer'  => 'Dieses Dokument wurde erzeugt mit BlueSpice' ],
+	]
+];

@@ -23,7 +23,7 @@
  * @author     Robert Vogel <vogel@hallowelt.com>
  * @package    BlueSpiceUEModulePDF
  * @copyright  Copyright (C) 2019 Hallo Welt! GmbH, All rights reserved.
- * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License v3
+ * @license    http://www.gnu.org/copyleft/gpl.html GPL-3.0-only
  * @filesource
  */
 
@@ -43,7 +43,7 @@ class Extension extends \BlueSpice\Extension {
 		 * Allows modification for CURL request. E.g. setting an CA file for
 		 * HTTPS
 		 */
-		$GLOBALS['bsgUEModulePDFCURLOptions'] = array();
+		$GLOBALS['bsgUEModulePDFCURLOptions'] = [];
 
 		/**
 		 * This value is considered when asseta are being uploaded to the PDF
@@ -52,7 +52,7 @@ class Extension extends \BlueSpice\Extension {
 		$GLOBALS['bsgUEModulePDFUploadThreshold'] = 50 * 1024 * 1024;
 
 		// Remove if minimal system requirements of MW changes to PHP <= 5.5
-		if( !defined( 'CURLOPT_SAFE_UPLOAD' ) ) {
+		if ( !defined( 'CURLOPT_SAFE_UPLOAD' ) ) {
 			define( 'CURLOPT_SAFE_UPLOAD', -1 );
 		}
 	}

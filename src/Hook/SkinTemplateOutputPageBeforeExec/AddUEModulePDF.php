@@ -15,7 +15,6 @@ class AddUEModulePDF extends SkinTemplateOutputPageBeforeExec {
 	}
 
 	protected function doProcess() {
-
 		$this->mergeSkinDataArray(
 				SkinData::EXPORT_MENU,
 				[
