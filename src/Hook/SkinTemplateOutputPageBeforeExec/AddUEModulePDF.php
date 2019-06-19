@@ -7,11 +7,15 @@ use BlueSpice\SkinData;
 
 class AddUEModulePDF extends SkinTemplateOutputPageBeforeExec {
 	protected function skipProcessing() {
-		if ( $this->skin->getTitle()->isSpecialPage() === false ) {
-			return false;
+		if ( $this->skin->getTitle()->isSpecialPage() ) {
+			return true;
 		}
 
-		return true;
+		if ( !$this->skin->getTitle()->userCan( 'uemodulepdf-export' ) ) {
+			return true;
+		}
+
+		return false;
 	}
 
 	protected function doProcess() {
