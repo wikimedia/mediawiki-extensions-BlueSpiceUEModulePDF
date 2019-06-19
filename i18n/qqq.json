@@ -21,5 +21,7 @@
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "Text for not available\n{{Identical|Not available}}",
 	"soap-service-url-not-valid": "Text for the URL to the PDF generating web service is not valid. Please check the wiki configuration.\n\nSee also:\n* {{msg-mw|Soap-service-url-not-set}}",
 	"soap-service-url-not-set": "Text for the URL to the PDF generating web service is not set. Please check the wiki configuration.\n\nSee also:\n* {{msg-mw|Soap-service-url-not-valid}}",
-	"bs-uemodulepdf-overview-webservice-webadmin": "Text for backend web interface"
+	"bs-uemodulepdf-overview-webservice-webadmin": "Text for backend web interface",
+	"action-uemodulepdf-export": "{{doc-action|uemodulepdf-export}}",
+	"right-uemodulepdf-export": "{{doc-right|uemodulepdf-export}}"
 }
