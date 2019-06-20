@@ -22,9 +22,25 @@
 						"UEModulePDFSuppressNS": "\\BlueSpice\\UEModulePDF\\ConfigDefinition\\SuppressNS::getInstance"
 					}
 				}
+			},
+			"PermissionRegistry": {
+				"uemodulepdf-export": {
+					"type": "namespace",
+					"roles": [
+						"reader"
+					]
+				}
 			}
 		}
 	},
+	"GroupPermissions": {
+		"*": {
+			"uemodulepdf-export": true
+		}
+	},
+	"AvailableRights": [
+		"uemodulepdf-export"
+	],
 	"callback": "UEModulePDF::onRegistration",
 	"MessagesDirs": {
 		"UEModulePDF": [

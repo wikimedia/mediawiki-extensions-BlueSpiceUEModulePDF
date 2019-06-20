@@ -27,6 +27,10 @@ class BsExportModulePDF implements BsUniversalExportModule {
 		global $wgUser, $wgRequest;
 		$aPageParams = $oCaller->aParams;
 
+		if ( $oCaller->oRequestedTitle->userCan( 'uemodulepdf-export' ) === false ) {
+			throw new PermissionsError( 'uemodulepdf-export' );
+		}
+
 		$config = \BlueSpice\Services::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' );
 
