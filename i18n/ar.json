@@ -17,5 +17,7 @@
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "غير متاح",
 	"soap-service-url-not-valid": "مسار خدمة إنشاء PDF على الويب غير صالح; يُرجَى التحقق من تكوين الويكي.",
 	"soap-service-url-not-set": "لم يتم تعيين مسار خدمة إنشاء PDF على الويب; يُرجَى التحقق من تكوين الويكي.",
-	"bs-uemodulepdf-overview-webservice-webadmin": "الواجهة الخلفية للويب"
+	"bs-uemodulepdf-overview-webservice-webadmin": "الواجهة الخلفية للويب",
+	"action-uemodulepdf-export": "تصدير صفحة إلى PDF",
+	"right-uemodulepdf-export": "تصدير صفحة إلى PDF"
 }

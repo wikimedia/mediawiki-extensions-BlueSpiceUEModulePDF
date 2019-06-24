@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Liuxinyu970226",
-			"Kly"
+			"Kly",
+			"神樂坂秀吉"
 		]
 	},
 	"bs-uemodulepdf-desc": "啟用 MediaWiki 來匯出頁面成 PDF 格式",
@@ -18,5 +19,6 @@
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "不可用",
 	"soap-service-url-not-valid": "產生 PDF 網路服務的 URL 無效。請檢查 wiki 設置。",
 	"soap-service-url-not-set": "產生 PDF 網路服務的 URL 未設定。請檢查 wiki 設置。",
-	"bs-uemodulepdf-overview-webservice-webadmin": "後台網路介面"
+	"bs-uemodulepdf-overview-webservice-webadmin": "後台網路介面",
+	"right-uemodulepdf-export": "輸出頁面到 RDF"
 }

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bjankuloski06"
+			"Bjankuloski06",
+			"Vlad5250"
 		]
 	},
 	"bs-uemodulepdf-desc": "Овозможува МедијаВики да извезува страници во PDF-формат",
@@ -17,5 +18,6 @@
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "недостапно",
 	"soap-service-url-not-valid": "URL-адресата до службата за PDF-испис е неважечка. Проверете ги поставките во викито.",
 	"soap-service-url-not-set": "URL-адресата до службата за PDF-испис не е зададена. Проверете ги поставките во викито.",
-	"bs-uemodulepdf-overview-webservice-webadmin": "Заднински семрежен посредник"
+	"bs-uemodulepdf-overview-webservice-webadmin": "Заднински семрежен посредник",
+	"right-uemodulepdf-export": "Извези страница во PDF"
 }

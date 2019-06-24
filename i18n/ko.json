@@ -13,5 +13,7 @@
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "사용 불가",
 	"soap-service-url-not-valid": "PDF 생성 웹 서비스의 URL이 유효하지 않습니다. 위키 구성을 확인해 주십시오.",
 	"soap-service-url-not-set": "PDF 생성 웹 서비스의 URL이 설정되어 있지 않습니다. 위키 구성을 확인해 주십시오.",
-	"bs-uemodulepdf-overview-webservice-webadmin": "백엔드 웹 인터페이스"
+	"bs-uemodulepdf-overview-webservice-webadmin": "백엔드 웹 인터페이스",
+	"action-uemodulepdf-export": "문서를 PDF로 내보내기",
+	"right-uemodulepdf-export": "문서를 PDF로 내보내기"
 }
