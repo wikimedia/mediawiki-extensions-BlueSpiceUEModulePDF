@@ -20,5 +20,6 @@
 	"soap-service-url-not-valid": "產生 PDF 網路服務的 URL 無效。請檢查 wiki 設置。",
 	"soap-service-url-not-set": "產生 PDF 網路服務的 URL 未設定。請檢查 wiki 設置。",
 	"bs-uemodulepdf-overview-webservice-webadmin": "後台網路介面",
+	"action-uemodulepdf-export": "匯出頁面成 PDF",
 	"right-uemodulepdf-export": "輸出頁面到 RDF"
 }
