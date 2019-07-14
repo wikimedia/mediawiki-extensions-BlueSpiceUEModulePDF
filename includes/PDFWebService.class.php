@@ -223,6 +223,7 @@ class BsPDFWebService {
 	}
 
 	// <editor-fold desc="Helper Methods" defaultstate="collapsed">
+
 	/**
 	 * This helper method resolves the local file system path of a found file
 	 * @param string $sUrl
