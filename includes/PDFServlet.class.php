@@ -74,7 +74,7 @@ class BsPDFServlet {
 		);
 
 		// Now do the rendering
-		// We re-send the paramters but this time without the file.
+		// We re-send the parameters but this time without the file.
 		unset( $aOptions['postData']['sourceHtmlFile'] );
 		unset( $aOptions['postData']['fileType'] );
 		// We do not want the request to be multipart/formdata because that's more difficult to handle on Servlet-side
