@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Metalhead64"
+			"Metalhead64",
+			"Mglaser"
 		]
 	},
 	"bs-uemodulepdf-desc": "Aktiviert MediaWiki zum Exportieren von Seiten in das PDF-Format",
@@ -18,5 +19,7 @@
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "nicht erreichbar",
 	"soap-service-url-not-valid": "Die URL des Webservices für die PDF-Erzeugung ist nicht korrekt. Bitte überprüfe die Wiki-Einstellungen.",
 	"soap-service-url-not-set": "Die URL des Webservices für die PDF-Erzeugung ist nicht gesetzt. Bitte überprüfe die Wiki-Einstellungen.",
-	"bs-uemodulepdf-overview-webservice-webadmin": "Backend Webinterface"
+	"bs-uemodulepdf-overview-webservice-webadmin": "Backend Webinterface",
+	"action-uemodulepdf-export": "eine Seiten in PDF zu exportieren",
+	"right-uemodulepdf-export": "Export einer Seite in PDF"
 }

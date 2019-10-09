@@ -22,21 +22,18 @@
  *
  * @author     Robert Vogel <vogel@hallowelt.com>
  * @package    BlueSpiceUEModulePDF
- * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
+ * @copyright  Copyright (C) 2019 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GPL-3.0-only
  * @filesource
  */
+
+namespace BlueSpice\UEModulePDF;
 
 /**
  * Base class for UniversalExport PDF Module extension
  * @package BlueSpiceUEModulePDF
  */
-class UEModulePDF extends BsExtensionMW {
-	/**
-	 * Initialization of UEModulePDF extension
-	 */
-	protected function initExt() {
-	}
+class Extension extends \BlueSpice\Extension {
 
 	/**
 	 * extension.json callback
@@ -58,26 +55,6 @@ class UEModulePDF extends BsExtensionMW {
 		if ( !defined( 'CURLOPT_SAFE_UPLOAD' ) ) {
 			define( 'CURLOPT_SAFE_UPLOAD', -1 );
 		}
-	}
-
-	/**
-	 * Sets up requires directories
-	 * @param DatabaseUpdater $updater Provided by MediaWikis update.php
-	 * @return bool Always true to keep the hook running
-	 */
-	public static function getSchemaUpdates( $updater ) {
-		$dir = \BsFileSystemHelper::getDataDirectory( 'PDFTemplates' );
-		if ( !is_dir( $dir ) ) {
-			$updater->output(
-				"Default template directory '$dir' not found. Copying.\n"
-			);
-			BsFileSystemHelper::copyRecursive(
-				"{$GLOBALS['wgExtensionDirectory']}/BlueSpiceUEModulePDF/data/PDFTemplates",
-				$dir
-			);
-		}
-
-		return true;
 	}
 
 }

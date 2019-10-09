@@ -3,7 +3,8 @@
 		"authors": [
 			"NataChe",
 			"Ата",
-			"Andriykopanytsia"
+			"Andriykopanytsia",
+			"Vlad5250"
 		]
 	},
 	"bs-uemodulepdf-desc": "Дозволяє MediaWiki експортувати сторінки у формат PDF",
@@ -19,5 +20,7 @@
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "не доступний",
 	"soap-service-url-not-valid": "Неприпустима адреса веб-служби створення PDF. Будь ласка, перевірте налаштування вікі.",
 	"soap-service-url-not-set": "Не вказана адреса веб-служби створення PDF. Будь ласка, перевірте налаштування вікі.",
-	"bs-uemodulepdf-overview-webservice-webadmin": "Веб-інтерфейс бекенду"
+	"bs-uemodulepdf-overview-webservice-webadmin": "Веб-інтерфейс бекенду",
+	"action-uemodulepdf-export": "експортування сторінки у PDF",
+	"right-uemodulepdf-export": "експорт сторінок у PDF"
 }

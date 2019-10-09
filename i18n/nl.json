@@ -2,17 +2,19 @@
 	"@metadata": {
 		"authors": [
 			"Esketti",
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Xbaked potatox",
+			"Mainframe98"
 		]
 	},
-	"bs-uemodulepdf-desc": "Laat MediaWiki te exporteren pagina ' s in PDF-formaat",
+	"bs-uemodulepdf-desc": "Hiermee kan MediaWiki pagina's exporteren naar PDF-indeling",
 	"prefs-uemodulepdf": "Universele exporteren van PDF-module",
 	"uemodulepdf": "Universele exporteren van PDF-module",
-	"bs-uemodulepdf-pref-suppressns": "Verbergen namespace prefix in PDF",
+	"bs-uemodulepdf-pref-suppressns": "Naamruimtevoorvoegsel in de PDF verbergen",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "PDF van één pagina",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Exporteer deze pagina als PDF.",
 	"bs-uemodulepdf-overview-title": "Portable Document Format (PDF)",
-	"bs-uemodulepdf-overview-desc": "Exporteert de pagina 's (speciale pagina' s en content pagina ' s) naar PDF.",
+	"bs-uemodulepdf-overview-desc": "Exporteert de pagina's (speciale pagina's en inhoudspagina's) naar PDF.",
 	"bs-uemodulepdf-overview-webservice-state": "Backend staat",
 	"bs-uemodulepdf-overview-webservice-state-ok": "beschikbaar",
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "niet beschikbaar",
