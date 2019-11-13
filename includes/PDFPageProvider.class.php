@@ -282,42 +282,7 @@ class BsPDFPageProvider {
 		$oTableElements = $oPageDOM->getElementsByTagName( 'table' );
 		foreach ( $oTableElements as $oTableElement ) {
 			self::correctTableWidth( $oTableElement );
-
-			$oTableRows = $oTableElement->childNodes; // We only want direct children, so we cannot use getElementsByTagName
-			$aRows = [];
-			foreach ( $oTableRows as $oTableRow ) {
-				// Filter for <tr>
-				if ( $oTableRow instanceof DOMElement && $oTableRow->tagName == 'tr' ) {
-				$aRows[] = $oTableRow;
-				}
-			}
-
-			$oTHead = $oPageDOM->createElement( 'thead' );
-			$oTBody = $oPageDOM->createElement( 'tbody' );
-			foreach ( $aRows as $oTableRow ) {
-				// TODO RBV (06.02.12 15:07): Examine behavior when TH in row with TDs
-				$oTHs = $oTableRow->getElementsByTagName( 'th' );
-
-				if ( $oTHs->length != 0 ) {
-					if ( $oTBody->hasChildNodes() ) {
-						$oTableElement->appendChild( $oTBody );
-						$oTBody = $oPageDOM->createElement( 'tbody' );
-					}
-					$oTHead->appendChild( $oTableRow );
-				} else {
-					if ( $oTHead->hasChildNodes() ) {
-						$oTableElement->appendChild( $oTHead );
-						$oTHead = $oPageDOM->createElement( 'thead' );
-					}
-					$oTBody->appendChild( $oTableRow );
-				}
-			}
-			if ( $oTHead->hasChildNodes() ) {
-					$oTableElement->appendChild( $oTHead );
-			}
-			if ( $oTBody->hasChildNodes() ) {
-				$oTableElement->appendChild( $oTBody );
-			}
+			self::duplicateTableHeadsForPagination( $oTableElement, $oPageDOM );
 		}
 
 		// Prevent "first page empty" bug
@@ -328,8 +293,98 @@ class BsPDFPageProvider {
 		$oBodyContent->insertBefore( $oAntiBugP, $oBodyContent->firstChild );
 	}
 
+	/**
+	 *
+	 * @param DOMElement $oTableElement
+	 */
 	protected static function correctTableWidth( $oTableElement ) {
 		$sClassAttribute = $oTableElement->getAttribute( 'class' );
 		$oTableElement->setAttribute( 'class', $sClassAttribute . ' bs-correct-table-width ' );
+	}
+
+	/**
+	 *
+	 * @param DOMElement $oTableElement
+	 * @param array $aBodys
+	 */
+	protected static function findTableBodys( $oTableElement, &$aBodys ) {
+		$oTableBodys = $oTableElement->childNodes; // We only want direct children, so we cannot use getElementsByTagName
+		foreach ( $oTableBodys as $oTableBody ) {
+			// Filter for <tbody>
+			if ( $oTableBody instanceof DOMElement && $oTableBody->tagName == 'tbody' ) {
+				$aBodys[] = $oTableBody;
+			}
+		}
+	}
+
+	/**
+	 *
+	 * @param DOMElement $oTableBody
+	 * @param array $aRows
+	 */
+	protected static function findTableRows( $oTableBody, &$aRows ) {
+		$oTableRows = $oTableBody->childNodes; // We only want direct children, so we cannot use getElementsByTagName
+		foreach ( $oTableRows as $oTableRow ) {
+			// Filter for <tr>
+			if ( $oTableRow instanceof DOMElement && $oTableRow->tagName == 'tr' ) {
+			$aRows[] = $oTableRow;
+			}
+		}
+	}
+
+	/**
+	 *
+	 * @param DOMElement $oTableElement
+	 * @param DOMDocument $oPageDOM
+	 * @param array $aRows
+	 * @param DOMElement $oTHead
+	 * @param DOMElement $oTBody
+	 */
+	protected static function findTableHeads( &$oTableElement, &$oPageDOM, $aRows, &$oTHead, &$oTBody ) {
+		foreach ( $aRows as $oTableRow ) {
+			// TODO RBV (06.02.12 15:07): Examine behavior when TH in row with TDs
+			$oTHs = $oTableRow->getElementsByTagName( 'th' );
+
+			if ( $oTHs->length != 0 ) {
+				if ( $oTBody->hasChildNodes() ) {
+					$oTableElement->appendChild( $oTBody );
+					$oTBody = $oPageDOM->createElement( 'tbody' );
+				}
+				$oTHead->appendChild( $oTableRow );
+			} else {
+				if ( $oTHead->hasChildNodes() ) {
+					$oTableElement->appendChild( $oTHead );
+					$oTHead = $oPageDOM->createElement( 'thead' );
+				}
+				$oTBody->appendChild( $oTableRow );
+			}
+		}
+	}
+
+	/**
+	 *
+	 * @param DOMElement $oTableElement
+	 * @param DOMDocument $oPageDOM
+	 */
+	protected static function duplicateTableHeadsForPagination( &$oTableElement, &$oPageDOM ) {
+		$aBodys = [];
+		self::findTableBodys( $oTableElement, $aBodys );
+
+		foreach ( $aBodys as $oTableBody ) {
+			$aRows = [];
+			self::findTableRows( $oTableBody, $aRows );
+
+			$oTHead = $oPageDOM->createElement( 'thead' );
+			$oTBody = $oPageDOM->createElement( 'tbody' );
+
+			self::findTableHeads( $oTableElement, $oPageDOM, $aRows, $oTHead, $oTBody );
+
+			if ( $oTHead->hasChildNodes() ) {
+					$oTableElement->appendChild( $oTHead );
+			}
+			if ( $oTBody->hasChildNodes() ) {
+				$oTableElement->appendChild( $oTBody );
+			}
+		}
 	}
 }
