@@ -305,7 +305,7 @@ class BsPDFPageProvider {
 	/**
 	 *
 	 * @param DOMElement $oTableElement
-	 * @param array $aBodys
+	 * @param array &$aBodys
 	 */
 	protected static function findTableBodys( $oTableElement, &$aBodys ) {
 		$oTableBodys = $oTableElement->childNodes; // We only want direct children, so we cannot use getElementsByTagName
@@ -320,7 +320,7 @@ class BsPDFPageProvider {
 	/**
 	 *
 	 * @param DOMElement $oTableBody
-	 * @param array $aRows
+	 * @param array &$aRows
 	 */
 	protected static function findTableRows( $oTableBody, &$aRows ) {
 		$oTableRows = $oTableBody->childNodes; // We only want direct children, so we cannot use getElementsByTagName
@@ -334,11 +334,11 @@ class BsPDFPageProvider {
 
 	/**
 	 *
-	 * @param DOMElement $oTableElement
-	 * @param DOMDocument $oPageDOM
+	 * @param DOMElement &$oTableElement
+	 * @param DOMDocument &$oPageDOM
 	 * @param array $aRows
-	 * @param DOMElement $oTHead
-	 * @param DOMElement $oTBody
+	 * @param DOMElement &$oTHead
+	 * @param DOMElement &$oTBody
 	 */
 	protected static function findTableHeads( &$oTableElement, &$oPageDOM, $aRows, &$oTHead, &$oTBody ) {
 		foreach ( $aRows as $oTableRow ) {
@@ -363,8 +363,8 @@ class BsPDFPageProvider {
 
 	/**
 	 *
-	 * @param DOMElement $oTableElement
-	 * @param DOMDocument $oPageDOM
+	 * @param DOMElement &$oTableElement
+	 * @param DOMDocument &$oPageDOM
 	 */
 	protected static function duplicateTableHeadsForPagination( &$oTableElement, &$oPageDOM ) {
 		$aBodys = [];
