@@ -24,6 +24,7 @@ class BsPDFServlet {
 	 * @return string The resulting PDF as bytes
 	 */
 	public function createPDF( &$oHtmlDOM ) {
+		$this->moveStyleElementsToHead( $oHtmlDOM );
 		$this->findFiles( $oHtmlDOM );
 		$this->uploadFiles();
 
@@ -274,6 +275,20 @@ class BsPDFServlet {
 				'BS::UEModulePDF',
 				'BsPDFServlet::uploadFiles: Failed adding "' . $sType . '"'
 			);
+		}
+	}
+
+	/**
+	 * The extensions "TemplateStyles" adds `<style>` elements directly into the `#content` of a
+	 * page. The PDF renderer needs them to be in the `<head>`
+	 * @param DOMDocument $oHtmlDOM
+	 */
+	private function moveStyleElementsToHead( $oHtmlDOM ) {
+		$headEl = $oHtmlDOM->getElementsByTagName( 'head' )->item( 0 );
+		$bodyEl = $oHtmlDOM->getElementsByTagName( 'body' )->item( 0 );
+		$styleElsInBody = $bodyEl->getElementsByTagName( 'style' );
+		foreach ( $styleElsInBody as $styleEl ) {
+			$headEl->appendChild( $styleEl );
 		}
 	}
 
