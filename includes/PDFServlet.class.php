@@ -287,7 +287,11 @@ class BsPDFServlet {
 		$headEl = $oHtmlDOM->getElementsByTagName( 'head' )->item( 0 );
 		$bodyEl = $oHtmlDOM->getElementsByTagName( 'body' )->item( 0 );
 		$styleElsInBody = $bodyEl->getElementsByTagName( 'style' );
+		$nonLiveListOfStyleElsInBody = [];
 		foreach ( $styleElsInBody as $styleEl ) {
+			$nonLiveListOfStyleElsInBody[] = $styleEl;
+		}
+		foreach ( $nonLiveListOfStyleElsInBody as $styleEl ) {
 			$headEl->appendChild( $styleEl );
 		}
 	}
