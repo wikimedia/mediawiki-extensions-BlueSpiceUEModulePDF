@@ -44,9 +44,9 @@ class PDFFileResolverTest extends BSApiTestCase {
 			$this->assertArrayHasKey( $sFileName, $this->aFiles, "File name retrieved is not correct" );
 			$this->assertTrue( file_exists( $sAbsoluteFilesystemPath ), "File does not exist in the location retrieved" );
 			if ( $sFileName == "Test.JPG" || $sFileName == "WithQS.JPG" ) {
-				$this->assertEquals( '137', $oImageElement->getAttribute( 'width' ) );
+				$this->assertSame( '137', $oImageElement->getAttribute( 'width' ) );
 			} elseif ( $sFileName == "Template:Dummy.JPG" ) {
-				$this->assertEquals( '650', $oImageElement->getAttribute( 'width' ) );
+				$this->assertSame( '650', $oImageElement->getAttribute( 'width' ) );
 			}
 		}
 	}

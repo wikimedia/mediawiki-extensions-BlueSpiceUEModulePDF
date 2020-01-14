@@ -5,7 +5,7 @@
  * Part of BlueSpice MediaWiki
  *
  * @author     Robert Vogel <vogel@hallowelt.com>
-
+ *
  * @package    BlueSpiceUEModulePDF
  * @copyright  Copyright (C) 2016 Hallo Welt! GmbH, All rights reserved.
  * @license    http://www.gnu.org/copyleft/gpl.html GPL-3.0-only
@@ -167,7 +167,7 @@ class BsPDFWebService {
 
 			if ( $oImage instanceof File && $oImage->exists() ) {
 				$oFileRepoLocalRef = $oImage->getRepo()->getLocalReference( $oImage->getPath() );
-				if ( !is_null( $oFileRepoLocalRef ) ) {
+				if ( $oFileRepoLocalRef !== null ) {
 					$sAbsoluteFileSystemPath = $oFileRepoLocalRef->getPath();
 				}
 				$sSrcFilename = $oImage->getName();

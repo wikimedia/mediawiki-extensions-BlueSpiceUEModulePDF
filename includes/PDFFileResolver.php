@@ -90,7 +90,7 @@ class PDFFileResolver {
 		foreach ( $aForPreg as $sForPreg ) {
 			$sSrcUrl = preg_replace( "#" . preg_quote( $sForPreg, "#" ) . "#", '', $sSrcUrl );
 			$sSrcUrl = preg_replace( '/(&.*)/', '', $sSrcUrl );
-		};
+		}
 
 		$this->sSourceFilePath = $sSrcUrl;
 
@@ -153,7 +153,7 @@ class PDFFileResolver {
 
 		if ( $this->oFileObject instanceof File && $this->oFileObject->exists() ) {
 			$oFileRepoLocalRef = $this->oFileObject->getRepo()->getLocalReference( $this->oFileObject->getPath() );
-			if ( !is_null( $oFileRepoLocalRef ) ) {
+			if ( $oFileRepoLocalRef !== null ) {
 				$this->sAbsoluteFilesystemPath = $oFileRepoLocalRef->getPath();
 			}
 			$this->sSourceFileName = $this->oFileObject->getName();
