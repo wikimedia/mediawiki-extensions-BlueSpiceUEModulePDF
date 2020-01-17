@@ -33,10 +33,17 @@ class BsPDFPageProvider {
 		if ( isset( $aParams['article-id'] ) ) {
 			$oTitle = Title::newFromID( $aParams['article-id'] );
 		}
-		if ( $oTitle == null ) {
+		if ( $oTitle == null && isset( $aParams['title'] ) ) {
 			// HINT: This is probably the wrong place for urldecode(); Should be
 			// done by caller. I.e. BookExportModulePDF
 			$oTitle = Title::newFromText( urldecode( $aParams['title'] ) );
+		}
+		if ( !$oTitle ) {
+			$id = isset( $aParams['article-id'] ) ? $aParams['article-id'] : 0;
+			$text = isset( $aParams['title'] ) ? $aParams['title'] : '';
+			throw new Exception(
+				"Could not create valid Title object from id '$id' or text '$text'!"
+			);
 		}
 
 		$oPCP = new BsPageContentProvider();
@@ -286,11 +293,13 @@ class BsPDFPageProvider {
 		}
 
 		// Prevent "first page empty" bug
-		$oBodyContent  = $oDOMXPath->query( "//*[contains(@class, 'bodyContent')]" )->item( 0 );
-		$oAntiBugP = $oPageDOM->createElement( 'p' );
-		$oAntiBugP->nodeValue = 'I am here to prevent the first-page-empty bug!';
-		$oAntiBugP->setAttribute( 'style', 'visibility:hidden;height:0px;margin:0px;padding:0px' );
-		$oBodyContent->insertBefore( $oAntiBugP, $oBodyContent->firstChild );
+		$oBodyContent = $oDOMXPath->query( "//*[contains(@class, 'bodyContent')]" )->item( 0 );
+		if ( $oBodyContent ) {
+			$oAntiBugP = $oPageDOM->createElement( 'p' );
+			$oAntiBugP->nodeValue = 'I am here to prevent the first-page-empty bug!';
+			$oAntiBugP->setAttribute( 'style', 'visibility:hidden;height:0px;margin:0px;padding:0px' );
+			$oBodyContent->insertBefore( $oAntiBugP, $oBodyContent->firstChild );
+		}
 	}
 
 	/**
