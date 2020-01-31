@@ -236,7 +236,11 @@ class BsPDFPageProvider {
 		}
 
 		// Make internal hyperlinks absolute
-		$oInternalAnchorElements = $oDOMXPath->query( "//a[not(contains(@class, 'external')) and not(starts-with(@href, '#'))]" ); // No external and no jumplinks
+		// No external-, interwiki- and jumplinks
+		$oInternalAnchorElements = $oDOMXPath->query(
+			"//a[not(contains(@class, 'external')) and not(contains(@class, 'extiw')) "
+			. "and not(starts-with(@href, '#'))]"
+		);
 		foreach ( $oInternalAnchorElements as $oInternalAnchorElement ) {
 			$sRelativePath = $oInternalAnchorElement->getAttribute( 'href' );
 			$oInternalAnchorElement->setAttribute(
