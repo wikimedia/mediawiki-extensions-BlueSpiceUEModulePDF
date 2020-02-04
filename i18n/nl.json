@@ -20,5 +20,7 @@
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "niet beschikbaar",
 	"soap-service-url-not-valid": "De URL naar de PDF genereren van web service is niet geldig. Raadpleeg de wiki-configuratie.",
 	"soap-service-url-not-set": "De URL naar de PDF genereren van web service is niet ingesteld. Raadpleeg de wiki-configuratie.",
-	"bs-uemodulepdf-overview-webservice-webadmin": "Backend web interface"
+	"bs-uemodulepdf-overview-webservice-webadmin": "Backend web interface",
+	"action-uemodulepdf-export": "een pagina naar PDF te exporteren",
+	"right-uemodulepdf-export": "Pagina's naar PDF exporteren"
 }
