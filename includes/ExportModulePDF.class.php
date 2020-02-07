@@ -24,7 +24,7 @@ class BsExportModulePDF implements BsUniversalExportModule {
 	 * @return array array( 'mime-type' => 'application/pdf', 'filename' => 'Filename.pdf', 'content' => '8F3BC3025A7...' );
 	 */
 	public function createExportFile( &$oCaller ) {
-		global $wgUser, $wgRequest;
+		global $wgRequest;
 		$aPageParams = $oCaller->aParams;
 
 		if ( $oCaller->oRequestedTitle->userCan( 'uemodulepdf-export' ) === false ) {
@@ -71,7 +71,7 @@ class BsExportModulePDF implements BsUniversalExportModule {
 		$aTemplateParams = [
 			'path'     => $config->get( 'UEModulePDFTemplatePath' ),
 			'template' => $config->get( 'UEModulePDFDefaultTemplate' ),
-			'language' => $wgUser->getOption( 'language', 'en' ),
+			'language' => $oCaller->getUser()->getOption( 'language', 'en' ),
 			'meta'     => $aPage['meta']
 		];
 
