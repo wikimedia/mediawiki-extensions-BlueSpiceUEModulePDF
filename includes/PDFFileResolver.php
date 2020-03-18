@@ -211,7 +211,7 @@ class PDFFileResolver {
 	 * @return string The local file system path
 	 */
 	protected function getFileSystemPath( $sUrl ) {
-		if ( $sUrl{0} !== '/' || strpos( $sUrl, $this->sWebrootFileSystemPath ) === 0 ) {
+		if ( substr( $sUrl, 0, 1 ) !== '/' || strpos( $sUrl, $this->sWebrootFileSystemPath ) === 0 ) {
 			return $sUrl; // not relative to webroot or absolute filesystempath
 		}
 
