@@ -230,7 +230,7 @@ class BsPDFWebService {
 	 * @return string The local file system path
 	 */
 	protected function getFileSystemPath( $sUrl ) {
-		if ( $sUrl{0} !== '/' || strpos( $sUrl, $this->aParams['webroot-filesystempath'] ) === 0 ) {
+		if ( $sUrl[0] !== '/' || strpos( $sUrl, $this->aParams['webroot-filesystempath'] ) === 0 ) {
 			return $sUrl; // not relative to webroot or absolute filesystempath
 		}
 
