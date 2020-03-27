@@ -17,7 +17,7 @@
 	"bs-uemodulepdf-overview-webservice-state": "Arka uç durumu",
 	"bs-uemodulepdf-overview-webservice-state-ok": "mevcut",
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "mevcut değil",
-	"soap-service-url-not-valid": "PDF üreten web hizmetinin URL'si geçerli değil. Lütfen wiki yapılandırmasını kontrol edin.",
+	"soap-service-url-not-valid": "PDF üreten web hizmetinin URL'si geçerli değil. Lütfen viki yapılandırmasını kontrol edin.",
 	"soap-service-url-not-set": "PDF üreten web hizmetinin URL'si ayarlanmadı. Lütfen viki yapılandırmasını kontrol edin.",
 	"bs-uemodulepdf-overview-webservice-webadmin": "Arka uç web arayüzü",
 	"action-uemodulepdf-export": "bir sayfayı PDF'ye dışa aktarma",
