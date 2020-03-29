@@ -1,6 +1,7 @@
 <?php
 
 use BlueSpice\Tests\BSApiTestCase;
+use MediaWiki\MediaWikiServices;
 
 /**
  * @group medium
@@ -55,7 +56,8 @@ class PDFFileResolverTest extends BSApiTestCase {
 		$oFileTitle = Title::makeTitleSafe( NS_FILE, $sName );
 		$this->oFileTitle = $oFileTitle;
 		$sOrigName = __DIR__ . "/data/" . $sFile;
-		$oFileObject = wfLocalFile( $oFileTitle );
+		$oFileObject = MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo()
+			->newFile( $oFileTitle );
 
 		$oFileObject->upload( $sOrigName, '', '' );
 		$this->aFiles[ $oFileTitle->getText() ] = $oFileObject;

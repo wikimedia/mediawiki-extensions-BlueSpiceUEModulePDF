@@ -139,8 +139,9 @@ class BsPDFPageProvider {
 		}
 		/*
 		//For future use...
+		$localRepo = MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo();
 		foreach($aResult['parse']['images'] as $sFileName ) {
-			$oImage = RepoGroup::singleton()->getLocalRepo()->newFile( Title::newFromText( $sFileName, NS_FILE ) );
+			$oImage = $localRepo->newFile( Title::newFromText( $sFileName, NS_FILE ) );
 			if( $oImage->exists() ) {
 				$sAbsoluteFileSystemPath = $oImage->getFullPath();
 			}

@@ -12,6 +12,8 @@
  * @filesource
  */
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * UniversalExport BsPDFWebService class.
  * @package BlueSpiceUEModulePDF
@@ -149,6 +151,7 @@ class BsPDFWebService {
 	 * @return bool Well, always true.
 	 */
 	protected function findFiles( &$oHtml ) {
+		$repoGroup = MediaWikiServices::getInstance()->getRepoGroup();
 		// Find all images
 		$oImageElements = $oHtml->getElementsByTagName( 'img' );
 		foreach ( $oImageElements as $oImageElement ) {
@@ -163,7 +166,7 @@ class BsPDFWebService {
 				$sTmpFilename = substr( $sTmpFilename, strpos( $sTmpFilename, '-' ) + 1 );
 			}
 			$oFileTitle = Title::newFromText( $sTmpFilename, NS_FILE );
-			$oImage = RepoGroup::singleton()->findFile( $oFileTitle );
+			$oImage = $repoGroup->findFile( $oFileTitle );
 
 			if ( $oImage instanceof File && $oImage->exists() ) {
 				$oFileRepoLocalRef = $oImage->getRepo()->getLocalReference( $oImage->getPath() );
