@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 class PDFFileResolver {
 
 	/**
@@ -127,7 +129,7 @@ class PDFFileResolver {
 			'latest' => true
 		];
 
-		$this->oFileObject = RepoGroup::singleton()->findFile(
+		$this->oFileObject = MediaWikiServices::getInstance()->getRepoGroup()->findFile(
 			$this->oFileTitle,
 			$aOptions
 		);
