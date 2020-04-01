@@ -4,7 +4,8 @@
 			"NataChe",
 			"Ата",
 			"Andriykopanytsia",
-			"Vlad5250"
+			"Vlad5250",
+			"Piramidion"
 		]
 	},
 	"bs-uemodulepdf-desc": "Дозволяє MediaWiki експортувати сторінки у формат PDF",
@@ -22,5 +23,5 @@
 	"soap-service-url-not-set": "Не вказана адреса веб-служби створення PDF. Будь ласка, перевірте налаштування вікі.",
 	"bs-uemodulepdf-overview-webservice-webadmin": "Веб-інтерфейс бекенду",
 	"action-uemodulepdf-export": "експортування сторінки у PDF",
-	"right-uemodulepdf-export": "експорт сторінок у PDF"
+	"right-uemodulepdf-export": "Експортування сторінок у PDF"
 }
