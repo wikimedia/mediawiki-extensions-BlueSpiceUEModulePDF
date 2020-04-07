@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephan Muggli <muggli@hallowelt.biz>",
 			"Metalhead64",
-			"Mglaser"
+			"Mglaser",
+			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
 	"bs-uemodulepdf-desc": "Aktiviert MediaWiki zum Exportieren von Seiten in das PDF-Format",

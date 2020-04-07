@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"NataChe",
-			"Ата",
 			"Andriykopanytsia",
+			"NataChe",
+			"Piramidion",
 			"Vlad5250",
-			"Piramidion"
+			"Ата"
 		]
 	},
 	"bs-uemodulepdf-desc": "Дозволяє MediaWiki експортувати сторінки у формат PDF",

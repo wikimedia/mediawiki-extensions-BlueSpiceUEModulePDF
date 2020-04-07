@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Diralik",
 			"HarpyWar",
 			"Meshkov.a",
-			"Okras",
-			"Diralik"
+			"Okras"
 		]
 	},
 	"bs-uemodulepdf-desc": "Разрешить MediaWiki экспортировать страницы в PDF-формат",
