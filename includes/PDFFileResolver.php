@@ -47,6 +47,8 @@ class PDFFileResolver {
 	 */
 	protected $sAbsoluteFilesystemPath = '';
 
+	protected $isAllowed = false;
+
 	/**
 	 *
 	 * @param DOMElement $oImgEl
@@ -64,6 +66,7 @@ class PDFFileResolver {
 	protected function init() {
 		$this->extractSourceFilename();
 		$this->setFileTitle();
+		$this->checkPermission();
 		$this->setFileObject();
 		$this->setWidthAttribute();
 		$this->setAbsoluteFilesystemPath();
@@ -116,6 +119,10 @@ class PDFFileResolver {
 	}
 
 	protected function setFileObject() {
+		if ( !$this->isAllowed ) {
+			return;
+		}
+
 		$sTimestamp = '';
 		$oAnchor = BsDOMHelper::getParentDOMElement( $this->oImgNode, [ 'a' ] );
 		if ( $oAnchor instanceof DOMElement ) {
@@ -135,6 +142,11 @@ class PDFFileResolver {
 
 	protected function setWidthAttribute() {
 		$iWidth = $this->oImgNode->getAttribute( 'width' );
+		if ( !$this->isAllowed && $iWidth > 100 ) {
+			$this->oImgNode->setAttribute( 'width', '100px' );
+			$this->oImgNode->removeAttribute( 'height' );
+			return;
+		}
 		if ( empty( $iWidth ) && $this->oFileObject instanceof File && $this->oFileObject->exists() ) {
 			$iWidth = $this->oFileObject->getWidth();
 			$this->oImgNode->setAttribute( 'width', $iWidth );
@@ -151,6 +163,10 @@ class PDFFileResolver {
 	protected function setAbsoluteFilesystemPath() {
 		global $wgUploadDirectory;
 
+		if ( !$this->isAllowed ) {
+			$this->sAbsoluteFilesystemPath = $this->accessDeniedImage();
+			return;
+		}
 		if ( $this->oFileObject instanceof File && $this->oFileObject->exists() ) {
 			$oFileRepoLocalRef = $this->oFileObject->getRepo()->getLocalReference( $this->oFileObject->getPath() );
 			if ( !is_null( $oFileRepoLocalRef ) ) {
@@ -186,6 +202,10 @@ class PDFFileResolver {
 	}
 
 	protected function setFileName() {
+		if ( !$this->isAllowed ) {
+			$this->sFileName = 'bs_ue_module_pdf_access_denied.png';
+			return;
+		}
 		$this->sFileName = $this->sSourceFileName;
 		if ( !empty( $this->sAbsoluteFilesystemPath ) && $this->oFileObject instanceof File ) {
 			$this->sFileName = $this->oFileObject->getName();
@@ -223,6 +243,18 @@ class PDFFileResolver {
 
 		$sNewUrl = $this->sWebrootFileSystemPath . $sUrl; // TODO RBV (08.02.11 15:56): What about $wgUploadDirectory?
 		return $sNewUrl;
+	}
+
+	private function checkPermission() {
+		$this->isAllowed = $this->oFileTitle->userCan( 'read' );
+	}
+
+	/**
+	 * @return string
+	 */
+	private function accessDeniedImage() {
+		return $GLOBALS['wgExtensionDirectory']
+			. "/BlueSpiceFoundation/resources/assets/ue-module-pdf/access_denied.png";
 	}
 
 }
