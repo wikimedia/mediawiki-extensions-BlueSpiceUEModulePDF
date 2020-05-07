@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"0x010C",
 			"Gomoko",
-			"Ltrlg",
-			"0x010C"
+			"Ltrlg"
 		]
 	},
 	"bs-uemodulepdf-desc": "Permettre l’exportation d pages par MediaWiki dans le format PDF",
