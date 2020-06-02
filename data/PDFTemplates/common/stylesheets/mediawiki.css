@@ -171,7 +171,6 @@ div.thumb {
 div.thumbinner {
     border: 0.1mm solid #ccc;
     padding: 3px !important;
-    background-color: #f9f9f9;
     font-size: 94%;
     text-align: center;
     overflow: hidden;
