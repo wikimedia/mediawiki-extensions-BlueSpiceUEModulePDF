@@ -246,5 +246,6 @@ class BsPDFWebService {
 		$sNewUrl = $this->aParams['webroot-filesystempath'] . $sUrl; // TODO RBV (08.02.11 15:56): What about $wgUploadDirectory?
 		return $sNewUrl;
 	}
+
 	// </editor-fold>
 }
