@@ -116,9 +116,13 @@
 }
 
 .bs-section,
-.bs-custompage,
-.bs-page-content {
+.bs-custompage {
 	page-break-after: always;
+	clear: both;
+}
+
+.bs-page-content {
+	page-break-before: always;
 	clear: both;
 }
 
