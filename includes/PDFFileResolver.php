@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Permissions\PermissionManager;
 
 class PDFFileResolver {
 
@@ -49,18 +50,45 @@ class PDFFileResolver {
 	 */
 	protected $sAbsoluteFilesystemPath = '';
 
+	/**
+	 *
+	 * @var boolean
+	 */
 	protected $isAllowed = false;
+
+	/**
+	 *
+	 * @var PermissionManager
+	 */
+	protected $permissionManager = null;
+
+	/**
+	 *
+	 * @var User
+	 */
+	protected $user = null;
 
 	/**
 	 *
 	 * @param DOMElement $oImgEl
 	 * @param string $sWebrootFileSystemPath
 	 * @param string $sSourceAttribute
+	 * @param PermissionManager|null $permissionManager
+	 * @param User|null $user
 	 */
-	public function __construct( $oImgEl, $sWebrootFileSystemPath, $sSourceAttribute = 'src' ) {
+	public function __construct( $oImgEl, $sWebrootFileSystemPath, $sSourceAttribute = 'src',
+		$permissionManager = null, $user = null ) {
 		$this->oImgNode = $oImgEl;
 		$this->sWebrootFileSystemPath = $sWebrootFileSystemPath;
 		$this->sSourceAttribute = $sSourceAttribute;
+		$this->permissionManager = $permissionManager;
+		if ( $this->permissionManager === null ) {
+			$this->permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
+		}
+		$this->user = $user;
+		if ( $this->user === null ) {
+			$this->user = RequestContext::getMain()->getUser();
+		}
 
 		$this->init();
 	}
@@ -248,7 +276,8 @@ class PDFFileResolver {
 	}
 
 	private function checkPermission() {
-		$this->isAllowed = $this->oFileTitle->userCan( 'read' );
+		$this->isAllowed =
+			$this->permissionManager->userCan( 'read', $this->user, $this->oFileTitle );
 	}
 
 	/**
