@@ -60,7 +60,7 @@
 		"PDFFileResolver": "includes/PDFFileResolver.php"
 	},
 	"Hooks": {
-		"SkinTemplateOutputPageBeforeExec": "\\BlueSpice\\UEModulePDF\\Hook\\SkinTemplateOutputPageBeforeExec\\AddUEModulePDF::callback",
+		"ChameleonSkinTemplateOutputPageBeforeExec": "\\BlueSpice\\UEModulePDF\\Hook\\ChameleonSkinTemplateOutputPageBeforeExec\\AddUEModulePDF::callback",
 		"BSMigrateSettingsFromDeviatingNames": "\\BlueSpice\\UEModulePDF\\Hook\\BSMigrateSettingsFromDeviatingNames\\SkipServiceSettings::callback",
 		"BSUniversalExportSpecialPageExecute": "\\BlueSpice\\UEModulePDF\\Hook\\BSUniversalExportSpecialPageExecute\\AddModulePDF::callback"
 	},

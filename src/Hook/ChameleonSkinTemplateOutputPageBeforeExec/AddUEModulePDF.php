@@ -1,11 +1,11 @@
 <?php
 
-namespace BlueSpice\UEModulePDF\Hook\SkinTemplateOutputPageBeforeExec;
+namespace BlueSpice\UEModulePDF\Hook\ChameleonSkinTemplateOutputPageBeforeExec;
 
-use BlueSpice\Hook\SkinTemplateOutputPageBeforeExec;
+use BlueSpice\Calumma\Hook\ChameleonSkinTemplateOutputPageBeforeExec;
 use BlueSpice\SkinData;
 
-class AddUEModulePDF extends SkinTemplateOutputPageBeforeExec {
+class AddUEModulePDF extends ChameleonSkinTemplateOutputPageBeforeExec {
 	protected function skipProcessing() {
 		if ( $this->skin->getTitle()->isSpecialPage() ) {
 			return true;
