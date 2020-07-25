@@ -11,11 +11,11 @@ class AddUEModulePDF extends SkinTemplateOutputPageBeforeExec {
 			return true;
 		}
 
-		if ( !$this->skin->getTitle()->userCan( 'uemodulepdf-export' ) ) {
-			return true;
-		}
-
-		return false;
+		return !$this->getServices()->getPermissionManager()->userCan(
+			'uemodulepdf-export',
+			$this->skin->getUser(),
+			$this->skin->getTitle()
+		);
 	}
 
 	protected function doProcess() {
