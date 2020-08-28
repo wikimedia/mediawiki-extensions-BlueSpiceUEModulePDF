@@ -249,6 +249,29 @@ class BsPDFPageProvider {
 			);
 		}
 
+		/**
+		 * Since, most likely, mail links will not be clickable
+		 * in the PDF, at least show the address
+		 * @var DOMNodeList $mailAnchors
+		 */
+		$mailAnchors = $oDOMXPath->query(
+			"//a[contains(@class, 'external') and starts-with(@href, 'mailto:')]"
+		);
+
+		/** @var DOMElement $mailAnchor */
+		foreach ( $mailAnchors as $mailAnchor ) {
+			$label = $mailAnchor->nodeValue;
+			$href = $mailAnchor->getAttribute( 'href' );
+			$address = str_replace( 'mailto:', '', $href );
+
+			$labelIsValid = !preg_match( '/^\[\d*\]$/', $label );
+			if ( $labelIsValid ) {
+				$address = "$label: $address";
+			}
+
+			$mailAnchor->nodeValue = $address;
+		}
+
 		// <editor-fold defaultstate="collapsed" desc="Reference Tags">
 		// TODO RBV (31.01.12 17:17): This should be in an extra extension like CiteConnector!
 		// $oReferenceTags = $oDOMXPath->query( "//a[contains(@class, 'references')]" );
