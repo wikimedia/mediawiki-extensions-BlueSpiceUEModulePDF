@@ -11,6 +11,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GPL-3.0-only
  * @filesource
  */
+use MediaWiki\MediaWikiServices;
 
 /**
  * UniversalExport BsPDFPageProvider class.
@@ -191,7 +192,7 @@ class BsPDFPageProvider {
 
 		Hooks::run( 'BSUEModulePDFcollectMetaData', [ $oTitle, $oPageDOM, &$aParams, $oDOMXPath, &$aMeta ] );
 
-		$config = \BlueSpice\Services::getInstance()->getConfigFactory()
+		$config = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' );
 		$aMetaDataOverrides = json_decode(
 			$config->get( 'UniversalExportMetadataOverrides' ),

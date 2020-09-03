@@ -10,6 +10,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GPL-3.0-only
  * @filesource
  */
+use MediaWiki\MediaWikiServices;
 
 /**
  * UniversalExport BsExportModulePDF class.
@@ -31,7 +32,7 @@ class BsExportModulePDF implements BsUniversalExportModule {
 			throw new PermissionsError( 'uemodulepdf-export' );
 		}
 
-		$config = \BlueSpice\Services::getInstance()->getConfigFactory()
+		$config = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' );
 
 		$aPageParams['title']      = $oCaller->oRequestedTitle->getPrefixedText();
@@ -154,7 +155,7 @@ class BsExportModulePDF implements BsUniversalExportModule {
 	 * @return ViewExportModuleOverview
 	 */
 	public function getOverview() {
-		$config = \BlueSpice\Services::getInstance()->getConfigFactory()
+		$config = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' );
 		$oModuleOverviewView = new ViewExportModuleOverview();
 
