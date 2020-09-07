@@ -83,6 +83,10 @@ class BsPDFTemplateProvider {
 		$oBodyElement  = $oTemplateDOM->getElementsByTagName( 'body' )->item( 0 );
 		$oTitleElement = $oTemplateDOM->getElementsByTagName( 'title' )->item( 0 );
 
+		if ( isset( $aParams['meta']['body-class'] ) ) {
+			$oBodyElement->setAttribute( 'class', $aParams['meta']['body-class'] );
+		}
+
 		$aResources = [];
 		foreach ( $aTemplate['resources'] as $sType => $aFiles ) {
 			foreach ( $aFiles as $sFile ) {
