@@ -11,6 +11,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GPL-3.0-only
  * @filesource
  */
+use MediaWiki\MediaWikiServices;
 
 /**
  * UniversalExport BsPDFServlet class.
@@ -52,7 +53,7 @@ class BsPDFServlet {
 			]
 		];
 
-		$config = \BlueSpice\Services::getInstance()->getConfigFactory()
+		$config = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' );
 
 		if ( $config->get( 'TestMode' ) ) {
