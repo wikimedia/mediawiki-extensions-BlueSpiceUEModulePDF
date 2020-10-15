@@ -51,11 +51,18 @@ class BsExportModulePDF implements BsUniversalExportModule {
 		// If we are in history mode and we are relative to an oldid
 		$aPageParams['direction'] = $wgRequest->getVal( 'direction', '' );
 		if ( !empty( $aPageParams['direction'] ) ) {
-			$oCurrentRevision = Revision::newFromId( $aPageParams['oldid'] );
+			$lookup = MediaWikiServices::getInstance()->getRevisionLookup();
+			$oCurrentRevision = $lookup->getRevisionById( $aPageParams['oldid'] );
 			switch ( $aPageParams['direction'] ) {
-				case 'next': $oCurrentRevision = $oCurrentRevision->getNext();
+				case 'next':
+					$oCurrentRevision = $lookup->getNextRevision(
+						$oCurrentRevision
+					);
 					break;
-				case 'prev': $oCurrentRevision = $oCurrentRevision->getPrevious();
+				case 'prev':
+					$oCurrentRevision = $lookup->getPreviousRevision(
+						$oCurrentRevision
+					);
 					break;
 				default:
 					break;
