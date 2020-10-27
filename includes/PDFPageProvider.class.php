@@ -12,6 +12,8 @@
  * @filesource
  */
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * UniversalExport BsPDFPageProvider class.
  * @package BlueSpiceUEModulePDF
@@ -120,8 +122,23 @@ class BsPDFPageProvider {
 					'prop'   => 'images|categories|links'
 			] );
 
-			$oAPI = new ApiMain( $aAPIParams );
-			$oAPI->execute();
+			try {
+				$oAPI = new ApiMain( $aAPIParams );
+				$oAPI->execute();
+			} catch ( Exception $e ) {
+				$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig(
+					'bsg'
+				);
+				// allow the PDFExport to export error messages and exceptions
+				// this is only really beeing used when a collection such as a
+				// book or page with supages is exported and the user may does
+				// not have permission for one particualr page, the user will
+				// then still receive the file, but instead of the content
+				// there will be an error message like "you dont have permission"
+				if ( !$config->get( 'UEModulePDFAllowPartialExport' ) ) {
+					throw $e;
+				}
+			}
 
 			if ( defined( 'ApiResult::META_CONTENT' ) ) {
 				$aResult = $oAPI->getResult()->getResultData( null, [
