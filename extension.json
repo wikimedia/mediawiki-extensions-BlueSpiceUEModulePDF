@@ -79,6 +79,9 @@
 		},
 		"UEModulePDFTemplatePath": {
 			"value": "extensions/BlueSpiceUEModulePDF/data/PDFTemplates"
+		},
+		"UEModulePDFAllowPartialExport": {
+			"value": false
 		}
 	},
 	"manifest_version": 2,
