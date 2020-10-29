@@ -52,7 +52,7 @@ class PDFFileResolver {
 
 	/**
 	 *
-	 * @var boolean
+	 * @var bool
 	 */
 	protected $isAllowed = false;
 

@@ -31,7 +31,7 @@ class AddUEModulePDF extends ChameleonSkinTemplateOutputPageBeforeExec {
 
 	/**
 	 * Builds the ContentAction Array fort the current page
-	 * @return Array The ContentAction Array
+	 * @return array The ContentAction Array
 	 */
 	private function buildContentAction() {
 		$aCurrentQueryParams = $this->skin->getRequest()->getValues();
