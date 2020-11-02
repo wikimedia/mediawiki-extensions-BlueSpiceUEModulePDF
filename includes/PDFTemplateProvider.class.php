@@ -12,6 +12,8 @@
  * @filesource
  */
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * UniversalExport BsPDFTemplateProvider class.
  * @package BlueSpiceUEModulePDF
@@ -166,7 +168,13 @@ class BsPDFTemplateProvider {
 			$aStyleBlocks['MediaWiki:Common.css'] = BsPageContentProvider::getInstance()->getContentFromTitle( $oTitle );
 		}
 
-		Hooks::run( 'BSUEModulePDFBeforeAddingStyleBlocks', [ &$aTemplate, &$aStyleBlocks ] );
+		MediaWikiServices::getInstance()->getHookContainer()->run(
+			'BSUEModulePDFBeforeAddingStyleBlocks',
+			[
+				&$aTemplate,
+				&$aStyleBlocks
+			]
+		);
 
 		foreach ( $aStyleBlocks as $sBlockName => $sCss ) {
 			$sCss = "\n/* " . $sBlockName . " */\n" . $sCss . "\n";

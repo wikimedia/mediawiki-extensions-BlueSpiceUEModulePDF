@@ -62,7 +62,14 @@ class BsPDFServlet {
 		global $bsgUEModulePDFCURLOptions;
 		$aOptions = array_merge_recursive( $aOptions, $bsgUEModulePDFCURLOptions );
 
-		Hooks::run( 'BSUEModulePDFCreatePDFBeforeSend', [ $this, &$aOptions, $oHtmlDOM ] );
+		MediaWikiServices::getInstance()->getHookContainer()->run(
+			'BSUEModulePDFCreatePDFBeforeSend',
+			[
+				$this,
+				&$aOptions,
+				$oHtmlDOM
+			]
+		);
 
 		$vHttpEngine = Http::$httpEngine;
 		Http::$httpEngine = 'curl';
@@ -209,8 +216,26 @@ class BsPDFServlet {
 
 			$sFileName = $oFileResolver->getFileName();
 			$sAbsoluteFileSystemPath = $oFileResolver->getAbsoluteFilesystemPath();
-			Hooks::run( 'BSUEModulePDFFindFiles', [ $this, $oImageElement, &$sAbsoluteFileSystemPath, &$sFileName, 'images' ] );
-			Hooks::run( 'BSUEModulePDFWebserviceFindFiles', [ $this, $oImageElement, &$sAbsoluteFileSystemPath, &$sFileName, 'images' ] );
+			MediaWikiServices::getInstance()->getHookContainer()->run(
+				'BSUEModulePDFFindFiles',
+				[
+					$this,
+					$oImageElement,
+					&$sAbsoluteFileSystemPath,
+					&$sFileName,
+					'images'
+				]
+			);
+			MediaWikiServices::getInstance()->getHookContainer()->run(
+				'BSUEModulePDFWebserviceFindFiles',
+				[
+					$this,
+					$oImageElement,
+					&$sAbsoluteFileSystemPath,
+					&$sFileName,
+					'images'
+				]
+			);
 			$this->aFiles['images'][$sFileName] = $sAbsoluteFileSystemPath;
 		}
 
@@ -229,7 +254,16 @@ class BsPDFServlet {
 		}
 		 */
 
-		Hooks::run( 'BSUEModulePDFAfterFindFiles', [ $this, $oHtml, &$this->aFiles, $this->aParams, $oDOMXPath ] );
+		MediaWikiServices::getInstance()->getHookContainer()->run(
+			'BSUEModulePDFAfterFindFiles',
+			[
+				$this,
+				$oHtml,
+				&$this->aFiles,
+				$this->aParams,
+				$oDOMXPath
+			]
+		);
 		return true;
 	}
 
@@ -249,7 +283,14 @@ class BsPDFServlet {
 			);
 		}
 
-		Hooks::run( 'BSUEModulePDFUploadFilesBeforeSend', [ $this, &$aPostData, $sType ] );
+		MediaWikiServices::getInstance()->getHookContainer()->run(
+			'BSUEModulePDFUploadFilesBeforeSend',
+			[
+				$this,
+				&$aPostData,
+				$sType
+			]
+		);
 
 		$aOptions['postData'] = $aPostData;
 

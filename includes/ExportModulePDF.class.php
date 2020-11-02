@@ -95,7 +95,15 @@ class BsExportModulePDF implements BsUniversalExportModule {
 		$aContents = [
 			'content' => [ $aPage['dom']->documentElement ]
 		];
-		Hooks::run( 'BSUEModulePDFBeforeAddingContent', [ &$aTemplate, &$aContents, $oCaller, &$aPage ] );
+		MediaWikiServices::getInstance()->getHookContainer()->run(
+			'BSUEModulePDFBeforeAddingContent',
+			[
+				&$aTemplate,
+				&$aContents,
+				$oCaller,
+				&$aPage
+			]
+		);
 
 		$oContentTags = $oDOM->getElementsByTagName( 'content' );
 		$i = $oContentTags->length - 1;
@@ -117,7 +125,14 @@ class BsExportModulePDF implements BsUniversalExportModule {
 		$oCaller->aParams['backend-url']      = $config->get( 'UEModulePDFPdfServiceURL' ); // Duplicate to replace 'soap-service-url' in future
 		$oCaller->aParams['resources']        = $aTemplate['resources'];
 
-		Hooks::run( 'BSUEModulePDFBeforeCreatePDF', [ $this, $oDOM, $oCaller ] );
+		MediaWikiServices::getInstance()->getHookContainer()->run(
+			'BSUEModulePDFBeforeCreatePDF',
+			[
+				$this,
+				$oDOM,
+				$oCaller
+			]
+		);
 
 		// Prepare response
 		$aResponse = [
