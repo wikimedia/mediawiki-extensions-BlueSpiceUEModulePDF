@@ -39,7 +39,14 @@ class BsPDFWebService {
 			// 'cafile'               => '',
 		];
 
-		Hooks::run( 'BSUEModulePDFCreatePDFBeforeSend', [ $this, &$aOptions, $oHtmlDOM ] );
+		MediaWikiServices::getInstance()->getHookContainer()->run(
+			'BSUEModulePDFCreatePDFBeforeSend',
+			[
+				$this,
+				&$aOptions,
+				$oHtmlDOM
+			]
+		);
 
 		$this->oPdfWebservice = new SoapClient(
 			$this->aParams['soap-service-url'] . '/GeneratePdf?wsdl',
@@ -180,7 +187,16 @@ class BsPDFWebService {
 			// TODO RBV (05.04.12 11:48): Check if urlencode has side effects
 			$oImageElement->setAttribute( 'src', 'images/' . urlencode( $sSrcFilename ) );
 			$sFileName = $sSrcFilename;
-			Hooks::run( 'BSUEModulePDFWebserviceFindFiles', [ $this, $oImageElement, $sAbsoluteFileSystemPath, $sFileName, 'IMAGE' ] );
+			MediaWikiServices::getInstance()->getHookContainer()->run(
+				'BSUEModulePDFWebserviceFindFiles',
+				[
+					$this,
+					$oImageElement,
+					$sAbsoluteFileSystemPath,
+					$sFileName,
+					'IMAGE'
+				]
+			);
 			$this->aFiles['IMAGE'][$sFileName] = $sAbsoluteFileSystemPath;
 		}
 
@@ -215,7 +231,16 @@ class BsPDFWebService {
 					$sHrefFilename           = basename( $sRelativeHref );
 					$sAbsoluteFileSystemPath = $this->getFileSystemPath( $sRelativeHref );
 					if ( $this->aParams['attachments'] == '1' ) {
-						Hooks::run( 'BSUEModulePDFWebserviceFindFiles', [ $this, $oFileAnchorElement, $sAbsoluteFileSystemPath, $sHrefFilename, 'ATTACHMENT' ] );
+						MediaWikiServices::getInstance()->getHookContainer()->run(
+							'BSUEModulePDFWebserviceFindFiles',
+							[
+								$this,
+								$oFileAnchorElement,
+								$sAbsoluteFileSystemPath,
+								$sHrefFilename,
+								'ATTACHMENT'
+							]
+						);
 						$this->aFiles['ATTACHMENT'][$sHrefFilename] = $sAbsoluteFileSystemPath;
 					}
 				}
