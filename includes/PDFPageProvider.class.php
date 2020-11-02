@@ -25,7 +25,9 @@ class BsPDFPageProvider {
 	 * @return array
 	 */
 	public static function getPage( $aParams ) {
-		Hooks::run( 'BSUEModulePDFbeforeGetPage', [ &$aParams ] );
+		MediaWikiServices::getInstance()->getHookContainer()->run( 'BSUEModulePDFbeforeGetPage', [
+			&$aParams
+		] );
 
 		$oBookmarksDOM = new DOMDocument();
 		$oBookmarksDOM->loadXML( '<bookmarks></bookmarks>' );
@@ -91,7 +93,12 @@ class BsPDFPageProvider {
 			'meta'             => $aData['meta']
 		];
 
-		Hooks::run( 'BSUEModulePDFgetPage', [ $oTitle, &$aPage, &$aParams, $oDOMXPath ] );
+		MediaWikiServices::getInstance()->getHookContainer()->run( 'BSUEModulePDFgetPage', [
+			$oTitle,
+			&$aPage,
+			&$aParams,
+			$oDOMXPath
+		] );
 		return $aPage;
 	}
 
@@ -205,7 +212,16 @@ class BsPDFPageProvider {
 			$aMeta['date']   = $wgLang->sprintfDate( 'd.m.Y', $oWikiPage->getTouched() );
 		}
 
-		Hooks::run( 'BSUEModulePDFcollectMetaData', [ $oTitle, $oPageDOM, &$aParams, $oDOMXPath, &$aMeta ] );
+		MediaWikiServices::getInstance()->getHookContainer()->run(
+			'BSUEModulePDFcollectMetaData',
+			[
+				$oTitle,
+				$oPageDOM,
+				&$aParams,
+				$oDOMXPath,
+				&$aMeta
+			]
+		);
 
 		$config = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' );
@@ -233,7 +249,13 @@ class BsPDFPageProvider {
 		global $wgServer;
 		$aClassesToRemove = [ 'editsection', 'bs-universalexport-exportexclude' ];
 		$oDOMXPath = new DOMXPath( $oPageDOM );
-		Hooks::run( 'BSUEModulePDFcleanUpDOM', [ $oTitle, $oPageDOM, &$aParams, $oDOMXPath, &$aClassesToRemove ] );
+		MediaWikiServices::getInstance()->getHookContainer()->run( 'BSUEModulePDFcleanUpDOM', [
+			$oTitle,
+			$oPageDOM,
+			&$aParams,
+			$oDOMXPath,
+			&$aClassesToRemove
+		] );
 
 		// Remove script-Tags
 		foreach ( $oPageDOM->getElementsByTagName( 'script' ) as $oScriptElement ) {
