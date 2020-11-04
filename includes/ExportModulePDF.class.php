@@ -10,13 +10,14 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GPL-3.0-only
  * @filesource
  */
+use BlueSpice\UniversalExport\ExportModule;
 use MediaWiki\MediaWikiServices;
 
 /**
  * UniversalExport BsExportModulePDF class.
  * @package BlueSpiceUEModulePDF
  */
-class BsExportModulePDF implements BsUniversalExportModule {
+class BsExportModulePDF extends ExportModule {
 
 	/**
 	 * Implementation of BsUniversalExportModule interface. Uses the
