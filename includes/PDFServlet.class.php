@@ -49,7 +49,7 @@ class BsPDFServlet {
 				'documentToken' => $this->aParams['document-token'],
 				'sourceHtmlFile_name' => basename( $sTmpHtmlFile ),
 				'sourceHtmlFile' => class_exists( 'CURLFile' ) ? new CURLFile( $sTmpHtmlFile ) : '@' . $sTmpHtmlFile,
-				'wikiId' => wfWikiID()
+				'wikiId' => WikiMap::getCurrentWikiId(),
 			]
 		];
 
@@ -132,7 +132,7 @@ class BsPDFServlet {
 			$aPostData = [
 				'fileType'	=> $sType,
 				'documentToken' => $this->aParams['document-token'],
-				'wikiId'        => wfWikiID()
+				'wikiId'        => WikiMap::getCurrentWikiId()
 			];
 
 			$aErrors = [];
@@ -204,6 +204,19 @@ class BsPDFServlet {
 	}
 
 	/**
+	 * @param array $postData
+	 * @return array|null
+	 */
+	public function uploadExternal( $postData ) {
+		$postData = array_merge( [
+			'documentToken' => $this->aParams['document-token'],
+			'wikiId'        => WikiMap::getCurrentWikiId()
+		], $postData );
+
+		return $this->doFilesUpload( $postData );
+	}
+
+	/**
 	 * Searches the DOM for <img>-Tags and <a> Tags with class 'internal',
 	 * resolves the local filesystem path and adds it to $aFiles array.
 	 * @param DOMDocument &$oHtml The markup to be searched.
@@ -268,6 +281,11 @@ class BsPDFServlet {
 		return true;
 	}
 
+	/**
+	 * @param array $aPostData
+	 * @param array|null $aErrors
+	 * @return array|null
+	 */
 	protected function doFilesUpload( $aPostData, $aErrors = [] ) {
 		global $bsgUEModulePDFCURLOptions;
 		$aOptions = [
@@ -297,27 +315,31 @@ class BsPDFServlet {
 
 		$vHttpEngine = Http::$httpEngine;
 		Http::$httpEngine = 'curl';
-		$sResponse = Http::post(
+		$requestFactory = MediaWikiServices::getInstance()->getHttpRequestFactory();
+		$response = $requestFactory->post(
 			$this->aParams['soap-service-url'] . '/UploadAsset',
 			$aOptions
 		);
+
 		Http::$httpEngine = $vHttpEngine;
 
-		if ( $sResponse != false ) {
+		if ( $response !== null ) {
 			wfDebugLog(
 				'BS::UEModulePDF',
 				'BsPDFServlet::uploadFiles: Successfully added "' . $sType . '"'
 			);
-			wfDebugLog(
-				'BS::UEModulePDF',
-				FormatJson::encode( FormatJson::decode( $sResponse ), true )
-			);
+			$decoded = FormatJson::decode( $response, 1 );
+			wfDebugLog( 'BS::UEModulePDF', FormatJson::encode( $decoded, 1 ) );
+
+			return $decoded;
 		} else {
 			wfDebugLog(
 				'BS::UEModulePDF',
 				'BsPDFServlet::uploadFiles: Failed adding "' . $sType . '"'
 			);
 		}
+
+		return null;
 	}
 
 	/**
