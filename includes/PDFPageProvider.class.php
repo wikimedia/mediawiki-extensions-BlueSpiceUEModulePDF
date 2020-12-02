@@ -299,13 +299,13 @@ class BsPDFPageProvider {
 
 		/** @var DOMElement $mailAnchor */
 		foreach ( $mailAnchors as $mailAnchor ) {
-			$label = $mailAnchor->nodeValue;
+			$label = trim( $mailAnchor->nodeValue );
 			$href = $mailAnchor->getAttribute( 'href' );
 			$address = str_replace( 'mailto:', '', $href );
 
 			$labelIsValid = !preg_match( '/^\[\d*\]$/', $label );
-			if ( $labelIsValid ) {
-				$address = "$label: $address";
+			if ( $labelIsValid && !( $label === $address ) ) {
+				$address = "$label ($address)";
 			}
 
 			$mailAnchor->nodeValue = $address;
