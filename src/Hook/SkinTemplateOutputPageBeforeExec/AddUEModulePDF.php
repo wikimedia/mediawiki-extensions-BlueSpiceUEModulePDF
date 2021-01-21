@@ -31,24 +31,17 @@ class AddUEModulePDF extends SkinTemplateOutputPageBeforeExec {
 
 	/**
 	 * Builds the ContentAction Array fort the current page
-	 * @return Array The ContentAction Array
+	 * @return array The ContentAction Array
 	 */
 	private function buildContentAction() {
-		$aCurrentQueryParams = $this->skin->getRequest()->getValues();
-		if ( isset( $aCurrentQueryParams['title'] ) ) {
-			$sTitle = $aCurrentQueryParams['title'];
-		} else {
-			$sTitle = '';
-		}
-		$sSpecialPageParameter = \BsCore::sanitize( $sTitle, '', \BsPARAMTYPE::STRING );
-		$oSpecialPage = \SpecialPage::getTitleFor( 'UniversalExport', $sSpecialPageParameter );
-		if ( isset( $aCurrentQueryParams['title'] ) ) {
-			unset( $aCurrentQueryParams['title'] );
-		}
-		$aCurrentQueryParams['ue[module]'] = 'pdf';
+		/** @var \BlueSpice\UniversalExport\Util $util */
+		$util = \MediaWiki\MediaWikiServices::getInstance()->getService(
+			'BSUniversalExportUtils'
+		);
+
 		return [
 			'id' => 'bs-ta-uemodulepdf',
-			'href' => $oSpecialPage->getLinkUrl( $aCurrentQueryParams ),
+			'href' => $util->getExportLink( $this->skin->getRequest(), 'pdf' ),
 			'title' => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-title' )->text(),
 			'text' => wfMessage( 'bs-uemodulepdf-widgetlink-single-no-attachments-text' )->text(),
 			'class' => 'bs-ue-export-link',
