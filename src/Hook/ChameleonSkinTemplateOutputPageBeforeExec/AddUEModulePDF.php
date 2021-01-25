@@ -2,7 +2,7 @@
 
 namespace BlueSpice\UEModulePDF\Hook\ChameleonSkinTemplateOutputPageBeforeExec;
 
-use BlueSpice\Calumma\Hook\ChameleonSkinTemplateOutputPageBeforeExec;
+use BlueSpice\Hook\ChameleonSkinTemplateOutputPageBeforeExec;
 use BlueSpice\SkinData;
 
 class AddUEModulePDF extends ChameleonSkinTemplateOutputPageBeforeExec {
