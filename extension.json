@@ -30,6 +30,18 @@
 					"roles": [
 						"reader"
 					]
+				},
+				"uemodulepdfsubpages-export": {
+					"type": "namespace",
+					"roles": [
+						"reader"
+					]
+				},
+				"uemodulepdfrecursive-export": {
+					"type": "namespace",
+					"roles": [
+						"reader"
+					]
 				}
 			}
 		},
@@ -42,11 +54,15 @@
 	"callback": "\\BlueSpice\\UEModulePDF\\Extension::onRegistration",
 	"GroupPermissions": {
 		"*": {
-			"uemodulepdf-export": true
+			"uemodulepdf-export": true,
+			"uemodulepdfsubpages-export": true,
+			"uemodulepdfrecursive-export": true
 		}
 	},
 	"AvailableRights": [
-		"uemodulepdf-export"
+		"uemodulepdf-export",
+		"uemodulepdfsubpages-export",
+		"uemodulepdfrecursive-export"
 	],
 	"MessagesDirs": {
 		"UEModulePDF": [
@@ -65,7 +81,6 @@
 		"PDFFileResolver": "includes/PDFFileResolver.php"
 	},
 	"Hooks": {
-		"ChameleonSkinTemplateOutputPageBeforeExec": "\\BlueSpice\\UEModulePDF\\Hook\\ChameleonSkinTemplateOutputPageBeforeExec\\AddUEModulePDF::callback",
 		"BSMigrateSettingsFromDeviatingNames": "\\BlueSpice\\UEModulePDF\\Hook\\BSMigrateSettingsFromDeviatingNames\\SkipServiceSettings::callback"
 	},
 	"config_prefix": "bsg",

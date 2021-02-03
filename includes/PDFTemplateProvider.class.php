@@ -97,7 +97,7 @@ class BsPDFTemplateProvider {
 		}
 		$aTemplate['resources'] = $aResources;
 
-		// Substitue MSG elements
+		// Substitute MSG elements
 		$oMsgTags = $oTemplateDOM->getElementsByTagName( 'msg' );
 
 		$messages = [];
