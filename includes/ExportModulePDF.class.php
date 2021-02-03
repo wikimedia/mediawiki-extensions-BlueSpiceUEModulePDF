@@ -10,157 +10,131 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GPL-3.0-only
  * @filesource
  */
+use BlueSpice\UEModulePDF\ExportSubaction\Recursive;
+use BlueSpice\UEModulePDF\ExportSubaction\Subpages;
+use BlueSpice\UniversalExport\ExportModule;
+use MediaWiki\MediaWikiServices;
 
 /**
  * UniversalExport BsExportModulePDF class.
  * @package BlueSpiceUEModulePDF
  */
-class BsExportModulePDF implements BsUniversalExportModule {
+class BsExportModulePDF extends ExportModule {
 
 	/**
-	 * Implementation of BsUniversalExportModule interface. Uses the
-	 * Java library xhtmlrenderer to create a PDF file.
-	 * @param SpecialUniversalExport &$oCaller
-	 * @return array array( 'mime-type' => 'application/pdf', 'filename' => 'Filename.pdf', 'content' => '8F3BC3025A7...' );
+	 * @inheritDoc
 	 */
-	public function createExportFile( &$oCaller ) {
-		global $wgUser, $wgRequest;
-		$aPageParams = $oCaller->aParams;
+	protected function setParams( &$caller ) {
+		parent::setParams( $caller );
 
-		if ( $oCaller->oRequestedTitle->userCan( 'uemodulepdf-export' ) === false ) {
-			throw new PermissionsError( 'uemodulepdf-export' );
-		}
-
-		$config = \BlueSpice\Services::getInstance()->getConfigFactory()
-			->makeConfig( 'bsg' );
-
-		$aPageParams['title']      = $oCaller->oRequestedTitle->getPrefixedText();
-		$aPageParams['article-id'] = $oCaller->oRequestedTitle->getArticleID();
-		$aPageParams['oldid']      = $wgRequest->getInt( 'oldid', 0 );
-
-		$redirectTarget = WikiPage::factory( $oCaller->oRequestedTitle )->getRedirectTarget();
+		$redirectTarget = WikiPage::factory( $caller->oRequestedTitle )->getRedirectTarget();
 		if ( $redirectTarget instanceof Title ) {
 			$aPageParams['title'] = $redirectTarget->getPrefixedText();
 			$aPageParams['article-id'] = $redirectTarget->getArticleID();
 		}
 
-		if ( $config->get( 'UEModulePDFSuppressNS' ) ) {
-			$aPageParams['display-title'] = $oCaller->oRequestedTitle->getText();
+		if ( $this->config->get( 'UEModulePDFSuppressNS' ) ) {
+			$aPageParams['display-title'] = $caller->oRequestedTitle->getText();
 		}
-		// If we are in history mode and we are relative to an oldid
-		$aPageParams['direction'] = $wgRequest->getVal( 'direction', '' );
-		if ( !empty( $aPageParams['direction'] ) ) {
-			$oCurrentRevision = Revision::newFromId( $aPageParams['oldid'] );
-			switch ( $aPageParams['direction'] ) {
-				case 'next': $oCurrentRevision = $oCurrentRevision->getNext();
-					break;
-				case 'prev': $oCurrentRevision = $oCurrentRevision->getPrevious();
-					break;
-				default:
-					break;
-			}
-			if ( $oCurrentRevision !== null ) {
-				$aPageParams['oldid'] = $oCurrentRevision->getId();
-			}
-		}
+	}
 
-		// Get Page DOM
-		$aPage = BsPDFPageProvider::getPage( $aPageParams );
+	/**
+	 * @inheritDoc
+	 */
+	public function getExportPermission() {
+		return 'uemodulepdf-export';
+	}
 
-		// Prepare Template
-		$aTemplateParams = [
-			'path'     => $config->get( 'UEModulePDFTemplatePath' ),
-			'template' => $config->get( 'UEModulePDFDefaultTemplate' ),
-			'language' => $wgUser->getOption( 'language', 'en' ),
-			'meta'     => $aPage['meta']
-		];
+	/**
+	 * @inheritDoc
+	 */
+	protected function setExportConnectionParams( &$caller ) {
+		parent::setExportConnectionParams( $caller );
+		$caller->aParams['soap-service-url'] = $this->config->get( 'UEModulePDFPdfServiceURL' );
+		// Duplicate to replace 'soap-service-url' in future
+		$caller->aParams['backend-url'] = $this->config->get( 'UEModulePDFPdfServiceURL' );
+	}
 
-		// Override template param if needed. The override may come from GET (&ue[template]=...) or from a tag (<bs:ueparams template="..." />)
-		// TODO: Make more generic
-		if ( !empty( $oCaller->aParams['template'] ) ) {
-			$aTemplateParams['template'] = $oCaller->aParams['template'];
-		}
+	/**
+	 * @inheritDoc
+	 */
+	protected function getTemplateParams( $caller, $page ) {
+		$params = parent::getTemplateParams( $caller, $page );
 
-		$aTemplate = BsPDFTemplateProvider::getTemplate( $aTemplateParams );
+		return array_merge( $params, [
+			'path'     => $this->config->get( 'UEModulePDFTemplatePath' ),
+			'template' => $this->config->get( 'UEModulePDFDefaultTemplate' ),
+		] );
+	}
 
-		// Combine Page Contents and Template
-		$oDOM = $aTemplate['dom'];
+	/**
+	 * @inheritDoc
+	 */
+	protected function getTemplate( $params ) {
+		return BsPDFTemplateProvider::getTemplate( $params );
+	}
 
+	/**
+	 * @inheritDoc
+	 */
+	protected function getPage( $params ) {
+		return BsPDFPageProvider::getPage( $params );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function decorateTemplate( &$template, &$contents, &$page, $caller ) {
 		// Add the bookmarks
-		$aTemplate['bookmarks-element']->appendChild(
-			$aTemplate['dom']->importNode( $aPage['bookmark-element'], true )
+		$template['bookmarks-element']->appendChild(
+			$template['dom']->importNode( $page['bookmark-element'], true )
 		);
-		$aTemplate['title-element']->nodeValue = $oCaller->oRequestedTitle->getPrefixedText();
+		$template['title-element']->nodeValue = $caller->oRequestedTitle->getPrefixedText();
 
-		$aContents = [
-			'content' => [ $aPage['dom']->documentElement ]
-		];
-		MediaWikiServices::getInstance()->getHookContainer()->run(
+		$this->services->getHookContainer()->run(
 			'BSUEModulePDFBeforeAddingContent',
 			[
-				&$aTemplate,
-				&$aContents,
-				$oCaller,
-				&$aPage
+				&$template,
+				&$contents,
+				$caller,
+				&$page
 			]
 		);
+	}
 
-		$oContentTags = $oDOM->getElementsByTagName( 'content' );
-		$i = $oContentTags->length - 1;
-		while ( $i > -1 ) {
-			$oContentTag = $oContentTags->item( $i );
-			$sKey = $oContentTag->getAttribute( 'key' );
-			if ( isset( $aContents[$sKey] ) ) {
-				foreach ( $aContents[$sKey] as $oNode ) {
-					$oNode = $oDOM->importNode( $oNode, true );
-					$oContentTag->parentNode->insertBefore( $oNode, $oContentTag );
-				}
-			}
-			$oContentTag->parentNode->removeChild( $oContentTag );
-			$i--;
-		}
-
-		$oCaller->aParams['document-token']   = md5( $oCaller->oRequestedTitle->getPrefixedText() ) . '-' . $oCaller->aParams['oldid'];
-		$oCaller->aParams['soap-service-url'] = $config->get( 'UEModulePDFPdfServiceURL' );
-		$oCaller->aParams['backend-url']      = $config->get( 'UEModulePDFPdfServiceURL' ); // Duplicate to replace 'soap-service-url' in future
-		$oCaller->aParams['resources']        = $aTemplate['resources'];
-
+	/**
+	 * @inheritDoc
+	 */
+	protected function modifyTemplateAfterContents( &$template, $page, $caller ) {
 		MediaWikiServices::getInstance()->getHookContainer()->run(
 			'BSUEModulePDFBeforeCreatePDF',
 			[
 				$this,
-				$oDOM,
-				$oCaller
+				$template['dom'],
+				$caller
 			]
 		);
+	}
 
-		// Prepare response
-		$aResponse = [
-			'mime-type' => 'application/pdf',
-			'filename'  => '%s.pdf',
-			'content'   => ''
-		];
-
-		if ( RequestContext::getMain()->getRequest()->getVal( 'debugformat', '' ) == 'html' ) {
-			$aResponse['content'] = $oDOM->saveXML( $oDOM->documentElement );
-			$aResponse['mime-type'] = 'text/html';
-			$aResponse['filename'] = sprintf(
-				'%s.html',
-				$oCaller->oRequestedTitle->getPrefixedText()
-			);
-			$aResponse['disposition'] = 'inline';
-			return $aResponse;
-		}
-
-		$oPDFBackend = new BsPDFServlet( $oCaller->aParams );
-		$aResponse['content'] = $oPDFBackend->createPDF( $oDOM );
-
-		$aResponse['filename'] = sprintf(
-			$aResponse['filename'],
-			$oCaller->oRequestedTitle->getPrefixedText()
+	/**
+	 * @inheritDoc
+	 */
+	protected function getResponseParams() {
+		return array_merge(
+			parent::getResponseParams(),
+			[
+				'mime-type' => 'application/pdf',
+				'filename'  => '%s.pdf',
+			]
 		);
+	}
 
-		return $aResponse;
+	/**
+	 * @inheritDoc
+	 */
+	protected function getExportedContent( $caller, &$template ) {
+		$backend = new BsPDFServlet( $caller->aParams );
+		return $backend->createPDF( $template['dom'] );
 	}
 
 	/**
@@ -209,5 +183,26 @@ class BsExportModulePDF implements BsUniversalExportModule {
 		$oModuleOverviewView->addItem( $oWebserviceStateView );
 
 		return $oModuleOverviewView;
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getSubactionHandlers() {
+		return [
+			'subpages' => Subpages::factory( $this->services, $this ),
+			'recursive' => Recursive::factory( $this->services, $this ),
+		];
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getActionButtonDetails() {
+		return [
+			'title' => Message::newFromKey( 'bs-uemodulepdf-widgetlink-single-no-attachments-title' ),
+			'text' => Message::newFromKey( 'bs-uemodulepdf-widgetlink-single-no-attachments-text' ),
+			'iconClass' => 'icon-file-pdf'
+		];
 	}
 }

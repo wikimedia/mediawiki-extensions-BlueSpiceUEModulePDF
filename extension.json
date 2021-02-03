@@ -30,18 +30,39 @@
 					"roles": [
 						"reader"
 					]
+				},
+				"uemodulepdfsubpages-export": {
+					"type": "namespace",
+					"roles": [
+						"reader"
+					]
+				},
+				"uemodulepdfrecursive-export": {
+					"type": "namespace",
+					"roles": [
+						"reader"
+					]
 				}
+			}
+		},
+		"BlueSpiceUniversalExport": {
+			"ModuleRegistry": {
+				"pdf": "\\BsExportModulePDF::factory"
 			}
 		}
 	},
 	"callback": "\\BlueSpice\\UEModulePDF\\Extension::onRegistration",
 	"GroupPermissions": {
 		"*": {
-			"uemodulepdf-export": true
+			"uemodulepdf-export": true,
+			"uemodulepdfsubpages-export": true,
+			"uemodulepdfrecursive-export": true
 		}
 	},
 	"AvailableRights": [
-		"uemodulepdf-export"
+		"uemodulepdf-export",
+		"uemodulepdfsubpages-export",
+		"uemodulepdfrecursive-export"
 	],
 	"MessagesDirs": {
 		"UEModulePDF": [
@@ -60,9 +81,7 @@
 		"PDFFileResolver": "includes/PDFFileResolver.php"
 	},
 	"Hooks": {
-		"SkinTemplateOutputPageBeforeExec": "\\BlueSpice\\UEModulePDF\\Hook\\SkinTemplateOutputPageBeforeExec\\AddUEModulePDF::callback",
-		"BSMigrateSettingsFromDeviatingNames": "\\BlueSpice\\UEModulePDF\\Hook\\BSMigrateSettingsFromDeviatingNames\\SkipServiceSettings::callback",
-		"BSUniversalExportSpecialPageExecute": "\\BlueSpice\\UEModulePDF\\Hook\\BSUniversalExportSpecialPageExecute\\AddModulePDF::callback"
+		"BSMigrateSettingsFromDeviatingNames": "\\BlueSpice\\UEModulePDF\\Hook\\BSMigrateSettingsFromDeviatingNames\\SkipServiceSettings::callback"
 	},
 	"config_prefix": "bsg",
 	"config": {
