@@ -9,6 +9,7 @@ use BsPDFPageProvider;
 use BsUniversalExportHelper;
 use DOMDocument;
 use DOMNode;
+use Hooks;
 use MediaWiki\MediaWikiServices;
 use Message;
 use Title;
@@ -50,7 +51,7 @@ class Subpages extends SubpagesBase {
 		$documentToc = $this->makeToc( $this->titleMap );
 		array_unshift( $contents['content'], $documentToc->documentElement );
 
-		$this->services->getHookContainer()->run(
+		Hooks::run(
 			'UEModulePDFSubpagesAfterContent',
 			[
 				$this->pdfModule,

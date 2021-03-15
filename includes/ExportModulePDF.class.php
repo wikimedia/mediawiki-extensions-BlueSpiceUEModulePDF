@@ -13,7 +13,6 @@
 use BlueSpice\UEModulePDF\ExportSubaction\Recursive;
 use BlueSpice\UEModulePDF\ExportSubaction\Subpages;
 use BlueSpice\UniversalExport\ExportModule;
-use MediaWiki\MediaWikiServices;
 
 /**
  * UniversalExport BsExportModulePDF class.
@@ -91,7 +90,7 @@ class BsExportModulePDF extends ExportModule {
 		);
 		$template['title-element']->nodeValue = $caller->oRequestedTitle->getPrefixedText();
 
-		$this->services->getHookContainer()->run(
+		Hooks::run(
 			'BSUEModulePDFBeforeAddingContent',
 			[
 				&$template,
@@ -106,7 +105,7 @@ class BsExportModulePDF extends ExportModule {
 	 * @inheritDoc
 	 */
 	protected function modifyTemplateAfterContents( &$template, $page, $caller ) {
-		MediaWikiServices::getInstance()->getHookContainer()->run(
+		Hooks::run(
 			'BSUEModulePDFBeforeCreatePDF',
 			[
 				$this,

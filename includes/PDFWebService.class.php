@@ -37,7 +37,7 @@ class BsPDFWebService {
 			// 'cafile'               => '',
 		];
 
-		MediaWikiServices::getInstance()->getHookContainer()->run(
+		Hooks::run(
 			'BSUEModulePDFCreatePDFBeforeSend',
 			[
 				$this,
@@ -184,7 +184,7 @@ class BsPDFWebService {
 			// TODO RBV (05.04.12 11:48): Check if urlencode has side effects
 			$oImageElement->setAttribute( 'src', 'images/' . urlencode( $sSrcFilename ) );
 			$sFileName = $sSrcFilename;
-			MediaWikiServices::getInstance()->getHookContainer()->run(
+			Hooks::run(
 				'BSUEModulePDFWebserviceFindFiles',
 				[
 					$this,
@@ -228,7 +228,7 @@ class BsPDFWebService {
 					$sHrefFilename           = basename( $sRelativeHref );
 					$sAbsoluteFileSystemPath = $this->getFileSystemPath( $sRelativeHref );
 					if ( $this->aParams['attachments'] == '1' ) {
-						MediaWikiServices::getInstance()->getHookContainer()->run(
+						Hooks::run(
 							'BSUEModulePDFWebserviceFindFiles',
 							[
 								$this,

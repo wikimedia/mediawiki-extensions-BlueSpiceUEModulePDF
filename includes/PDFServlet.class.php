@@ -62,7 +62,7 @@ class BsPDFServlet {
 		global $bsgUEModulePDFCURLOptions;
 		$aOptions = array_merge_recursive( $aOptions, $bsgUEModulePDFCURLOptions );
 
-		MediaWikiServices::getInstance()->getHookContainer()->run(
+		Hooks::run(
 			'BSUEModulePDFCreatePDFBeforeSend',
 			[
 				$this,
@@ -217,7 +217,7 @@ class BsPDFServlet {
 
 			$sFileName = $oFileResolver->getFileName();
 			$sAbsoluteFileSystemPath = $oFileResolver->getAbsoluteFilesystemPath();
-			MediaWikiServices::getInstance()->getHookContainer()->run(
+			Hooks::run(
 				'BSUEModulePDFFindFiles',
 				[
 					$this,
@@ -227,7 +227,7 @@ class BsPDFServlet {
 					'images'
 				]
 			);
-			MediaWikiServices::getInstance()->getHookContainer()->run(
+			Hooks::run(
 				'BSUEModulePDFWebserviceFindFiles',
 				[
 					$this,
@@ -255,7 +255,7 @@ class BsPDFServlet {
 		}
 		 */
 
-		MediaWikiServices::getInstance()->getHookContainer()->run(
+		Hooks::run(
 			'BSUEModulePDFAfterFindFiles',
 			[
 				$this,
@@ -284,7 +284,7 @@ class BsPDFServlet {
 			);
 		}
 
-		MediaWikiServices::getInstance()->getHookContainer()->run(
+		Hooks::run(
 			'BSUEModulePDFUploadFilesBeforeSend',
 			[
 				$this,

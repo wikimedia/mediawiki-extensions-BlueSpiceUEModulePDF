@@ -26,7 +26,7 @@ class BsPDFPageProvider {
 	 * @return array
 	 */
 	public static function getPage( $aParams ) {
-		MediaWikiServices::getInstance()->getHookContainer()->run( 'BSUEModulePDFbeforeGetPage', [
+		Hooks::run( 'BSUEModulePDFbeforeGetPage', [
 			&$aParams
 		] );
 
@@ -94,7 +94,7 @@ class BsPDFPageProvider {
 			'meta'             => $aData['meta']
 		];
 
-		MediaWikiServices::getInstance()->getHookContainer()->run( 'BSUEModulePDFgetPage', [
+		Hooks::run( 'BSUEModulePDFgetPage', [
 			$oTitle,
 			&$aPage,
 			&$aParams,
@@ -212,7 +212,7 @@ class BsPDFPageProvider {
 			$aMeta['date']   = $wgLang->sprintfDate( 'd.m.Y', $oArticle->getTouched() );
 		}
 
-		MediaWikiServices::getInstance()->getHookContainer()->run(
+		Hooks::run(
 			'BSUEModulePDFcollectMetaData',
 			[
 				$oTitle,
@@ -249,7 +249,7 @@ class BsPDFPageProvider {
 		global $wgServer;
 		$aClassesToRemove = [ 'editsection', 'bs-universalexport-exportexclude' ];
 		$oDOMXPath = new DOMXPath( $oPageDOM );
-		MediaWikiServices::getInstance()->getHookContainer()->run( 'BSUEModulePDFcleanUpDOM', [
+		Hooks::run( 'BSUEModulePDFcleanUpDOM', [
 			$oTitle,
 			$oPageDOM,
 			&$aParams,
