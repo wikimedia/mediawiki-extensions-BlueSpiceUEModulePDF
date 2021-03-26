@@ -551,3 +551,8 @@ select > option[selected] {
 	display: inline-block;
 }
 /*  Select box hack END */
+
+/* Extension:Lingo - glossary entries are printed in pdfs without definition term */
+.mw-lingo-tooltip {
+	display: none;
+}
