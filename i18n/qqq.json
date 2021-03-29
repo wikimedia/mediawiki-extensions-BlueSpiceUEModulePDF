@@ -23,5 +23,13 @@
 	"soap-service-url-not-set": "Text for the URL to the PDF generating web service is not set. Please check the wiki configuration.\n\nSee also:\n* {{msg-mw|Soap-service-url-not-valid}}",
 	"bs-uemodulepdf-overview-webservice-webadmin": "Text for backend web interface",
 	"action-uemodulepdf-export": "{{doc-action|uemodulepdf-export}}",
-	"right-uemodulepdf-export": "{{doc-right|uemodulepdf-export}}"
+	"right-uemodulepdf-export": "{{doc-right|uemodulepdf-export}}",
+	"bs-uemodulepdf-widgetlink-subpages-text": "Short text for the link, that exports the page and it's subpages as PDF",
+	"bs-uemodulepdf-widgetlink-subpages-title": "Title for the link, that exports the page and it's subpages as PDF",
+	"action-uemodulepdfsubpages-export": "{{doc-action|uemodulepdfsubpages-export}}",
+	"right-uemodulepdfsubpages-export": "{{doc-right|uemodulepdfsubpages-export}}",
+	"bs-uemodulepdf-widgetlink-recursive-text": "Short text for the link, that exports the page and its linked pages as PDF",
+	"bs-uemodulepdf-widgetlink-recursive-title": "Title for the link, that exports the page and its linked pages as PDF",
+	"right-uemodulepdfrecursive-export": "{{doc-right|uemodulepdfrecursive-export}}",
+	"action-uemodulepdfrecursive-export": "{{doc-action|uemodulepdfrecursive-export}}"
 }

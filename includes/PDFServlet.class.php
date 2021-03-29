@@ -194,6 +194,7 @@ class BsPDFServlet {
 		}
 
 		if ( !BsConnectionHelper::urlExists( $this->aParams['soap-service-url'] ) ) {
+			var_dump( $this->aParams['soap-service-url'] );
 			throw new UnexpectedValueException( 'soap-service-url-not-valid' );
 		}
 
