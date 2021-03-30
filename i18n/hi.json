@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Archana mathur",
+			"Sukanya121",
 			"संजीव कुमार"
 		]
 	},
-	"bs-uemodulepdf-pref-templatedir": "साँचा निर्देशिका:"
+	"right-uemodulepdfrecursive-export": "सभी जुड़े हुए पृष्ठों सहित एक पृष्ठ को पीडीएफ में निर्यात करें",
+	"action-uemodulepdfrecursive-export": "सभी जुड़े हुए  पृष्ठों सहित एक पृष्ठ को पीडीएफ में निर्यात करें"
 }

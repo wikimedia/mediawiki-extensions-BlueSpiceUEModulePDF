@@ -23,5 +23,13 @@
 	"soap-service-url-not-set": "Не вказана адреса веб-служби створення PDF. Будь ласка, перевірте налаштування вікі.",
 	"bs-uemodulepdf-overview-webservice-webadmin": "Веб-інтерфейс бекенду",
 	"action-uemodulepdf-export": "експортування сторінки у PDF",
-	"right-uemodulepdf-export": "Експортування сторінок у PDF"
+	"right-uemodulepdf-export": "Експортування сторінок у PDF",
+	"bs-uemodulepdf-widgetlink-subpages-text": "Сторінка PDF із підсторінками",
+	"bs-uemodulepdf-widgetlink-subpages-title": "Експортувати цю сторінку та всі її підсторінки як PDF.",
+	"action-uemodulepdfsubpages-export": "експортування сторінки, включно з усіма підсторінками, в PDF",
+	"right-uemodulepdfsubpages-export": "Експортування сторінки, включно з усіма підсторінками, в PDF",
+	"bs-uemodulepdf-widgetlink-recursive-text": "Сторінка PDF зі сторінками, на які є посилання",
+	"bs-uemodulepdf-widgetlink-recursive-title": "Експортувати цю сторінку та всі сторінки, на які є посилання, як PDF.",
+	"right-uemodulepdfrecursive-export": "Експортування сторінки, включно з усіма сторінками, на які є посилання, в PDF",
+	"action-uemodulepdfrecursive-export": "експортування сторінки, включно з усіма сторінками, на які є посилання, в PDF"
 }

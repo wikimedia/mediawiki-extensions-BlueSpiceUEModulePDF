@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"StanProg"
+		]
+	},
+	"bs-uemodulepdf-widgetlink-subpages-text": "PDF-страница с подстраници",
+	"bs-uemodulepdf-widgetlink-subpages-title": "Изнасяне на тази страница с всички подстраници в PDF.",
+	"action-uemodulepdfsubpages-export": "изнасяне на страница, включително подстраниците в PDF",
+	"right-uemodulepdfsubpages-export": "Изнасяне на страница с подстраниците ѝ в PDF"
+}

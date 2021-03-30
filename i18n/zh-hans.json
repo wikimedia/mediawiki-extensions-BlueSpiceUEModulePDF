@@ -21,5 +21,6 @@
 	"soap-service-url-not-set": "连入PDF生成器服务的URL未设置。请检查wiki配置。",
 	"bs-uemodulepdf-overview-webservice-webadmin": "后台web界面",
 	"action-uemodulepdf-export": "导出页面至 PDF",
-	"right-uemodulepdf-export": "导出页面至 PDF"
+	"right-uemodulepdf-export": "导出页面至 PDF",
+	"bs-uemodulepdf-widgetlink-subpages-text": "带有子页面的PDF页面"
 }

@@ -21,5 +21,13 @@
 	"soap-service-url-not-set": "O URL para o <i>web service</i> de geração de PDF não está definido. Verifique a configuração da wiki, por favor.",
 	"bs-uemodulepdf-overview-webservice-webadmin": "Interface web Backend",
 	"action-uemodulepdf-export": "exportando uma página para PDF",
-	"right-uemodulepdf-export": "Exportar uma página para PDF"
+	"right-uemodulepdf-export": "Exportar uma página para PDF",
+	"bs-uemodulepdf-widgetlink-subpages-text": "Página e sub-páginas para PDF",
+	"bs-uemodulepdf-widgetlink-subpages-title": "Exportar esta página e todas as subpáginas como PDF.",
+	"action-uemodulepdfsubpages-export": "exportar uma página, incluindo todas as subpáginas, para PDF",
+	"right-uemodulepdfsubpages-export": "Exportar uma página, incluindo todas as subpáginas, para PDF",
+	"bs-uemodulepdf-widgetlink-recursive-text": "Página PDF com páginas vinculadas",
+	"bs-uemodulepdf-widgetlink-recursive-title": "Exporte esta página e todas as páginas vinculadas como PDF.",
+	"right-uemodulepdfrecursive-export": "Exportar uma página, incluindo todas as páginas vinculadas, para PDF",
+	"action-uemodulepdfrecursive-export": "exportar uma página, incluindo todas as páginas vinculadas, para PDF"
 }
