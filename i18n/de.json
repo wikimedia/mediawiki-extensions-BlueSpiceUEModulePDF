@@ -21,5 +21,13 @@
 	"soap-service-url-not-set": "Die URL des Webservices für die PDF-Erzeugung ist nicht gesetzt. Bitte überprüfe die Wiki-Einstellungen.",
 	"bs-uemodulepdf-overview-webservice-webadmin": "Backend Webinterface",
 	"action-uemodulepdf-export": "eine Seiten in PDF zu exportieren",
-	"right-uemodulepdf-export": "Export einer Seite in PDF"
+	"right-uemodulepdf-export": "Export einer Seite in PDF",
+	"bs-uemodulepdf-widgetlink-subpages-text": "PDF Seite mit Unterseiten",
+	"bs-uemodulepdf-widgetlink-subpages-title": "Diese und alle Unterseiten im PDF Format ausgeben.",
+	"action-uemodulepdfsubpages-export": "eine Seite inklusive aller Unterseiten nach PDF zu exportieren",
+	"right-uemodulepdfsubpages-export": "Eine Seite inklusive aller Unterseiten nach PDF exportieren",
+	"bs-uemodulepdf-widgetlink-recursive-text": "PDF Seite mit Verlinkungen",
+	"bs-uemodulepdf-widgetlink-recursive-title": "Diese und alle verlinkten Seiten im PDF Format ausgeben.",
+	"right-uemodulepdfrecursive-export": "Exportieren einer Seite einschließlich aller verlinkten Seiten als PDF-Datei",
+	"action-uemodulepdfrecursive-export": "eine Seite einschließlich aller verlinkten Seiten als PDF-Datei zu exportieren"
 }

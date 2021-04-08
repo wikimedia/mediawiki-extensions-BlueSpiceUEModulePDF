@@ -3,6 +3,7 @@
 		"authors": [
 			"BaRaN6161 TURK",
 			"Hedda",
+			"MuratTheTurkish",
 			"Sayginer"
 		]
 	},
@@ -21,5 +22,13 @@
 	"soap-service-url-not-set": "PDF üreten web hizmetinin URL'si ayarlanmadı. Lütfen viki yapılandırmasını kontrol edin.",
 	"bs-uemodulepdf-overview-webservice-webadmin": "Arka uç web arayüzü",
 	"action-uemodulepdf-export": "bir sayfayı PDF'ye dışa aktarma",
-	"right-uemodulepdf-export": "Bir sayfayı PDF'ye dışa aktar"
+	"right-uemodulepdf-export": "Bir sayfayı PDF'ye dışa aktar",
+	"bs-uemodulepdf-widgetlink-subpages-text": "Alt sayfalara sahip PDF sayfası",
+	"bs-uemodulepdf-widgetlink-subpages-title": "Bu sayfayı ve tüm alt sayfaları PDF olarak dışa aktar.",
+	"action-uemodulepdfsubpages-export": "tüm alt sayfalar dahil bir sayfayı PDF'ye dışa aktarma",
+	"right-uemodulepdfsubpages-export": "Tüm alt sayfalar dahil bir sayfayı PDF'ye dışa aktar",
+	"bs-uemodulepdf-widgetlink-recursive-text": "Bağlantılı sayfalara sahip PDF sayfası",
+	"bs-uemodulepdf-widgetlink-recursive-title": "Bu sayfayı ve bağlantılı tüm sayfaları PDF olarak dışa aktarın.",
+	"right-uemodulepdfrecursive-export": "Bağlı tüm sayfalar dahil bir sayfayı PDF'ye dışa aktar",
+	"action-uemodulepdfrecursive-export": "bağlı tüm sayfalar dahil bir sayfayı PDF'ye dışa aktar"
 }

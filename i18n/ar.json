@@ -19,5 +19,13 @@
 	"soap-service-url-not-set": "لم يتم تعيين مسار خدمة إنشاء PDF على الويب; يُرجَى التحقق من تكوين الويكي.",
 	"bs-uemodulepdf-overview-webservice-webadmin": "الواجهة الخلفية للويب",
 	"action-uemodulepdf-export": "تصدير صفحة إلى PDF",
-	"right-uemodulepdf-export": "تصدير صفحة إلى PDF"
+	"right-uemodulepdf-export": "تصدير صفحة إلى PDF",
+	"bs-uemodulepdf-widgetlink-subpages-text": "صفحة PDF مع صفحات فرعية",
+	"bs-uemodulepdf-widgetlink-subpages-title": "تصدير هذه الصفحة وجميع الصفحات الفرعية كملف PDF.",
+	"action-uemodulepdfsubpages-export": "تصدير صفحة، بما في ذلك جميع الصفحات الفرعية، إلى PDF",
+	"right-uemodulepdfsubpages-export": "تصدير صفحة، بما في ذلك جميع الصفحات الفرعية، إلى PDF",
+	"bs-uemodulepdf-widgetlink-recursive-text": "صفحة PDF مع صفحات مرتبطة",
+	"bs-uemodulepdf-widgetlink-recursive-title": "تصدير هذه الصفحة وجميع الصفحات المرتبطة بتنسيق PDF.",
+	"right-uemodulepdfrecursive-export": "تصدير صفحة، بما في ذلك جميع الصفحات المرتبطة، إلى PDF",
+	"action-uemodulepdfrecursive-export": "تصدير صفحة، بما في ذلك جميع الصفحات المرتبطة، إلى PDF"
 }

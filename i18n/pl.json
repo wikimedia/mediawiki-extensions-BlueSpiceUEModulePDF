@@ -2,9 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Chrumps",
-			"Devwebtel"
+			"Devwebtel",
+			"Rail"
 		]
 	},
 	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "Pojedyncza strona PDF",
-	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Eksportuj tę stronę w formacie PDF."
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Eksportuj tę stronę w formacie PDF.",
+	"right-uemodulepdfrecursive-export": "Eksportowanie strony, włączając wszystkie zalinkowane strony, do formatu PDF",
+	"action-uemodulepdfrecursive-export": "eksportowania strony, włączając wszystkie zalinkowane strony, do formatu PDF"
 }

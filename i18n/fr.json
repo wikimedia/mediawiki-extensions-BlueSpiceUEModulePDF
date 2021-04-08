@@ -3,7 +3,9 @@
 		"authors": [
 			"0x010C",
 			"Gomoko",
-			"Ltrlg"
+			"Ltrlg",
+			"Verdy p",
+			"Wladek92"
 		]
 	},
 	"bs-uemodulepdf-desc": "Permettre l’exportation d pages par MediaWiki dans le format PDF",
@@ -21,5 +23,13 @@
 	"soap-service-url-not-set": "L’URL du service web de génération du PDF n’est pas définie. Veuillez vérifier la configuration du wiki.",
 	"bs-uemodulepdf-overview-webservice-webadmin": "Interface web du serveur",
 	"action-uemodulepdf-export": "exportation d’une page en PDF",
-	"right-uemodulepdf-export": "Exporter une page en PDF"
+	"right-uemodulepdf-export": "Exporter une page en PDF",
+	"bs-uemodulepdf-widgetlink-subpages-text": "Page PDF avec ses sous-pages",
+	"bs-uemodulepdf-widgetlink-subpages-title": "Exporter cette page et toutes ses sous-pages au format PDF.",
+	"action-uemodulepdfsubpages-export": "exportation d’une page, y compris toutes ses sous-pages, en PDF",
+	"right-uemodulepdfsubpages-export": "Exporter une page, y compris toutes ses sous-pages, en PDF",
+	"bs-uemodulepdf-widgetlink-recursive-text": "Page PDF avec les pages liées",
+	"bs-uemodulepdf-widgetlink-recursive-title": "Exporter cette page et toutes les pages liées en PDF.",
+	"right-uemodulepdfrecursive-export": "exporter une page, y compris toutes les pages liées, en PDF",
+	"action-uemodulepdfrecursive-export": "exporter une page, y compris toutes les pages liées, en PDF"
 }
