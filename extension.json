@@ -18,11 +18,11 @@
 			"Extensions": {
 				"BlueSpiceUEModulePDF": {
 					"className": "\\BlueSpice\\UEModulePDF\\Extension",
-					"extPath": "/BlueSpiceUEModulePDF",
-					"configDefinitions": {
-						"UEModulePDFSuppressNS": "\\BlueSpice\\UEModulePDF\\ConfigDefinition\\SuppressNS::getInstance"
-					}
+					"extPath": "/BlueSpiceUEModulePDF"
 				}
+			},
+			"ConfigDefinitionRegistry": {
+				"UEModulePDFSuppressNS": "\\BlueSpice\\UEModulePDF\\ConfigDefinition\\SuppressNS::getInstance"
 			},
 			"PermissionRegistry": {
 				"uemodulepdf-export": {
