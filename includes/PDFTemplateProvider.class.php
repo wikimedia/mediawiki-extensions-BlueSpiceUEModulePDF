@@ -66,7 +66,7 @@ class BsPDFTemplateProvider {
 			$aParams
 		);
 
-		$sPath = realpath( $aParams['path'] );
+		$sPath = $GLOBALS['IP'] . '/' . $aParams['path'];
 		$sTemplatePath = $sPath . '/' . $aParams['template'];
 		if ( !file_exists( $sTemplatePath ) ) {
 			throw new BsException( 'Requested template not found! Path:' . $sTemplatePath );
