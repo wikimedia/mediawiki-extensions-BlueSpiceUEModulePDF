@@ -14,6 +14,7 @@
 use BlueSpice\UEModulePDF\ExportSubaction\Recursive;
 use BlueSpice\UEModulePDF\ExportSubaction\Subpages;
 use BlueSpice\UniversalExport\ExportModule;
+use BlueSpice\UniversalExport\ExportSpecification;
 use MediaWiki\MediaWikiServices;
 
 /**
@@ -25,17 +26,15 @@ class BsExportModulePDF extends ExportModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function setParams( &$caller ) {
-		parent::setParams( $caller );
-
-		$redirectTarget = WikiPage::factory( $caller->oRequestedTitle )->getRedirectTarget();
+	protected function setParams( &$specification ) {
+		$redirectTarget = WikiPage::factory( $specification->getTitle() )->getRedirectTarget();
 		if ( $redirectTarget instanceof Title ) {
 			$aPageParams['title'] = $redirectTarget->getPrefixedText();
 			$aPageParams['article-id'] = $redirectTarget->getArticleID();
 		}
 
 		if ( $this->config->get( 'UEModulePDFSuppressNS' ) ) {
-			$aPageParams['display-title'] = $caller->oRequestedTitle->getText();
+			$aPageParams['display-title'] = $specification->getTitle()->getText();
 		}
 	}
 
@@ -49,18 +48,18 @@ class BsExportModulePDF extends ExportModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function setExportConnectionParams( &$caller ) {
-		parent::setExportConnectionParams( $caller );
-		$caller->aParams['soap-service-url'] = $this->config->get( 'UEModulePDFPdfServiceURL' );
+	protected function setExportConnectionParams( ExportSpecification &$specs ) {
+		parent::setExportConnectionParams( $specs );
+		$specs->setParam( 'soap-service-url', $this->config->get( 'UEModulePDFPdfServiceURL' ) );
 		// Duplicate to replace 'soap-service-url' in future
-		$caller->aParams['backend-url'] = $this->config->get( 'UEModulePDFPdfServiceURL' );
+		$specs->setParam( 'backend-url', $this->config->get( 'UEModulePDFPdfServiceURL' ) );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	protected function getTemplateParams( $caller, $page ) {
-		$params = parent::getTemplateParams( $caller, $page );
+	protected function getTemplateParams( $specification, $page ) {
+		$params = parent::getTemplateParams( $specification, $page );
 
 		return array_merge( $params, [
 			'path'     => $this->config->get( 'UEModulePDFTemplatePath' ),
@@ -78,26 +77,26 @@ class BsExportModulePDF extends ExportModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getPage( $params ) {
-		return BsPDFPageProvider::getPage( $params );
+	protected function getPage( ExportSpecification $specification ) {
+		return BsPDFPageProvider::getPage( $specification->getParams() );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	protected function decorateTemplate( &$template, &$contents, &$page, $caller ) {
+	protected function decorateTemplate( &$template, &$contents, &$page, $specification ) {
 		// Add the bookmarks
 		$template['bookmarks-element']->appendChild(
 			$template['dom']->importNode( $page['bookmark-element'], true )
 		);
-		$template['title-element']->nodeValue = $caller->oRequestedTitle->getPrefixedText();
+		$template['title-element']->nodeValue = $specification->getTitle()->getPrefixedText();
 
 		$this->services->getHookContainer()->run(
 			'BSUEModulePDFBeforeAddingContent',
 			[
 				&$template,
 				&$contents,
-				$caller,
+				$specification,
 				&$page
 			]
 		);
@@ -106,13 +105,13 @@ class BsExportModulePDF extends ExportModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function modifyTemplateAfterContents( &$template, $page, $caller ) {
+	protected function modifyTemplateAfterContents( &$template, $page, $specification ) {
 		MediaWikiServices::getInstance()->getHookContainer()->run(
 			'BSUEModulePDFBeforeCreatePDF',
 			[
 				$this,
 				$template['dom'],
-				$caller
+				$specification
 			]
 		);
 	}
@@ -133,8 +132,9 @@ class BsExportModulePDF extends ExportModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getExportedContent( $caller, &$template ) {
-		$backend = new BsPDFServlet( $caller->aParams );
+	protected function getExportedContent( $specs, &$template ) {
+		$params = $specs->getParams();
+		$backend = new BsPDFServlet( $params );
 		return $backend->createPDF( $template['dom'] );
 	}
 

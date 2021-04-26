@@ -27,7 +27,7 @@
 namespace BlueSpice\UEModulePDF\Hook;
 
 use BlueSpice\Hook;
-use BlueSpice\UniversalExport\IExportModule;
+use BlueSpice\UniversalExport\ExportSpecification;
 use Config;
 use IContextSource;
 
@@ -47,9 +47,9 @@ abstract class BSUEModulePDFBeforeAddingContent extends Hook {
 
 	/**
 	 *
-	 * @var IExportModule
+	 * @var ExportSpecification
 	 */
-	protected $caller = null;
+	protected $specs = null;
 
 	/**
 	 *
@@ -61,18 +61,18 @@ abstract class BSUEModulePDFBeforeAddingContent extends Hook {
 	 *
 	 * @param array &$template
 	 * @param array &$contents
-	 * @param IExportModule $caller
+	 * @param ExportSpecification $specs
 	 * @param array &$page
 	 * @return bool
 	 */
-	public static function callback( &$template, &$contents, $caller, &$page ) {
+	public static function callback( &$template, &$contents, ExportSpecification $specs, &$page ) {
 		$className = static::class;
 		$hookHandler = new $className(
 			null,
 			null,
 			$template,
 			$contents,
-			$caller,
+			$specs,
 			$page
 		);
 		return $hookHandler->process();
@@ -83,15 +83,15 @@ abstract class BSUEModulePDFBeforeAddingContent extends Hook {
 	 * @param Config $config
 	 * @param array &$template
 	 * @param array &$contents
-	 * @param IExportModule $caller
+	 * @param ExportSpecification $specs
 	 * @param array &$page
 	 */
-	public function __construct( $context, $config, &$template, &$contents, $caller, &$page ) {
+	public function __construct( $context, $config, &$template, &$contents, $specs, &$page ) {
 		parent::__construct( $context, $config );
 
 		$this->template =& $template;
 		$this->contents =& $contents;
-		$this->caller = $caller;
+		$this->specs = $specs;
 		$this->page =& $page;
 	}
 }
