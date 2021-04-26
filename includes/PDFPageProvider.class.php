@@ -394,11 +394,20 @@ class BsPDFPageProvider {
 	 * @param DOMElement &$oTBody
 	 */
 	protected static function findTableHeads( &$oTableElement, &$oPageDOM, $aRows, &$oTHead, &$oTBody ) {
-		foreach ( $aRows as $oTableRow ) {
-			// TODO RBV (06.02.12 15:07): Examine behavior when TH in row with TDs
-			$oTHs = $oTableRow->getElementsByTagName( 'th' );
+		// Table head should only be duplicated after pagebreak if all columns of the first row have th.
+		// If only the first column of the first row has th it could be that th is use for rows.
+		// th in the middle of a colum are used as separators and sould stay at this position (only).
 
-			if ( $oTHs->length != 0 ) {
+		$firstRow = true;
+		foreach ( $aRows as $oTableRow ) {
+			if ( $firstRow ) {
+				$oTHs = $oTableRow->getElementsByTagName( 'th' );
+				$oTDs = $oTableRow->getElementsByTagName( 'td' ); // must be 0 if all columns are th
+				$firstRow = false;
+
+				if ( ( $oTHs->length == 0 ) || ( $oTDs->length > 0 ) ) {
+					continue;
+				}
 				if ( $oTBody->hasChildNodes() ) {
 					$oTableElement->appendChild( $oTBody );
 					$oTBody = $oPageDOM->createElement( 'tbody' );
@@ -420,23 +429,27 @@ class BsPDFPageProvider {
 	 * @param DOMDocument &$oPageDOM
 	 */
 	protected static function duplicateTableHeadsForPagination( &$oTableElement, &$oPageDOM ) {
-		$aBodys = [];
-		self::findTableBodys( $oTableElement, $aBodys );
+		$sClassAttribute = $oTableElement->getAttribute( 'class' );
+		$classes = explode( ' ', $sClassAttribute );
+		if ( !in_array( 'pdf-not-duplicate-header', $classes ) ) {
+			$aBodys = [];
+			self::findTableBodys( $oTableElement, $aBodys );
 
-		foreach ( $aBodys as $oTableBody ) {
-			$aRows = [];
-			self::findTableRows( $oTableBody, $aRows );
+			foreach ( $aBodys as $oTableBody ) {
+				$aRows = [];
+				self::findTableRows( $oTableBody, $aRows );
 
-			$oTHead = $oPageDOM->createElement( 'thead' );
-			$oTBody = $oPageDOM->createElement( 'tbody' );
+				$oTHead = $oPageDOM->createElement( 'thead' );
+				$oTBody = $oPageDOM->createElement( 'tbody' );
 
-			self::findTableHeads( $oTableElement, $oPageDOM, $aRows, $oTHead, $oTBody );
+				self::findTableHeads( $oTableElement, $oPageDOM, $aRows, $oTHead, $oTBody );
 
-			if ( $oTHead->hasChildNodes() ) {
-					$oTableElement->appendChild( $oTHead );
-			}
-			if ( $oTBody->hasChildNodes() ) {
-				$oTableElement->appendChild( $oTBody );
+				if ( $oTHead->hasChildNodes() ) {
+						$oTableElement->appendChild( $oTHead );
+				}
+				if ( $oTBody->hasChildNodes() ) {
+					$oTableElement->appendChild( $oTBody );
+				}
 			}
 		}
 	}
