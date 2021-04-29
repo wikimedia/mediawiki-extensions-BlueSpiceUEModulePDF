@@ -4,7 +4,7 @@
 'BSUEModulePDFBeforeAddingContent':
  &$aTemplate:
  &$aContents:
- $oCaller:
+ $specification:
  &$aPage:
 
 'BSUEModulePDFBeforeCreatePDF':
