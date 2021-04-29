@@ -28,11 +28,11 @@
 namespace BlueSpice\UEModulePDF\Hook;
 
 use BlueSpice\Hook;
+use BlueSpice\UniversalExport\ExportSpecification;
 use BsUniversalExportModule;
 use Config;
 use DOMDocument;
 use IContextSource;
-use SpecialUniversalExport;
 
 /**
  * Description of BSUEModulePDFBeforeCreatePDF
@@ -52,25 +52,25 @@ abstract class BSUEModulePDFBeforeCreatePDF extends Hook {
 
 	/**
 	 *
-	 * @var SpecialUniversalExport
+	 * @var ExportSpecification
 	 */
-	protected $caller = null;
+	protected $specs = null;
 
 	/**
 	 *
 	 * @param BsUniversalExportModule $module
 	 * @param array $DOM
-	 * @param SpecialUniversalExport $caller
+	 * @param ExportSpecification $specs
 	 * @return bool
 	 */
-	public static function callback( $module, $DOM, $caller ) {
+	public static function callback( $module, $DOM, $specs ) {
 		$className = static::class;
 		$hookHandler = new $className(
 			null,
 			null,
 			$module,
 			$DOM,
-			$caller
+			$specs
 		);
 		return $hookHandler->process();
 	}
@@ -81,13 +81,13 @@ abstract class BSUEModulePDFBeforeCreatePDF extends Hook {
 	 * @param Config $config
 	 * @param BsUniversalExportModule $module
 	 * @param array $DOM
-	 * @param SpecialUniversalExport $caller
+	 * @param ExportSpecification $specs
 	 */
-	public function __construct( $context, $config, $module, $DOM, $caller ) {
+	public function __construct( $context, $config, $module, $DOM, $specs ) {
 		parent::__construct( $context, $config );
 
 		$this->module = $module;
 		$this->DOM = $DOM;
-		$this->caller = $caller;
+		$this->specs = $specs;
 	}
 }

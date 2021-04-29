@@ -3,9 +3,9 @@
 namespace BlueSpice\UEModulePDF\ExportSubaction;
 
 use BlueSpice\UEModulePDF\ExportSubaction\Subpages as PDFSubpages;
+use BlueSpice\UniversalExport\ExportSpecification;
 use BsPDFPageProvider;
 use Message;
-use SpecialUniversalExport;
 use Title;
 use WebRequest;
 
@@ -16,19 +16,17 @@ class Recursive extends PDFSubpages {
 	/**
 	 * @inheritDoc
 	 */
-	public function applies( WebRequest $request ) {
-		$params = $request->getArray( 'ue', [] );
-
-		return isset( $params['recursive'] ) && (bool)$params['recursive'];
+	public function applies( ExportSpecification $specification ) {
+		return (bool)$specification->getParam( 'recursive', 0 );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function apply( &$template, &$contents, $caller ) {
+	public function apply( &$template, &$contents, $specification ) {
 		$this->contents = $contents;
 
-		return parent::apply( $template, $contents, $caller );
+		return parent::apply( $template, $contents, $specification );
 	}
 
 	/**
@@ -67,10 +65,10 @@ class Recursive extends PDFSubpages {
 
 	/**
 	 *
-	 * @param SpecialUniversalExport $caller
+	 * @param ExportSpecification $specs
 	 * @return array
 	 */
-	protected function findIncludedTitles( $caller ) {
+	protected function findIncludedTitles( $specs ) {
 		$linkdedTitles = [];
 		$rootTitleDom = $this->contents['content'][0];
 
@@ -102,7 +100,7 @@ class Recursive extends PDFSubpages {
 			}
 
 			$pm = $this->services->getPermissionManager();
-			$userCan = $pm->userCan( 'read', $caller->getUser(), $title );
+			$userCan = $pm->userCan( 'read', $specs->getUser(), $title );
 			if ( !$userCan ) {
 				continue;
 			}

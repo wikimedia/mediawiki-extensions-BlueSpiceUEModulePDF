@@ -38,8 +38,8 @@ class Subpages extends SubpagesBase {
 		$this->pdfModule = $pdfModule;
 	}
 
-	public function apply( &$template, &$contents, $caller ) {
-		parent::apply( $template, $contents, $caller );
+	public function apply( &$template, &$contents, $specification ) {
+		parent::apply( $template, $contents, $specification );
 
 		foreach ( $contents['content'] as $oDom ) {
 			$this->rewriteLinks( $oDom, $this->titleMap );
