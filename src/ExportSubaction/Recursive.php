@@ -69,12 +69,12 @@ class Recursive extends PDFSubpages {
 	 * @return array
 	 */
 	protected function findIncludedTitles( $specs ) {
-		$linkdedTitles = [];
+		$linkedTitles = [];
 		$rootTitleDom = $this->contents['content'][0];
 
 		$links = $rootTitleDom->getElementsByTagName( 'a' );
-
 		foreach ( $links as $link ) {
+
 			$class = $link->getAttribute( 'class' );
 			$classes = explode( ' ', $class );
 			$excludeClasses = [ 'new', 'external', 'media' ];
@@ -95,11 +95,11 @@ class Recursive extends PDFSubpages {
 			}
 
 			// Avoid double export
-			if ( in_array( $title->getPrefixedText(), $linkdedTitles ) ) {
+			if ( in_array( $title->getPrefixedText(), $linkedTitles ) ) {
 				continue;
 			}
 
-			$userCan = $title->userCan( $specs->getUser(), 'read' );
+			$userCan = $title->userCan( 'read', $specs->getUser() );
 			if ( !$userCan ) {
 				continue;
 			}
@@ -114,16 +114,16 @@ class Recursive extends PDFSubpages {
 				continue;
 			}
 
-			$linkdedTitles = array_merge(
-				$linkdedTitles,
+			$linkedTitles = array_merge(
+				$linkedTitles,
 				[
 					$title->getPrefixedText() => $pageContent
 				]
 			);
 		}
 
-		ksort( $linkdedTitles );
+		ksort( $linkedTitles );
 
-		return $linkdedTitles;
+		return $linkedTitles;
 	}
 }
