@@ -246,6 +246,9 @@ class PDFFileResolver {
 	}
 
 	private function checkPermission() {
+		if ( !$this->oFileTitle ) {
+			return false;
+		}
 		$this->isAllowed = $this->oFileTitle->userCan( 'read' );
 	}
 
