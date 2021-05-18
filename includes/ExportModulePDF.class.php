@@ -60,10 +60,13 @@ class BsExportModulePDF extends ExportModule {
 	protected function getTemplateParams( $specification, $page ) {
 		$params = parent::getTemplateParams( $specification, $page );
 
-		return array_merge( $params, [
-			'path'     => $this->config->get( 'UEModulePDFTemplatePath' ),
-			'template' => $this->config->get( 'UEModulePDFDefaultTemplate' ),
-		] );
+		return array_merge(
+			[
+				'path'     => $this->config->get( 'UEModulePDFTemplatePath' ),
+				'template' => $this->config->get( 'UEModulePDFDefaultTemplate' ),
+			],
+			$params
+		);
 	}
 
 	/**
