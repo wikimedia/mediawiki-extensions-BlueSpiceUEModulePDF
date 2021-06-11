@@ -23,5 +23,13 @@
 	"soap-service-url-not-set": "產生 PDF 網路服務的 URL 未設定。請檢查 wiki 設置。",
 	"bs-uemodulepdf-overview-webservice-webadmin": "後台網路介面",
 	"action-uemodulepdf-export": "匯出頁面成 PDF",
-	"right-uemodulepdf-export": "輸出頁面到 RDF"
+	"right-uemodulepdf-export": "輸出頁面到 RDF",
+	"bs-uemodulepdf-widgetlink-subpages-text": "帶有子頁面的 PDF 頁面",
+	"bs-uemodulepdf-widgetlink-subpages-title": "匯出此頁面與所有子頁面成為 PDF。",
+	"action-uemodulepdfsubpages-export": "匯出頁面，包含所有子頁面，轉成 PDF",
+	"right-uemodulepdfsubpages-export": "匯出頁面，包含所有子頁面，轉成 PDF",
+	"bs-uemodulepdf-widgetlink-recursive-text": "帶有連結頁面的 PDF 頁面",
+	"bs-uemodulepdf-widgetlink-recursive-title": "匯出此頁面以及所有連結到的頁面為 PDF。",
+	"right-uemodulepdfrecursive-export": "匯出頁面、包含所有連結到的頁面成為 PDF。",
+	"action-uemodulepdfrecursive-export": "匯出頁面、包含所有連結到的頁面成為 PDF。"
 }

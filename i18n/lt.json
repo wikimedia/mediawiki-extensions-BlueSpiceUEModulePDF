@@ -16,5 +16,6 @@
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "neprieinamas",
 	"soap-service-url-not-valid": "URL į PDF generuojančią internetinę paslaugą yra negalima. Prašome patikrinti vikį konfigūraciją.",
 	"soap-service-url-not-set": "URL į PDF generuojančią internetinę paslaugą yra nenustatyta. Prašome patikrinti vikį konfigūraciją.",
-	"bs-uemodulepdf-overview-webservice-webadmin": "Posistemės internetinė sąsaja"
+	"bs-uemodulepdf-overview-webservice-webadmin": "Posistemės internetinė sąsaja",
+	"bs-uemodulepdf-widgetlink-subpages-text": "PDF puslapis su polapiais"
 }

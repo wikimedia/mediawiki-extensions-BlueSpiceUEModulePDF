@@ -7,5 +7,8 @@
 	"bs-uemodulepdf-overview-webservice-state-ok": "disponibile",
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "non disponibile",
 	"action-uemodulepdf-export": "esportare una pagina in PDF",
-	"right-uemodulepdf-export": "Esporta le pagine in PDF"
+	"right-uemodulepdf-export": "Esporta le pagine in PDF",
+	"bs-uemodulepdf-widgetlink-subpages-title": "Esporta questa pagine e tutte le sue sottopagine come PDF.",
+	"action-uemodulepdfsubpages-export": "esportare una pagina, comprese tutte le sue sottopagine, come PDF",
+	"right-uemodulepdfsubpages-export": "Esporta una pagina, comprese tutte le sue sottopagine, come PDF"
 }
