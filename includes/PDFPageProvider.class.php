@@ -416,31 +416,27 @@ class BsPDFPageProvider {
 	 * @param DOMElement &$oTBody
 	 */
 	protected static function findTableHeads( &$oTableElement, &$oPageDOM, $aRows, &$oTHead, &$oTBody ) {
-		// Table head should only be duplicated after pagebreak if all columns of the first row have th.
-		// If only the first column of the first row has th it could be that th is use for rows.
-		// th in the middle of a colum are used as separators and sould stay at this position (only).
+		// Table head can use more than one row (rowspan).
+		// Table head should only be duplicated after pagebreak if all columns of the first row('s) have 'th'.
+		// If only the first column of the first row has 'th' it could be that 'th' is use for rows.
+		// 'th' in the middle of a colum are used as separators and sould stay at this position (only).
 
 		$firstRow = true;
 		foreach ( $aRows as $oTableRow ) {
 			if ( $firstRow ) {
 				$oTHs = $oTableRow->getElementsByTagName( 'th' );
-				$oTDs = $oTableRow->getElementsByTagName( 'td' ); // must be 0 if all columns are th
-				$firstRow = false;
+				// 'td' must be 0 if all columns are th
+				$oTDs = $oTableRow->getElementsByTagName( 'td' );
 
 				if ( ( $oTHs->length == 0 ) || ( $oTDs->length > 0 ) ) {
+					$firstRow = false;
 					continue;
-				}
-				if ( $oTBody->hasChildNodes() ) {
-					$oTableElement->appendChild( $oTBody );
-					$oTBody = $oPageDOM->createElement( 'tbody' );
 				}
 				$oTHead->appendChild( $oTableRow );
 			} else {
 				if ( $oTHead->hasChildNodes() ) {
 					$oTableElement->appendChild( $oTHead );
-					$oTHead = $oPageDOM->createElement( 'thead' );
 				}
-				$oTBody->appendChild( $oTableRow );
 			}
 		}
 	}
@@ -462,7 +458,8 @@ class BsPDFPageProvider {
 				self::findTableRows( $oTableBody, $aRows );
 
 				$oTHead = $oPageDOM->createElement( 'thead' );
-				$oTBody = $oPageDOM->createElement( 'tbody' );
+				$oTBody = $oTableBody;
+				$oTableElement->removeChild( $oTableBody );
 
 				self::findTableHeads( $oTableElement, $oPageDOM, $aRows, $oTHead, $oTBody );
 
