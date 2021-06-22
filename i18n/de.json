@@ -29,5 +29,6 @@
 	"bs-uemodulepdf-widgetlink-recursive-text": "PDF Seite mit Verlinkungen",
 	"bs-uemodulepdf-widgetlink-recursive-title": "Diese und alle verlinkten Seiten im PDF Format ausgeben.",
 	"right-uemodulepdfrecursive-export": "Exportieren einer Seite einschließlich aller verlinkten Seiten als PDF-Datei",
-	"action-uemodulepdfrecursive-export": "eine Seite einschließlich aller verlinkten Seiten als PDF-Datei zu exportieren"
+	"action-uemodulepdfrecursive-export": "eine Seite einschließlich aller verlinkten Seiten als PDF-Datei zu exportieren",
+	"bs-uemodulepdf-pref-suppressns-help": "Der Namensraum der Seite wird in der PDF-Titelzeile unterdrückt."
 }
