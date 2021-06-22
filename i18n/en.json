@@ -27,5 +27,6 @@
 	"bs-uemodulepdf-widgetlink-recursive-text": "PDF page with linked pages",
 	"bs-uemodulepdf-widgetlink-recursive-title": "Export this page and all linked pages as PDF.",
 	"right-uemodulepdfrecursive-export": "Export a page, including all linked pages, to PDF",
-	"action-uemodulepdfrecursive-export": "export a page, including all linked pages, to PDF"
+	"action-uemodulepdfrecursive-export": "export a page, including all linked pages, to PDF",
+	"bs-uemodulepdf-pref-suppressns-help": "The namespace of the page is omitted from the PDF title."
 }

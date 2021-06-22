@@ -32,5 +32,6 @@
 	"bs-uemodulepdf-widgetlink-recursive-text": "Short text for the link, that exports the page and its linked pages as PDF",
 	"bs-uemodulepdf-widgetlink-recursive-title": "Title for the link, that exports the page and its linked pages as PDF",
 	"right-uemodulepdfrecursive-export": "{{doc-right|uemodulepdfrecursive-export}}",
-	"action-uemodulepdfrecursive-export": "{{doc-action|uemodulepdfrecursive-export}}"
+	"action-uemodulepdfrecursive-export": "{{doc-action|uemodulepdfrecursive-export}}",
+	"bs-uemodulepdf-pref-suppressns-help": "Description for config variable \"UEModulePDFSuppressNS\""
 }
