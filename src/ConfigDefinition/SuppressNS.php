@@ -15,4 +15,8 @@ class SuppressNS extends \BlueSpice\ConfigDefinition\BooleanSetting {
 	public function getLabelMessageKey() {
 		return 'bs-uemodulepdf-pref-suppressns';
 	}
+
+	public function getHelpMessageKey() {
+		return 'bs-uemodulepdf-pref-suppressns-help';
+	}
 }
