@@ -12,6 +12,7 @@
  * @filesource
  */
 
+use BlueSpice\UEModulePDF\TemplatePathProvider;
 use MediaWiki\MediaWikiServices;
 
 /**
@@ -68,11 +69,8 @@ class BsPDFTemplateProvider {
 			$aParams
 		);
 
-		$sPath = $GLOBALS['IP'] . '/' . str_replace( $GLOBALS['IP'] . '/', '', $aParams['path'] );
-		$sTemplatePath = $sPath . '/' . $aParams['template'];
-		if ( !file_exists( $sTemplatePath ) ) {
-			throw new BsException( 'Requested template not found! Path:' . $sTemplatePath );
-		}
+		$sTemplatePath = TemplatePathProvider::newFromGlobals()
+			->getPath( $aParams['path'], $aParams['template'] );
 		$sTemplateDescriptor = $sTemplatePath . '/template.php';
 		$sTemplateMarkup     = $sTemplatePath . '/template.html';
 		$aTemplate           = include $sTemplateDescriptor;
