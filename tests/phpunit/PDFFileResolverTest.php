@@ -18,7 +18,7 @@ class PDFFileResolverTest extends BSApiTestCase {
 		'Template:Dummy.JPG' => 'dummy.JPG'
 	];
 
-	protected function setUp() : void {
+	protected function setUp(): void {
 		parent::setUp();
 
 		foreach ( $this->aNames as $sName => $sFile ) {
