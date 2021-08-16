@@ -5,6 +5,7 @@
 			"Ykhwong"
 		]
 	},
+	"bs-uemodulepdf-desc": "미디어위키가 PDF 포맷으로 문서를 내보낼 수 있게 합니다",
 	"bs-uemodulepdf-pref-suppressns": "PDF에서 이름공간 접두어 숨김",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "PDF 단일 문서",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "이 페이지를 PDF로 내보냅니다.",
@@ -20,6 +21,8 @@
 	"right-uemodulepdf-export": "문서를 PDF로 내보내기",
 	"bs-uemodulepdf-widgetlink-subpages-text": "하위 문서가 있는 PDF 문서",
 	"bs-uemodulepdf-widgetlink-subpages-title": "이 문서와 모든 하위 문서를 PDF로 내보냅니다.",
+	"action-uemodulepdfsubpages-export": "모든 하위 문서를 포함하여 문서를 PDF로 내보내기",
+	"right-uemodulepdfsubpages-export": "모든 하위 문서를 포함하여 문서를 PDF로 내보내기",
 	"bs-uemodulepdf-widgetlink-recursive-text": "링크된 페이지가 있는 PDF 문서",
 	"bs-uemodulepdf-widgetlink-recursive-title": "이 문서 및 링크된 모든 문서를 PDF로 내보냅니다.",
 	"right-uemodulepdfrecursive-export": "링크된 모든 문서를 포함하여 문서를 PDF로 내보내기",
