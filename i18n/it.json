@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Stefano"
 		]
 	},
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Permette l'esportazione in PDF",
 	"bs-uemodulepdf-overview-webservice-state-ok": "disponibile",
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "non disponibile",
 	"action-uemodulepdf-export": "esportare una pagina in PDF",
