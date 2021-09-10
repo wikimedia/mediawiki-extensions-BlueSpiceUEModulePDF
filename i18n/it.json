@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Stefano"
 		]
 	},
 	"bs-uemodulepdf-overview-webservice-state-ok": "disponibile",
@@ -10,5 +11,6 @@
 	"right-uemodulepdf-export": "Esporta le pagine in PDF",
 	"bs-uemodulepdf-widgetlink-subpages-title": "Esporta questa pagine e tutte le sue sottopagine come PDF.",
 	"action-uemodulepdfsubpages-export": "esportare una pagina, comprese tutte le sue sottopagine, come PDF",
-	"right-uemodulepdfsubpages-export": "Esporta una pagina, comprese tutte le sue sottopagine, come PDF"
+	"right-uemodulepdfsubpages-export": "Esporta una pagina, comprese tutte le sue sottopagine, come PDF",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Permette l'esportazione in PDF"
 }
