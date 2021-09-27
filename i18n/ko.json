@@ -26,5 +26,6 @@
 	"bs-uemodulepdf-widgetlink-recursive-text": "링크된 페이지가 있는 PDF 문서",
 	"bs-uemodulepdf-widgetlink-recursive-title": "이 문서 및 링크된 모든 문서를 PDF로 내보냅니다.",
 	"right-uemodulepdfrecursive-export": "링크된 모든 문서를 포함하여 문서를 PDF로 내보내기",
-	"action-uemodulepdfrecursive-export": "링크된 모든 문서를 포함하여 문서를 PDF로 내보낼"
+	"action-uemodulepdfrecursive-export": "링크된 모든 문서를 포함하여 문서를 PDF로 내보낼",
+	"bs-uemodulepdf-pref-suppressns-help": "문서의 이름공간은 PDF 제목에서 생략됩니다."
 }
