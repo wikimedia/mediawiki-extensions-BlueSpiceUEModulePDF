@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Andriykopanytsia",
+			"DDPAT",
 			"NataChe",
 			"Piramidion",
 			"Vlad5250",
@@ -31,5 +32,6 @@
 	"bs-uemodulepdf-widgetlink-recursive-text": "Сторінка PDF зі сторінками, на які є посилання",
 	"bs-uemodulepdf-widgetlink-recursive-title": "Експортувати цю сторінку та всі сторінки, на які є посилання, як PDF.",
 	"right-uemodulepdfrecursive-export": "Експортування сторінки, включно з усіма сторінками, на які є посилання, в PDF",
-	"action-uemodulepdfrecursive-export": "експортування сторінки, включно з усіма сторінками, на які є посилання, в PDF"
+	"action-uemodulepdfrecursive-export": "експортування сторінки, включно з усіма сторінками, на які є посилання, в PDF",
+	"bs-uemodulepdf-pref-suppressns-help": "Простір назв сторінки опущено у заголовку PDF."
 }
