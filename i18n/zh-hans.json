@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Liuxinyu970226",
+			"Xiplus",
 			"Yfdyh000",
 			"佛壁灯"
 		]
@@ -9,7 +10,7 @@
 	"bs-uemodulepdf-desc": "启用MediaWiki以导出页面为PDF格式",
 	"prefs-uemodulepdf": "通用导出PDF模块",
 	"uemodulepdf": "通用导出PDF模块",
-	"bs-uemodulepdf-pref-suppressns": "在PDF中隐藏名字空间",
+	"bs-uemodulepdf-pref-suppressns": "在PDF中隐藏命名空间",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "PDF单一页面",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "导出此页面为PDF。",
 	"bs-uemodulepdf-overview-title": "便携文档格式（PDF）",

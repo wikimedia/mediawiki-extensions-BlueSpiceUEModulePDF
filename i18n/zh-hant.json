@@ -31,5 +31,6 @@
 	"bs-uemodulepdf-widgetlink-recursive-text": "帶有連結頁面的 PDF 頁面",
 	"bs-uemodulepdf-widgetlink-recursive-title": "匯出此頁面以及所有連結到的頁面為 PDF。",
 	"right-uemodulepdfrecursive-export": "匯出頁面、包含所有連結到的頁面成為 PDF。",
-	"action-uemodulepdfrecursive-export": "匯出頁面、包含所有連結到的頁面成為 PDF。"
+	"action-uemodulepdfrecursive-export": "匯出頁面、包含所有連結到的頁面成為 PDF。",
+	"bs-uemodulepdf-pref-suppressns-help": "PDF 標題省略頁面的命名空間。"
 }
