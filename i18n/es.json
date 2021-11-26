@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
+			"Jakeukalane",
 			"Macofe"
 		]
 	},
@@ -16,8 +17,8 @@
 	"bs-uemodulepdf-overview-webservice-state": "Estado del motor",
 	"bs-uemodulepdf-overview-webservice-state-ok": "disponible",
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "no disponible",
-	"soap-service-url-not-valid": "La URL del servicio web generador de PDF no es válida. Comprueba la configuración del wiki.",
-	"soap-service-url-not-set": "La URL del servicio web generador de PDF no está establecida. Comprueba la configuración del wiki.",
+	"soap-service-url-not-valid": "La URL del servicio web generador de PDF no es válida. Comprueba la configuración de la wiki.",
+	"soap-service-url-not-set": "La URL del servicio web generador de PDF no está establecida. Comprueba la configuración de la wiki.",
 	"bs-uemodulepdf-overview-webservice-webadmin": "Interfaz web del motor",
 	"bs-uemodulepdf-widgetlink-subpages-text": "Página PDF con subpáginas",
 	"bs-uemodulepdf-widgetlink-subpages-title": "Exportar esta página y todas las subpáginas como PDF."
