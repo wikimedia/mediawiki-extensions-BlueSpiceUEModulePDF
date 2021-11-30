@@ -40,8 +40,7 @@ return [
 			'../common/fonts/DejaVuSansMono-BoldOblique.ttf'
 		],
 		'IMAGE' => [
-			'images/bs-header.jpg',
-			'images/bs-page-background.png'
+			'images/bs-logo.png'
 		]
 	],
 

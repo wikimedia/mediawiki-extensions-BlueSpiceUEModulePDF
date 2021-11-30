@@ -13,24 +13,36 @@
 	</head>
 	<body>
 		<div id="bs-runningheaderfix">
-			<h1><bs:meta key="title" /></h1>
+			<table>
+				<tr>
+					<td>
+						<div class="bs-runningheader-logo"></div>
+					</td>
+					<td>
+						<h1 class="title">
+							<bs:meta key="title" />
+						</h1>
+					</td>
+				</tr>
+			</table>
 		</div>
-
-		<div id="bs-runningfooterleft">
-			<bs:msg key="exportdate" /> <bs:meta key="exportdate" />
+		<div id="bs-runningfooterfix">
+			<table>
+				<tr>
+					<td>
+						<bs:msg key="exportdate" /> <bs:meta key="exportdate" />
+					</td>
+					<td>
+						<bs:msg key="disclaimer" />
+						<bs:msg key="does-not-exist" />
+					</td>
+					<td>
+						<bs:msg key="page" /><span class="bs-currentpagenumber"></span>
+						<bs:msg key="of" /> <span class="bs-totalpagescount"></span>
+					</td>
+				</tr>
+			</table>
 		</div>
-
-		<div id="bs-runningfootercenter">
-			<bs:msg key="disclaimer" /> <bs:msg key="does-not-exist" />
-		</div>
-
-		<div id="bs-runningfooterright">
-			<div style="float:right">
-				<bs:msg key="page" /> <span class="bs-currentpagenumber"></span> <bs:msg key="of" /> <span class="bs-totalpagescount"></span>
-			</div>
-		</div>
-
 		<bs:content key="content" /> <!-- This is where the content is inserted before -->
-
 	</body>
 </html>
