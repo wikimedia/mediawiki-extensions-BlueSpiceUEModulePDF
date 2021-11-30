@@ -41,8 +41,7 @@ return [
 			'../common/fonts/DejaVuSansMono-BoldOblique.ttf'
 		],
 		'IMAGE' => [
-			'images/bs-header.jpg',
-			'images/bs-page-background.png'
+			'images/bs-logo.png'
 		]
 	],
 
@@ -62,12 +61,14 @@ return [
 			'exportdate'  => 'Ausgabe:',
 			'page'        => 'Seite ',
 			'of'          => ' von ',
-			'disclaimer'  => 'Dieses Dokument wurde erzeugt mit BlueSpice' ],
+			'disclaimer'  => 'Dieses Dokument wurde erzeugt mit BlueSpice'
+		],
 		'de-formal' => [
 			'desc'        => 'Dies ist das Standard-PDFTemplate von BlueSpice für den Export einzelner Artikel.',
 			'exportdate'  => 'Ausgabe:',
 			'page'        => 'Seite ',
 			'of'          => ' von ',
-			'disclaimer'  => 'Dieses Dokument wurde erzeugt mit BlueSpice' ],
+			'disclaimer'  => 'Dieses Dokument wurde erzeugt mit BlueSpice'
+		],
 	]
 ];
