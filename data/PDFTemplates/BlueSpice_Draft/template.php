@@ -24,15 +24,14 @@ return [
 			'attachments/Disclaimer.txt'
 			],
 		'STYLESHEET' => [
+			'stylesheets/draft.css',
+			'../BlueSpice/stylesheets/styles.css', // Inherit from BlueSpice
 			'../common/stylesheets/page.css',
 			'../common/stylesheets/mediawiki.css',
-			'../BlueSpice/stylesheets/styles.css', // Inherit from BlueSpice
 			'../common/stylesheets/geshi-php.css',
 			'../common/stylesheets/bluespice.css',
 			'../common/stylesheets/tables.css',
-			'stylesheets/draft.css',
 			'../common/stylesheets/fonts.css',
-			// '../common/stylesheets/debug.css',
 			'../common/fonts/DejaVuSans.ttf',
 			'../common/fonts/DejaVuSans-Bold.ttf',
 			'../common/fonts/DejaVuSans-Oblique.ttf',
@@ -43,7 +42,7 @@ return [
 			'../common/fonts/DejaVuSansMono-BoldOblique.ttf'
 		],
 		'IMAGE' => [
-			'../BlueSpice/images/bs-header.jpg',
+			'../BlueSpice/images/bs-logo.png',
 			'images/bs-draft.png'
 		]
 	],
