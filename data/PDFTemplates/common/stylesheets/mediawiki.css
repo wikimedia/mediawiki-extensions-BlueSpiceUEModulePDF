@@ -448,3 +448,8 @@ select > option[selected] {
 .mw-lingo-tooltip {
 	display: none;
 }
+
+/* MediaWiki Core default class. Used by extensions, e.g. "FlagedRevs" */
+.noprint {
+	display: none;
+}
