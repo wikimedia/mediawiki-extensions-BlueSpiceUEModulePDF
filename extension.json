@@ -75,7 +75,6 @@
 	"AutoloadClasses": {
 		"BsPDFPageProvider": "includes/PDFPageProvider.class.php",
 		"BsPDFTemplateProvider": "includes/PDFTemplateProvider.class.php",
-		"BsPDFWebService": "includes/PDFWebService.class.php",
 		"BsPDFServlet": "includes/PDFServlet.class.php",
 		"BsExportModulePDF": "includes/ExportModulePDF.class.php",
 		"PDFFileResolver": "includes/PDFFileResolver.php"
