@@ -11,6 +11,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GPL-3.0-only
  * @filesource
  */
+
+use BlueSpice\UEModulePDF\PDFServletHookRunner;
 use MediaWiki\MediaWikiServices;
 
 /**
@@ -63,13 +65,10 @@ class BsPDFServlet {
 		global $bsgUEModulePDFCURLOptions;
 		$aOptions = array_merge_recursive( $aOptions, $bsgUEModulePDFCURLOptions );
 
-		MediaWikiServices::getInstance()->getHookContainer()->run(
-			'BSUEModulePDFCreatePDFBeforeSend',
-			[
-				$this,
-				&$aOptions,
-				$oHtmlDOM
-			]
+		$this->hookRunner->onBSUEModulePDFCreatePDFBeforeSend(
+			$this,
+			$aOptions,
+			$oHtmlDOM
 		);
 
 		$vHttpEngine = Http::$httpEngine;
@@ -178,16 +177,24 @@ class BsPDFServlet {
 	protected $aFiles = [];
 
 	/**
+	 *
+	 * @var PDFServletHookRunner
+	 */
+	private $hookRunner = null;
+
+	/**
 	 * The contructor method forthis class.
 	 * @param array &$aParams The params have to contain the key
 	 * 'soap-service-url', with a valid URL to the webservice. They can
 	 * contain a key 'soap-connection-options' for the SoapClient constructor
 	 * and a key 'resources' with al list of files to upload.
+	 * @param PDFServletHookRunner $hookRunner
 	 * @throws UnexpectedValueException If 'soap-service-url' is not set or the Webservice is not available.
 	 */
-	public function __construct( &$aParams ) {
+	public function __construct( &$aParams, PDFServletHookRunner $hookRunner ) {
 		$this->aParams = $aParams;
 		$this->aFiles = $aParams['resources'];
+		$this->hookRunner = $hookRunner;
 
 		if ( empty( $this->aParams['soap-service-url'] ) ) {
 			throw new UnexpectedValueException( 'soap-service-url-not-set' );
@@ -230,53 +237,24 @@ class BsPDFServlet {
 
 			$sFileName = $oFileResolver->getFileName();
 			$sAbsoluteFileSystemPath = $oFileResolver->getAbsoluteFilesystemPath();
-			MediaWikiServices::getInstance()->getHookContainer()->run(
-				'BSUEModulePDFFindFiles',
-				[
-					$this,
-					$oImageElement,
-					&$sAbsoluteFileSystemPath,
-					&$sFileName,
-					'images'
-				]
-			);
-			MediaWikiServices::getInstance()->getHookContainer()->run(
-				'BSUEModulePDFWebserviceFindFiles',
-				[
-					$this,
-					$oImageElement,
-					&$sAbsoluteFileSystemPath,
-					&$sFileName,
-					'images'
-				]
+			$this->hookRunner->onBSUEModulePDFFindFiles(
+				$this,
+				$oImageElement,
+				$sAbsoluteFileSystemPath,
+				$sFileName,
+				'images'
 			);
 			$this->aFiles['images'][$sFileName] = $sAbsoluteFileSystemPath;
 		}
 
 		$oDOMXPath = new DOMXPath( $oHtml );
 
-		/*
-		 * This is now in template
-		//Find all CSS files
-		$oLinkElements = $oHtml->getElementsByTagName( 'link' ); // TODO RBV (02.02.11 16:48): Limit to rel="stylesheet" and type="text/css"
-		foreach( $oLinkElements as $oLinkElement ) {
-			$sHrefUrl = $oLinkElement->getAttribute( 'href' );
-			$sHrefFilename           = basename( $sHrefUrl );
-			$sAbsoluteFileSystemPath = $this->getFileSystemPath( $sHrefUrl );
-			$this->aFiles[ $sAbsoluteFileSystemPath ] = array( $sHrefFilename, 'STYLESHEET' );
-			$oLinkElement->setAttribute( 'href', 'stylesheets/'.$sHrefFilename );
-		}
-		 */
-
-		MediaWikiServices::getInstance()->getHookContainer()->run(
-			'BSUEModulePDFAfterFindFiles',
-			[
-				$this,
-				$oHtml,
-				&$this->aFiles,
-				$this->aParams,
-				$oDOMXPath
-			]
+		$this->hookRunner->onBSUEModulePDFAfterFindFiles(
+			$this,
+			$oHtml,
+			$this->aFiles,
+			$this->aParams,
+			$oDOMXPath
 		);
 		return true;
 	}
@@ -302,13 +280,10 @@ class BsPDFServlet {
 			);
 		}
 
-		MediaWikiServices::getInstance()->getHookContainer()->run(
-			'BSUEModulePDFUploadFilesBeforeSend',
-			[
-				$this,
-				&$aPostData,
-				$sType
-			]
+		$this->hookRunner->onBSUEModulePDFUploadFilesBeforeSend(
+			$this,
+			$aPostData,
+			$sType
 		);
 
 		$aOptions['postData'] = $aPostData;

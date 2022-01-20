@@ -13,6 +13,7 @@
 
 use BlueSpice\UEModulePDF\ExportSubaction\Recursive;
 use BlueSpice\UEModulePDF\ExportSubaction\Subpages;
+use BlueSpice\UEModulePDF\PDFServletHookRunner;
 use BlueSpice\UniversalExport\ExportModule;
 use BlueSpice\UniversalExport\ExportSpecification;
 use MediaWiki\MediaWikiServices;
@@ -137,7 +138,9 @@ class BsExportModulePDF extends ExportModule {
 	 */
 	protected function getExportedContent( $specs, &$template ) {
 		$params = $specs->getParams();
-		$backend = new BsPDFServlet( $params );
+		$hookContainer = $this->getServices()->getHookContainer();
+		$hookRunner = new PDFServletHookRunner( $hookContainer );
+		$backend = new BsPDFServlet( $params, $hookRunner );
 		return $backend->createPDF( $template['dom'] );
 	}
 
