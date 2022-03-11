@@ -32,5 +32,5 @@
 	"bs-uemodulepdf-widgetlink-recursive-title": "Exporter cette page et toutes les pages liées en PDF.",
 	"right-uemodulepdfrecursive-export": "exporter une page, y compris toutes les pages liées, en PDF",
 	"action-uemodulepdfrecursive-export": "exporter une page, y compris toutes les pages liées, en PDF",
-	"bs-uemodulepdf-pref-suppressns-help": "L’espace de nom de la page est omis du titre du PDF."
+	"bs-uemodulepdf-pref-suppressns-help": "L’espace de noms de la page est omis du titre du PDF."
 }
