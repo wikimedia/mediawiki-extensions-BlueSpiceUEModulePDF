@@ -3,7 +3,8 @@
 		"authors": [
 			"Fitoschido",
 			"Jakeukalane",
-			"Macofe"
+			"Macofe",
+			"DiegoAmbrocio"
 		]
 	},
 	"bs-uemodulepdf-desc": "Permite que MediaWiki exporte páginas en el formato PDF",
@@ -20,6 +21,15 @@
 	"soap-service-url-not-valid": "La URL del servicio web generador de PDF no es válida. Comprueba la configuración de la wiki.",
 	"soap-service-url-not-set": "La URL del servicio web generador de PDF no está establecida. Comprueba la configuración de la wiki.",
 	"bs-uemodulepdf-overview-webservice-webadmin": "Interfaz web del motor",
+	"action-uemodulepdf-export": "exportar una página a PDF",
+	"right-uemodulepdf-export": "Exportar una página a PDF",
 	"bs-uemodulepdf-widgetlink-subpages-text": "Página PDF con subpáginas",
-	"bs-uemodulepdf-widgetlink-subpages-title": "Exportar esta página y todas las subpáginas como PDF."
+	"bs-uemodulepdf-widgetlink-subpages-title": "Exportar esta página y todas las subpáginas como PDF.",
+	"action-uemodulepdfsubpages-export": "exportar una página, incluyendo todas las subpáginas, a PDF",
+	"right-uemodulepdfsubpages-export": "Exportar una página, incluyendo todas las subpáginas, a PDF",
+	"bs-uemodulepdf-widgetlink-recursive-text": "Página en PDF con páginas enlazadas",
+	"bs-uemodulepdf-widgetlink-recursive-title": "Exportar esta página y todas las páginas enlazadas como PDF.",
+	"right-uemodulepdfrecursive-export": "Exportar una página, incluyendo todas las páginas enlazadas, a PDF",
+	"action-uemodulepdfrecursive-export": "exportar una página, incluyendo todas las páginas enlazadas, a PDF",
+	"bs-uemodulepdf-pref-suppressns-help": "El espacio de nombres de la página se omite en el título del PDF."
 }
