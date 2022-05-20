@@ -33,5 +33,11 @@
 	"bs-uemodulepdf-widgetlink-recursive-title": "Title for the link, that exports the page and its linked pages as PDF",
 	"right-uemodulepdfrecursive-export": "{{doc-right|uemodulepdfrecursive-export}}",
 	"action-uemodulepdfrecursive-export": "{{doc-action|uemodulepdfrecursive-export}}",
-	"bs-uemodulepdf-pref-suppressns-help": "Description for config variable \"UEModulePDFSuppressNS\""
+	"bs-uemodulepdf-pref-suppressns-help": "Description for config variable \"UEModulePDFSuppressNS\"",
+	"bs-uemodulepdf-export-dialog-label-module-name": "Label for dropdown select widget to choose export module pdf in export dialog",
+	"bs-uemodulepdf-export-dialog-label-select-submodule": "Label for radio select widget to choose submodule for pdf export in export dialog",
+	"bs-uemodulepdf-export-dialog-label-select-template": "Label for dropdown select widget to choose template for pdf export in export dialog",
+	"bs-uemodulepdf-export-dialog-label-submodule-default": "Label for radio select widget option default in export dialog",
+	"bs-uemodulepdf-export-dialog-label-submodule-recursive": "Label for radio select widget option recursive in export dialog",
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Label for radio select widget option subpages in export dialog"
 }

@@ -48,6 +48,11 @@
 		"BlueSpiceUniversalExport": {
 			"ModuleRegistry": {
 				"pdf": "\\BsExportModulePDF::factory"
+			},
+			"ExportDialogPluginRegistry": {
+				"pdf": {
+					"factory": "\\BlueSpice\\UEModulePDF\\ExportDialogPluginPage::factory"
+				}
 			}
 		}
 	},
@@ -101,6 +106,28 @@
 		"UEModulePDFAllowPartialExport": {
 			"value": false
 		}
+	},
+	"ResourceModules": {
+		"ext.bluespice.ueModulePDF.ue-export-dialog-plugin.pdf": {
+			"scripts": [
+				"ui/plugin/ExportDialogPlugin.Pdf.js"
+			],
+			"dependencies": [
+				"ext.bluespice.universalExport.exportDialog"
+			],
+			"messages": [
+				"bs-uemodulepdf-export-dialog-label-module-name",
+				"bs-uemodulepdf-export-dialog-label-select-submodule",
+				"bs-uemodulepdf-export-dialog-label-select-template",
+				"bs-uemodulepdf-export-dialog-label-submodule-default",
+				"bs-uemodulepdf-export-dialog-label-submodule-recursive",
+				"bs-uemodulepdf-export-dialog-label-submodule-subpages"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceUEModulePDF/resources"
 	},
 	"manifest_version": 2,
 	"load_composer_autoloader": true

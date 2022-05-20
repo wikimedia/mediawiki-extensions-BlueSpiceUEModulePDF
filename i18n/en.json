@@ -28,5 +28,11 @@
 	"bs-uemodulepdf-widgetlink-recursive-title": "Export this page and all linked pages as PDF.",
 	"right-uemodulepdfrecursive-export": "Export a page, including all linked pages, to PDF",
 	"action-uemodulepdfrecursive-export": "export a page, including all linked pages, to PDF",
-	"bs-uemodulepdf-pref-suppressns-help": "The namespace of the page is omitted from the PDF title."
+	"bs-uemodulepdf-pref-suppressns-help": "The namespace of the page is omitted from the PDF title.",
+	"bs-uemodulepdf-export-dialog-label-module-name": "PDF page",
+	"bs-uemodulepdf-export-dialog-label-select-submodule": "Scope",
+	"bs-uemodulepdf-export-dialog-label-select-template": "Layout",
+	"bs-uemodulepdf-export-dialog-label-submodule-default": "Only this page",
+	"bs-uemodulepdf-export-dialog-label-submodule-recursive": "Include recursive linked",
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Include subpages"
 }

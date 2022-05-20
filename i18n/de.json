@@ -30,5 +30,11 @@
 	"bs-uemodulepdf-widgetlink-recursive-title": "Diese und alle verlinkten Seiten im PDF Format ausgeben.",
 	"right-uemodulepdfrecursive-export": "Exportieren einer Seite einschließlich aller verlinkten Seiten als PDF-Datei",
 	"action-uemodulepdfrecursive-export": "eine Seite einschließlich aller verlinkten Seiten als PDF-Datei zu exportieren",
-	"bs-uemodulepdf-pref-suppressns-help": "Der Namensraum der Seite wird in der PDF-Titelzeile unterdrückt."
+	"bs-uemodulepdf-pref-suppressns-help": "Der Namensraum der Seite wird in der PDF-Titelzeile unterdrückt.",
+	"bs-uemodulepdf-export-dialog-label-module-name": "PDF Einzelseite",
+	"bs-uemodulepdf-export-dialog-label-select-submodule": "Umfang",
+	"bs-uemodulepdf-export-dialog-label-select-template": "Layout",
+	"bs-uemodulepdf-export-dialog-label-submodule-default": "Nur diese Seite",
+	"bs-uemodulepdf-export-dialog-label-submodule-recursive": "Seite mit verlinkten Seiten",
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Seite mir Unterseiten"
 }
