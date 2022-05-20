@@ -9,7 +9,6 @@
 		<exclude name="MediaWiki.NamingConventions.ValidGlobalName.allowedPrefix" />
 		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeSingleLineComment.NewLineComment" />
 		<exclude name="Generic.Files.LineLength.TooLong" />
-		<exclude name="Generic.PHP.NoSilencedErrors.Discouraged" />
 	</rule>
 	<file>.</file>
 	<arg name="extensions" value="php"/>
