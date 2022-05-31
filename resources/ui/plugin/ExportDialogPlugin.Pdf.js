@@ -33,8 +33,8 @@ bs.ue.ui.plugin.Pdf.prototype.getPanel = function () {
 	for ( var index = 0; index < availableTemplates.length; index++ ) {
 		templates.push(
 			{
-				label: availableTemplates[index].replace( '_', ' ' ),
-				data: availableTemplates[index]
+				label: availableTemplates[ index ].replace( '_', ' ' ),
+				data: availableTemplates[ index ]
 			}
 		);
 	}
@@ -46,17 +46,17 @@ bs.ue.ui.plugin.Pdf.prototype.getPanel = function () {
 		$content: ''
 	} );
 
-	fieldset = new OO.ui.FieldsetLayout();
+	var fieldset = new OO.ui.FieldsetLayout();
 
 	/* Select submodule */
 	this.subModuleSelect = new OO.ui.RadioSelectInputWidget( {
-		options:[ {
+		options: [ {
 			data: 'default',
 			label: mw.message( 'bs-uemodulepdf-export-dialog-label-submodule-default' ).text()
-		},{
+		}, {
 			data: 'subpages',
 			label: mw.message( 'bs-uemodulepdf-export-dialog-label-submodule-subpages' ).text()
-		},{
+		}, {
 			data: 'recursive',
 			label: mw.message( 'bs-uemodulepdf-export-dialog-label-submodule-recursive' ).text()
 		} ]
@@ -69,7 +69,7 @@ bs.ue.ui.plugin.Pdf.prototype.getPanel = function () {
 			this.subModuleSelect,
 			{
 				align: 'left',
-				label:  mw.message( 'bs-uemodulepdf-export-dialog-label-select-submodule' ).text()
+				label: mw.message( 'bs-uemodulepdf-export-dialog-label-select-submodule' ).text()
 			}
 		)
 	] );
@@ -92,7 +92,7 @@ bs.ue.ui.plugin.Pdf.prototype.getPanel = function () {
 			this.templateSelect,
 			{
 				align: 'left',
-				label:  mw.message( 'bs-uemodulepdf-export-dialog-label-select-template' ).text()
+				label: mw.message( 'bs-uemodulepdf-export-dialog-label-select-template' ).text()
 			}
 		)
 	] );
@@ -104,7 +104,7 @@ bs.ue.ui.plugin.Pdf.prototype.getPanel = function () {
 
 bs.ue.ui.plugin.Pdf.prototype.getParams = function () {
 	var params = {
-		module: 'pdf',
+		module: 'pdf'
 	};
 
 	if ( this.template !== this.defaultTemplate ) {
@@ -113,7 +113,7 @@ bs.ue.ui.plugin.Pdf.prototype.getParams = function () {
 
 	var subModule = this.subModuleSelect.getValue();
 	if ( subModule !== 'default' ) {
-		params[subModule] = 1;
+		params[ subModule ] = 1;
 	}
 
 	return params;
@@ -121,4 +121,4 @@ bs.ue.ui.plugin.Pdf.prototype.getParams = function () {
 
 bs.ue.ui.plugin.Pdf.prototype.onChangeTemplate = function () {
 	this.template = this.templateSelect.getValue();
-}
+};
