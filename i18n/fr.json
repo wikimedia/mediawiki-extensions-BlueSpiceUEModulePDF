@@ -32,5 +32,11 @@
 	"bs-uemodulepdf-widgetlink-recursive-title": "Exporter cette page et toutes les pages liées en PDF.",
 	"right-uemodulepdfrecursive-export": "exporter une page, y compris toutes les pages liées, en PDF",
 	"action-uemodulepdfrecursive-export": "exporter une page, y compris toutes les pages liées, en PDF",
-	"bs-uemodulepdf-pref-suppressns-help": "L’espace de noms de la page est omis du titre du PDF."
+	"bs-uemodulepdf-pref-suppressns-help": "L’espace de noms de la page est omis du titre du PDF.",
+	"bs-uemodulepdf-export-dialog-label-module-name": "Page PDF",
+	"bs-uemodulepdf-export-dialog-label-select-submodule": "Portée",
+	"bs-uemodulepdf-export-dialog-label-select-template": "Mise en page",
+	"bs-uemodulepdf-export-dialog-label-submodule-default": "Seulement cette page",
+	"bs-uemodulepdf-export-dialog-label-submodule-recursive": "Inclure les pages liées récursivement",
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Inclure les sous-pages"
 }
