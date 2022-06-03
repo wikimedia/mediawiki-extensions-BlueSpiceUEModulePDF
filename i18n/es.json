@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"DiegoAmbrocio",
+			"Enly M",
 			"Fitoschido",
 			"Jakeukalane",
 			"Macofe"
@@ -31,5 +32,11 @@
 	"bs-uemodulepdf-widgetlink-recursive-title": "Exportar esta página y todas las páginas enlazadas como PDF.",
 	"right-uemodulepdfrecursive-export": "Exportar una página, incluyendo todas las páginas enlazadas, a PDF",
 	"action-uemodulepdfrecursive-export": "exportar una página, incluyendo todas las páginas enlazadas, a PDF",
-	"bs-uemodulepdf-pref-suppressns-help": "El espacio de nombres de la página se omite en el título del PDF."
+	"bs-uemodulepdf-pref-suppressns-help": "El espacio de nombres de la página se omite en el título del PDF.",
+	"bs-uemodulepdf-export-dialog-label-module-name": "Página PDF",
+	"bs-uemodulepdf-export-dialog-label-select-submodule": "Alcance",
+	"bs-uemodulepdf-export-dialog-label-select-template": "Diseño",
+	"bs-uemodulepdf-export-dialog-label-submodule-default": "Sólo esta página.",
+	"bs-uemodulepdf-export-dialog-label-submodule-recursive": "Incluir enlace recursivo",
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Incluir subpáginas"
 }
