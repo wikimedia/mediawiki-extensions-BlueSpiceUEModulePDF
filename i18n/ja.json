@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"MathXplore",
 			"Shirayuki"
 		]
 	},
@@ -11,5 +12,8 @@
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "利用不可",
 	"soap-service-url-not-valid": "PDF を生成するウェブ サービスの URL が有効ではありません。ウィキの設定を確認してください。",
 	"soap-service-url-not-set": "PDF を生成するウェブ サービスの URL が設定されていません。ウィキの設定を確認してください。",
-	"bs-uemodulepdf-overview-webservice-webadmin": "バックエンドの Web インターフェイス:"
+	"bs-uemodulepdf-overview-webservice-webadmin": "バックエンドの Web インターフェイス:",
+	"bs-uemodulepdf-export-dialog-label-module-name": "PDFページ",
+	"bs-uemodulepdf-export-dialog-label-select-submodule": "スコープ",
+	"bs-uemodulepdf-export-dialog-label-select-template": "レイアウト"
 }

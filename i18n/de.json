@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Brettchenweber",
 			"Metalhead64",
 			"Mglaser",
 			"Stephan Muggli <muggli@hallowelt.biz>"
@@ -36,5 +37,5 @@
 	"bs-uemodulepdf-export-dialog-label-select-template": "Layout",
 	"bs-uemodulepdf-export-dialog-label-submodule-default": "Nur diese Seite",
 	"bs-uemodulepdf-export-dialog-label-submodule-recursive": "Seite mit verlinkten Seiten",
-	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Seite mir Unterseiten"
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Seite mit Unterseiten"
 }
