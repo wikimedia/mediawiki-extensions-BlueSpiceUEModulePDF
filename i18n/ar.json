@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"ديفيد"
+			"ديفيد",
+			"Asma"
 		]
 	},
 	"bs-uemodulepdf-desc": "يمكن ميدياويكي من تصدير الصفحات إلى صيغة PDF",
@@ -27,5 +28,8 @@
 	"bs-uemodulepdf-widgetlink-recursive-text": "صفحة PDF مع صفحات مرتبطة",
 	"bs-uemodulepdf-widgetlink-recursive-title": "تصدير هذه الصفحة وجميع الصفحات المرتبطة بتنسيق PDF.",
 	"right-uemodulepdfrecursive-export": "تصدير صفحة، بما في ذلك جميع الصفحات المرتبطة، إلى PDF",
-	"action-uemodulepdfrecursive-export": "تصدير صفحة، بما في ذلك جميع الصفحات المرتبطة، إلى PDF"
+	"action-uemodulepdfrecursive-export": "تصدير صفحة، بما في ذلك جميع الصفحات المرتبطة، إلى PDF",
+	"bs-uemodulepdf-export-dialog-label-module-name": "صفحة PDF",
+	"bs-uemodulepdf-export-dialog-label-submodule-default": "فقط هذه الصفحة",
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "تضمين الصفحات الفرعية"
 }

@@ -36,7 +36,7 @@
 	"bs-uemodulepdf-export-dialog-label-module-name": "Página PDF",
 	"bs-uemodulepdf-export-dialog-label-select-submodule": "Alcance",
 	"bs-uemodulepdf-export-dialog-label-select-template": "Diseño",
-	"bs-uemodulepdf-export-dialog-label-submodule-default": "Sólo esta página.",
+	"bs-uemodulepdf-export-dialog-label-submodule-default": "Solo esta página",
 	"bs-uemodulepdf-export-dialog-label-submodule-recursive": "Incluir enlace recursivo",
 	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Incluir subpáginas"
 }
