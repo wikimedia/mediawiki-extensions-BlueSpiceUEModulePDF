@@ -5,6 +5,7 @@
 			"Mainframe98",
 			"McDutchie",
 			"Sjoerddebruin",
+			"Vistaus",
 			"Xbaked potatox"
 		]
 	},
@@ -23,5 +24,10 @@
 	"soap-service-url-not-set": "De URL van de webdienst voor het genereren van PDF is niet ingesteld. Controleer de wiki-configuratie.",
 	"bs-uemodulepdf-overview-webservice-webadmin": "Backend-webinterface",
 	"action-uemodulepdf-export": "een pagina naar PDF te exporteren",
-	"right-uemodulepdf-export": "Pagina's naar PDF exporteren"
+	"right-uemodulepdf-export": "Pagina's naar PDF exporteren",
+	"bs-uemodulepdf-export-dialog-label-module-name": "Pdf-pagina",
+	"bs-uemodulepdf-export-dialog-label-select-submodule": "Bereik",
+	"bs-uemodulepdf-export-dialog-label-select-template": "Indeling",
+	"bs-uemodulepdf-export-dialog-label-submodule-default": "Alleen deze pagina",
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Onderliggende pagina's opnemen"
 }
