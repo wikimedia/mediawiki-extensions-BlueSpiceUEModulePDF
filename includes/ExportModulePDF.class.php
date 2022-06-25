@@ -28,7 +28,8 @@ class BsExportModulePDF extends ExportModule {
 	 * @inheritDoc
 	 */
 	protected function setParams( &$specification ) {
-		$redirectTarget = WikiPage::factory( $specification->getTitle() )->getRedirectTarget();
+		$redirectTarget = MediaWikiServices::getInstance()->getWikiPageFactory()
+			->newFromTitle( $specification->getTitle() )->getRedirectTarget();
 		if ( $redirectTarget instanceof Title ) {
 			$aPageParams['title'] = $redirectTarget->getPrefixedText();
 			$aPageParams['article-id'] = $redirectTarget->getArticleID();
