@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Farras"
+		]
+	},
+	"bs-uemodulepdf-export-dialog-label-module-name": "Halaman PDF",
+	"bs-uemodulepdf-export-dialog-label-select-submodule": "Lingkup",
+	"bs-uemodulepdf-export-dialog-label-select-template": "Tata letak",
+	"bs-uemodulepdf-export-dialog-label-submodule-default": "Halaman ini saja",
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Sertakan subhalaman"
+}

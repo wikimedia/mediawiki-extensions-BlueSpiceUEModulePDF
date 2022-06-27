@@ -32,5 +32,11 @@
 	"bs-uemodulepdf-widgetlink-recursive-title": "匯出此頁面以及所有連結到的頁面為 PDF。",
 	"right-uemodulepdfrecursive-export": "匯出頁面、包含所有連結到的頁面成為 PDF。",
 	"action-uemodulepdfrecursive-export": "匯出頁面、包含所有連結到的頁面成為 PDF。",
-	"bs-uemodulepdf-pref-suppressns-help": "PDF 標題省略頁面的命名空間。"
+	"bs-uemodulepdf-pref-suppressns-help": "PDF 標題省略頁面的命名空間。",
+	"bs-uemodulepdf-export-dialog-label-module-name": "PDF 頁面",
+	"bs-uemodulepdf-export-dialog-label-select-submodule": "範圍",
+	"bs-uemodulepdf-export-dialog-label-select-template": "版面編排",
+	"bs-uemodulepdf-export-dialog-label-submodule-default": "僅此頁面",
+	"bs-uemodulepdf-export-dialog-label-submodule-recursive": "包含遞迴連結",
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "包含子頁面"
 }
