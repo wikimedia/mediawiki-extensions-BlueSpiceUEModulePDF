@@ -4,7 +4,8 @@
 			"Diralik",
 			"HarpyWar",
 			"Meshkov.a",
-			"Okras"
+			"Okras",
+			"Pacha Tchernof"
 		]
 	},
 	"bs-uemodulepdf-desc": "Разрешить MediaWiki экспортировать страницы в PDF-формат",
@@ -17,7 +18,7 @@
 	"bs-uemodulepdf-overview-desc": "Экспорт страниц в PDF (специальные страницы и страницы с контентом).",
 	"bs-uemodulepdf-overview-webservice-state": "Статус бэкенда",
 	"bs-uemodulepdf-overview-webservice-state-ok": "доступно",
-	"bs-uemodulepdf-overview-webservice-state-not-ok": "не доступно",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "недоступно",
 	"soap-service-url-not-valid": "Адрес веб-службы по созданию PDF не действителен. Пожалуйста, проверьте настройки вики.",
 	"soap-service-url-not-set": "Не установлен адрес для веб-службы по созданию PDF. Пожалуйста, проверьте настройки вики.",
 	"bs-uemodulepdf-overview-webservice-webadmin": "Бэкенд веб интерфейса"
