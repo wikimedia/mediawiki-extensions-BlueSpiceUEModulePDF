@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Duke of Wikipädia",
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
 			"Felipe L. Ewald",
@@ -31,5 +32,6 @@
 	"bs-uemodulepdf-widgetlink-recursive-title": "Exporte esta página e todas as páginas vinculadas como PDF.",
 	"right-uemodulepdfrecursive-export": "Exportar uma página, incluindo todas as páginas vinculadas, para PDF",
 	"action-uemodulepdfrecursive-export": "exportar uma página, incluindo todas as páginas vinculadas, para PDF",
-	"bs-uemodulepdf-pref-suppressns-help": "O namespace da página é omitido do título HTML."
+	"bs-uemodulepdf-pref-suppressns-help": "O namespace da página é omitido do título HTML.",
+	"bs-uemodulepdf-export-dialog-label-module-name": "Página PDF"
 }
