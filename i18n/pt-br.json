@@ -33,5 +33,10 @@
 	"right-uemodulepdfrecursive-export": "Exportar uma página, incluindo todas as páginas vinculadas, para PDF",
 	"action-uemodulepdfrecursive-export": "exportar uma página, incluindo todas as páginas vinculadas, para PDF",
 	"bs-uemodulepdf-pref-suppressns-help": "O namespace da página é omitido do título HTML.",
-	"bs-uemodulepdf-export-dialog-label-module-name": "Página PDF"
+	"bs-uemodulepdf-export-dialog-label-module-name": "Página PDF",
+	"bs-uemodulepdf-export-dialog-label-select-submodule": "Alcance",
+	"bs-uemodulepdf-export-dialog-label-select-template": "Estilo",
+	"bs-uemodulepdf-export-dialog-label-submodule-default": "Apenas nesta página",
+	"bs-uemodulepdf-export-dialog-label-submodule-recursive": "Incluir ligações recursivas",
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Incluir subpáginas"
 }
