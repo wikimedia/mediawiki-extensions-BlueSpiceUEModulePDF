@@ -4,7 +4,8 @@
 			"Liuxinyu970226",
 			"Yfdyh000",
 			"佛壁灯",
-			"Xiplus"
+			"Xiplus",
+			"Wzl19371"
 		]
 	},
 	"bs-uemodulepdf-desc": "启用MediaWiki以导出页面为PDF格式",
@@ -23,5 +24,12 @@
 	"bs-uemodulepdf-overview-webservice-webadmin": "后台web界面",
 	"action-uemodulepdf-export": "导出页面至 PDF",
 	"right-uemodulepdf-export": "导出页面至 PDF",
-	"bs-uemodulepdf-widgetlink-subpages-text": "带有子页面的PDF页面"
+	"bs-uemodulepdf-widgetlink-subpages-text": "带有子页面的PDF页面",
+	"bs-uemodulepdf-widgetlink-subpages-title": "将此页面和所有子页面导出为PDF。",
+	"action-uemodulepdfsubpages-export": "将页面（包括所有子页面）导出为PDF",
+	"right-uemodulepdfsubpages-export": "将页面（包括所有子页面）导出为PDF",
+	"bs-uemodulepdf-widgetlink-recursive-text": "带有链接页面的PDF页面",
+	"bs-uemodulepdf-widgetlink-recursive-title": "将此页面和所有链接页面导出为PDF。",
+	"right-uemodulepdfrecursive-export": "将页面（包括所有链接页面）导出为PDF",
+	"action-uemodulepdfrecursive-export": "将页面（包括所有链接页面）导出为PDF"
 }
