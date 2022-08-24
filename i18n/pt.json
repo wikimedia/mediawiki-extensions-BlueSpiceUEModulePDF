@@ -29,5 +29,11 @@
 	"bs-uemodulepdf-widgetlink-recursive-title": "Exportar esta página e todas as páginas a ela hiperligadas como PDF.",
 	"right-uemodulepdfrecursive-export": "Exportar uma página, incluindo todas as páginas a ela hiperligadas, como PDF",
 	"action-uemodulepdfrecursive-export": "exportar uma página, incluindo todas as páginas a ela hiperligadas, como PDF.",
-	"bs-uemodulepdf-pref-suppressns-help": "O espaço nominal da página é omitido do título do PDF."
+	"bs-uemodulepdf-pref-suppressns-help": "O espaço nominal da página é omitido do título do PDF.",
+	"bs-uemodulepdf-export-dialog-label-module-name": "Página PDF",
+	"bs-uemodulepdf-export-dialog-label-select-submodule": "Âmbito",
+	"bs-uemodulepdf-export-dialog-label-select-template": "Modelo",
+	"bs-uemodulepdf-export-dialog-label-submodule-default": "Só esta página",
+	"bs-uemodulepdf-export-dialog-label-submodule-recursive": "Incluir páginas hiperligadas recursivamente",
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Incluir subpáginas"
 }
