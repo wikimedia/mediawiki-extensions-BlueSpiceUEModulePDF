@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jon Harald Søby"
+			"Jon Harald Søby",
+			"EdoAug"
 		]
 	},
 	"bs-uemodulepdf-desc": "Gjør at MediaWiki kan eksportere sider i PDF-format",
@@ -28,5 +29,6 @@
 	"bs-uemodulepdf-widgetlink-recursive-title": "Eksporter denne siden og alle lenkede sider som PDF.",
 	"right-uemodulepdfrecursive-export": "Eksporterer en side, inkludert alle lenkede sider, til PDF",
 	"action-uemodulepdfrecursive-export": "eksportere en side, inkludert alle lenkede sider, til PDF",
-	"bs-uemodulepdf-pref-suppressns-help": "Navnerommet til siden utelates fra PDF-tittelen."
+	"bs-uemodulepdf-pref-suppressns-help": "Navnerommet til siden utelates fra PDF-tittelen.",
+	"bs-uemodulepdf-export-dialog-label-submodule-default": "Kun denne siden"
 }
