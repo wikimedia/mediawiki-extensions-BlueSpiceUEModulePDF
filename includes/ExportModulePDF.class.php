@@ -16,7 +16,6 @@ use BlueSpice\UEModulePDF\ExportSubaction\Subpages;
 use BlueSpice\UEModulePDF\PDFServletHookRunner;
 use BlueSpice\UniversalExport\ExportModule;
 use BlueSpice\UniversalExport\ExportSpecification;
-use MediaWiki\MediaWikiServices;
 
 /**
  * UniversalExport BsExportModulePDF class.
@@ -28,8 +27,9 @@ class BsExportModulePDF extends ExportModule {
 	 * @inheritDoc
 	 */
 	protected function setParams( &$specification ) {
-		$redirectTarget = MediaWikiServices::getInstance()->getWikiPageFactory()
-			->newFromTitle( $specification->getTitle() )->getRedirectTarget();
+		$wikiPage = $this->services->getWikiPageFactory()
+			->newFromTitle( $specification->getTitle() );
+		$redirectTarget = $this->services->getRedirectLookup()->getRedirectTarget( $wikiPage );
 		if ( $redirectTarget instanceof Title ) {
 			$aPageParams['title'] = $redirectTarget->getPrefixedText();
 			$aPageParams['article-id'] = $redirectTarget->getArticleID();
@@ -111,7 +111,7 @@ class BsExportModulePDF extends ExportModule {
 	 * @inheritDoc
 	 */
 	protected function modifyTemplateAfterContents( &$template, $page, $specification ) {
-		MediaWikiServices::getInstance()->getHookContainer()->run(
+		$this->services->getHookContainer()->run(
 			'BSUEModulePDFBeforeCreatePDF',
 			[
 				$this,
@@ -139,7 +139,7 @@ class BsExportModulePDF extends ExportModule {
 	 */
 	protected function getExportedContent( $specs, &$template ) {
 		$params = $specs->getParams();
-		$hookContainer = $this->getServices()->getHookContainer();
+		$hookContainer = $this->services->getHookContainer();
 		$hookRunner = new PDFServletHookRunner( $hookContainer );
 		$backend = new BsPDFServlet( $params, $hookRunner );
 		return $backend->createPDF( $template['dom'] );
@@ -151,8 +151,7 @@ class BsExportModulePDF extends ExportModule {
 	 * @return ViewExportModuleOverview
 	 */
 	public function getOverview() {
-		$config = MediaWikiServices::getInstance()->getConfigFactory()
-			->makeConfig( 'bsg' );
+		$config = $this->services->getConfigFactory()->makeConfig( 'bsg' );
 		$oModuleOverviewView = new ViewExportModuleOverview();
 
 		$oModuleOverviewView->setOption( 'module-title', wfMessage( 'bs-uemodulepdf-overview-title' )->plain() );
