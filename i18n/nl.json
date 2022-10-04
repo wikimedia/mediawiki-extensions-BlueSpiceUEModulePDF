@@ -29,5 +29,15 @@
 	"bs-uemodulepdf-export-dialog-label-select-submodule": "Bereik",
 	"bs-uemodulepdf-export-dialog-label-select-template": "Indeling",
 	"bs-uemodulepdf-export-dialog-label-submodule-default": "Alleen deze pagina",
-	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Onderliggende pagina's opnemen"
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Onderliggende pagina's opnemen",
+	"bs-uemodulepdf-widgetlink-subpages-text": "PDF-pagina met subpagina's",
+	"bs-uemodulepdf-widgetlink-subpages-title": "Deze pagina en alle subpagina's exporteren in PDF.",
+	"action-uemodulepdfsubpages-export": "een pagina met alle subpagina's in PDF te exporteren",
+	"right-uemodulepdfsubpages-export": "Een pagina met alle subpagina's in PDF exporteren",
+	"bs-uemodulepdf-widgetlink-recursive-text": "PDF-pagina met gekoppelde pagina's",
+	"bs-uemodulepdf-widgetlink-recursive-title": "Deze pagina en alle gekoppelde pagina's exporteren in PDF.",
+	"right-uemodulepdfrecursive-export": "Een pagina met alle gekoppelde pagina's in PDF exporteren",
+	"action-uemodulepdfrecursive-export": "een pagina met alle gekoppelde pagina's in PDF te exporteren",
+	"bs-uemodulepdf-pref-suppressns-help": "De naamruimte van de pagina wordt weggelaten uit de PDF-titel.",
+	"bs-uemodulepdf-export-dialog-label-submodule-recursive": "Recursief gekoppelde pagina's opnemen"
 }
