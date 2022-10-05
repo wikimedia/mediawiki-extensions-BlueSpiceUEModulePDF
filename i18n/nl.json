@@ -5,7 +5,8 @@
 			"Mainframe98",
 			"McDutchie",
 			"Sjoerddebruin",
-			"Xbaked potatox"
+			"Xbaked potatox",
+			"Vistaus"
 		]
 	},
 	"bs-uemodulepdf-desc": "Hiermee kan MediaWiki pagina's exporteren naar PDF-indeling",
@@ -23,5 +24,14 @@
 	"soap-service-url-not-set": "De URL van de webdienst voor het genereren van PDF is niet ingesteld. Controleer de wiki-configuratie.",
 	"bs-uemodulepdf-overview-webservice-webadmin": "Backend-webinterface",
 	"action-uemodulepdf-export": "een pagina naar PDF te exporteren",
-	"right-uemodulepdf-export": "Pagina's naar PDF exporteren"
+	"right-uemodulepdf-export": "Pagina's naar PDF exporteren",
+	"bs-uemodulepdf-widgetlink-subpages-text": "PDF-pagina met subpagina's",
+	"bs-uemodulepdf-widgetlink-subpages-title": "Deze pagina en alle subpagina's exporteren in PDF.",
+	"action-uemodulepdfsubpages-export": "een pagina met alle subpagina's in PDF te exporteren",
+	"right-uemodulepdfsubpages-export": "Een pagina met alle subpagina's in PDF exporteren",
+	"bs-uemodulepdf-widgetlink-recursive-text": "PDF-pagina met gekoppelde pagina's",
+	"bs-uemodulepdf-widgetlink-recursive-title": "Deze pagina en alle gekoppelde pagina's exporteren in PDF.",
+	"right-uemodulepdfrecursive-export": "Een pagina met alle gekoppelde pagina's in PDF exporteren",
+	"action-uemodulepdfrecursive-export": "een pagina met alle gekoppelde pagina's in PDF te exporteren",
+	"bs-uemodulepdf-pref-suppressns-help": "De naamruimte van de pagina wordt weggelaten uit de PDF-titel."
 }
