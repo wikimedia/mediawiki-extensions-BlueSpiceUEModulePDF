@@ -7,6 +7,7 @@ use MediaWiki\MediaWikiServices;
  * @group medium
  * @group BlueSpice
  * @group BlueSpiceExtensions
+ * @covers PDFFileResolver
  */
 class PDFFileResolverTest extends BSApiTestCase {
 	protected $aFiles = null;
