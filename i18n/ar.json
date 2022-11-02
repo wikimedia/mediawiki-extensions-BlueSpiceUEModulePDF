@@ -1,7 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"ديفيد"
+			"ديفيد",
+			"Asma",
+			"Meno25"
 		]
 	},
 	"bs-uemodulepdf-desc": "يمكن ميدياويكي من تصدير الصفحات إلى صيغة PDF",
@@ -26,6 +28,7 @@
 	"right-uemodulepdfsubpages-export": "تصدير صفحة، بما في ذلك جميع الصفحات الفرعية، إلى PDF",
 	"bs-uemodulepdf-widgetlink-recursive-text": "صفحة PDF مع صفحات مرتبطة",
 	"bs-uemodulepdf-widgetlink-recursive-title": "تصدير هذه الصفحة وجميع الصفحات المرتبطة بتنسيق PDF.",
-	"right-uemodulepdfrecursive-export": "تصدير صفحة، بما في ذلك جميع الصفحات المرتبطة، إلى PDF",
-	"action-uemodulepdfrecursive-export": "تصدير صفحة، بما في ذلك جميع الصفحات المرتبطة، إلى PDF"
+	"right-uemodulepdfrecursive-export": "قم بتصدير صفحة ، بما في ذلك كل الصفحات المرتبطة ، إلى PDF",
+	"action-uemodulepdfrecursive-export": "تصدير صفحة ، بما في ذلك كل الصفحات المرتبطة ، إلى PDF",
+	"bs-uemodulepdf-pref-suppressns-help": "تم حذف مساحة اسم الصفحة من عنوان PDF."
 }
