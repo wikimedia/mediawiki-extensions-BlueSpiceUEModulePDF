@@ -36,7 +36,11 @@ class BsExportModulePDF extends ExportModule {
 		}
 
 		if ( $this->config->get( 'UEModulePDFSuppressNS' ) ) {
-			$aPageParams['display-title'] = $specification->getTitle()->getText();
+			// Replace display-title only if it equals page title. If it doesn't display-title is set
+			// If it is not equal display-title is set by author using {{DISPLAYTITLE:...}}
+			if ( $aPageParams['display-title'] === $specification->getTitle()->getFullText() ) {
+				$aPageParams['display-title'] = $specification->getTitle()->getText();
+			}
 		}
 	}
 
