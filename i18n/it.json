@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Beta16",
+			"GpieroMW",
 			"Stefano"
 		]
 	},
@@ -12,5 +13,11 @@
 	"bs-uemodulepdf-widgetlink-subpages-title": "Esporta questa pagine e tutte le sue sottopagine come PDF.",
 	"action-uemodulepdfsubpages-export": "esportare una pagina, comprese tutte le sue sottopagine, come PDF",
 	"right-uemodulepdfsubpages-export": "Esporta una pagina, comprese tutte le sue sottopagine, come PDF",
-	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Permette l'esportazione in PDF"
+	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Permette l'esportazione in PDF",
+	"bs-uemodulepdf-pref-suppressns-help": "Il namespace della pagina viene omesso dal titolo del PDF.",
+	"bs-uemodulepdf-export-dialog-label-module-name": "Pagina PDF",
+	"bs-uemodulepdf-export-dialog-label-select-submodule": "Scopo",
+	"bs-uemodulepdf-export-dialog-label-submodule-default": "Solo questa pagina",
+	"bs-uemodulepdf-export-dialog-label-submodule-recursive": "Includi link ricorsivi",
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Includi sottopagine"
 }
