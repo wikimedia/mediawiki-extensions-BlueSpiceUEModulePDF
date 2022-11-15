@@ -19,5 +19,8 @@
 	"bs-uemodulepdf-export-dialog-label-select-submodule": "Scopo",
 	"bs-uemodulepdf-export-dialog-label-submodule-default": "Solo questa pagina",
 	"bs-uemodulepdf-export-dialog-label-submodule-recursive": "Includi link ricorsivi",
-	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Includi sottopagine"
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Includi sottopagine",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "PDF di una sola pagina",
+	"bs-uemodulepdf-overview-title": "Portable Document Format (PDF)",
+	"bs-uemodulepdf-overview-desc": "Esporta le pagine (pagine speciali e pagine di contenuto) in PDF."
 }
