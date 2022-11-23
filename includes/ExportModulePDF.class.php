@@ -31,16 +31,33 @@ class BsExportModulePDF extends ExportModule {
 			->newFromTitle( $specification->getTitle() );
 		$redirectTarget = $this->services->getRedirectLookup()->getRedirectTarget( $wikiPage );
 		if ( $redirectTarget instanceof Title ) {
-			$aPageParams['title'] = $redirectTarget->getPrefixedText();
-			$aPageParams['article-id'] = $redirectTarget->getArticleID();
-		}
+			$specification->setParam( 'title', $redirectTarget->getPrefixedText() );
+			$specification->setParam( 'article-id', $redirectTarget->getArticleID() );
 
-		if ( $this->config->get( 'UEModulePDFSuppressNS' ) ) {
-			// Replace display-title only if it equals page title. If it doesn't display-title is set
-			// If it is not equal display-title is set by author using {{DISPLAYTITLE:...}}
-			if ( $aPageParams['display-title'] === $specification->getTitle()->getFullText() ) {
-				$aPageParams['display-title'] = $specification->getTitle()->getText();
+			if ( $this->config->get( 'UEModulePDFSuppressNS' ) ) {
+				$this->suppressNamespace( $redirectTarget, $specification );
 			}
+		} else {
+			$specification->setParam( 'title', $specification->getTitle()->getFullText() );
+
+			if ( $this->config->get( 'UEModulePDFSuppressNS' ) ) {
+				$this->suppressNamespace( $specification->getTitle(), $specification );
+			}
+		}
+	}
+
+	/**
+	 * @param Title $title
+	 * @param ExportSpecification &$specification
+	 * @return void
+	 */
+	private function suppressNamespace( Title $title, ExportSpecification &$specification ): void {
+		$specification->setParam( 'title', $title->getText() );
+
+		// Replace display-title only if it equals page title. If it doesn't display-title is set
+		// If it is not equal display-title is set by author using {{DISPLAYTITLE:...}}
+		if ( $specification->getParam( 'display-title' ) === $title->getFullText() ) {
+			$specification->setParam( 'display-title', $title->getText() );
 		}
 	}
 
