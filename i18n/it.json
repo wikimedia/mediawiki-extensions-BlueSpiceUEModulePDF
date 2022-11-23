@@ -6,7 +6,10 @@
 			"GpieroMW"
 		]
 	},
+	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "PDF di una sola pagina",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Permette l'esportazione in PDF",
+	"bs-uemodulepdf-overview-title": "Portable Document Format (PDF)",
+	"bs-uemodulepdf-overview-desc": "Esporta le pagine (pagine speciali e pagine di contenuto) in PDF.",
 	"bs-uemodulepdf-overview-webservice-state-ok": "disponibile",
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "non disponibile",
 	"action-uemodulepdf-export": "esportare una pagina in PDF",
