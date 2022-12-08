@@ -257,9 +257,22 @@ class BsPDFPageProvider {
 			&$aClassesToRemove
 		] );
 
+		$scriptElements = [];
 		// Remove script-Tags
-		foreach ( $oPageDOM->getElementsByTagName( 'script' ) as $oScriptElement ) {
-			$oScriptElement->parentNode->removeChild( $oScriptElement );
+		foreach ( $oPageDOM->getElementsByTagName( 'script' ) as $scriptElement ) {
+			$scriptElements[] = $scriptElement;
+		}
+		foreach ( $scriptElements as $scriptElement ) {
+			$scriptElement->parentNode->removeChild( $scriptElement );
+		}
+
+		$inputElements = [];
+		// Remove input-Tags
+		foreach ( $oPageDOM->getElementsByTagName( 'input' ) as $inputElement ) {
+			$inputElements[] = $inputElement;
+		}
+		foreach ( $inputElements as $inputElement ) {
+			$inputElement->parentNode->removeChild( $inputElement );
 		}
 
 		// Remove elements by class
