@@ -71,12 +71,11 @@ class BsPDFServlet {
 			$oHtmlDOM
 		);
 
-		$vHttpEngine = Http::$httpEngine;
-		Http::$httpEngine = 'curl';
+		$httpRequestFactory = MediaWikiServices::getInstance()->getHttpRequestFactory();
 		// HINT: http://www.php.net/manual/en/function.curl-setopt.php#refsect1-function.curl-setopt-notes
 		// Upload HTML source
 		// TODO: Handle $sResponse
-		$sResponse = Http::post(
+		$sResponse = $httpRequestFactory->post(
 			$this->aParams['soap-service-url'] . '/UploadAsset',
 			$aOptions
 		);
@@ -87,13 +86,12 @@ class BsPDFServlet {
 		unset( $aOptions['postData']['fileType'] );
 		// We do not want the request to be multipart/formdata because that's more difficult to handle on Servlet-side
 		$aOptions['postData'] = wfArrayToCgi( $aOptions['postData' ] );
-		$vPdfByteArray = Http::post(
+		$vPdfByteArray = $httpRequestFactory->post(
 			$this->aParams['soap-service-url'] . '/RenderPDF',
 			$aOptions
 		);
-		Http::$httpEngine = $vHttpEngine;
 
-		if ( $vPdfByteArray == false ) {
+		if ( $vPdfByteArray === null ) {
 			wfDebugLog(
 				'BS::UEModulePDF',
 				'BsPDFServlet::createPDF: Failed creating "' . $this->aParams['document-token'] . '"'
@@ -288,15 +286,11 @@ class BsPDFServlet {
 
 		$aOptions['postData'] = $aPostData;
 
-		$vHttpEngine = Http::$httpEngine;
-		Http::$httpEngine = 'curl';
 		$requestFactory = MediaWikiServices::getInstance()->getHttpRequestFactory();
 		$response = $requestFactory->post(
 			$this->aParams['soap-service-url'] . '/UploadAsset',
 			$aOptions
 		);
-
-		Http::$httpEngine = $vHttpEngine;
 
 		if ( $response !== null ) {
 			wfDebugLog(
