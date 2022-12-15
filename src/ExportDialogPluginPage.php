@@ -5,6 +5,7 @@ namespace BlueSpice\UEModulePDF;
 use BlueSpice\UniversalExport\IExportDialogPlugin;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
+use MWException;
 
 class ExportDialogPluginPage implements IExportDialogPlugin {
 
@@ -36,6 +37,11 @@ class ExportDialogPluginPage implements IExportDialogPlugin {
 
 		$availableTemplates = [];
 		$dir = opendir( $defaultTemplatePath );
+		if ( $dir === false ) {
+			throw new MWException(
+				'Could not read default PDF template path. Check `$bsgUEModulePDFTemplatePath`'
+			);
+		}
 		$subDir = readdir( $dir );
 		while ( $subDir !== false ) {
 			if ( in_array( $subDir, [ '.', '..', 'common' ] ) ) {
