@@ -4,5 +4,6 @@
 			"Eleassar"
 		]
 	},
-	"bs-uemodulepdf-export-dialog-label-submodule-default": "Samo ta stran"
+	"bs-uemodulepdf-export-dialog-label-submodule-default": "Samo ta stran",
+	"bs-uemodulepdf-pref-suppressns-help": "Imenski prostor strani je izpuščen iz naslova PDF-ja."
 }
