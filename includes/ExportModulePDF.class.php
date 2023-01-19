@@ -29,13 +29,14 @@ class BsExportModulePDF extends ExportModule {
 	protected function setParams( &$specification ) {
 		$wikiPage = $this->services->getWikiPageFactory()
 			->newFromTitle( $specification->getTitle() );
-		$redirectTarget = $this->services->getRedirectLookup()->getRedirectTarget( $wikiPage );
-		if ( $redirectTarget instanceof Title ) {
-			$specification->setParam( 'title', $redirectTarget->getPrefixedText() );
-			$specification->setParam( 'article-id', $redirectTarget->getArticleID() );
+		$redirTarget = $this->services->getRedirectLookup()->getRedirectTarget( $wikiPage );
+		$redirTitle = Title::castFromLinkTarget( $redirTarget );
+		if ( $redirTitle instanceof Title ) {
+			$specification->setParam( 'title', $redirTitle->getPrefixedText() );
+			$specification->setParam( 'article-id', $redirTitle->getArticleID() );
 
 			if ( $this->config->get( 'UEModulePDFSuppressNS' ) ) {
-				$this->suppressNamespace( $redirectTarget, $specification );
+				$this->suppressNamespace( $redirTitle, $specification );
 			}
 		} else {
 			$specification->setParam( 'title', $specification->getTitle()->getFullText() );
