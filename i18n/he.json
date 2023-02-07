@@ -16,5 +16,6 @@
 	"bs-uemodulepdf-overview-webservice-state-ok": "זמין",
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "לא זמין",
 	"soap-service-url-not-valid": "כתובת ה־URL לשירות יצירת ה־PDF האינטרנטי אינה תקינה. נא לבדוק את ההגדרות של אתר הוויקי.",
-	"soap-service-url-not-set": "כתובת ה־URL לשירות יצירת ה־PDF האינטרנטי אינה מוגדרת. נא לבדוק את ההגדרות של אתר הוויקי."
+	"soap-service-url-not-set": "כתובת ה־URL לשירות יצירת ה־PDF האינטרנטי אינה מוגדרת. נא לבדוק את ההגדרות של אתר הוויקי.",
+	"bs-uemodulepdf-export-dialog-label-module-name": "דף PDF"
 }
