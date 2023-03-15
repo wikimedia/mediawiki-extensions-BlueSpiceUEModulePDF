@@ -71,15 +71,14 @@ class BsPDFServlet {
 			$oHtmlDOM
 		);
 
-		$vHttpEngine = Http::$httpEngine;
-		Http::$httpEngine = 'curl';
 		// HINT: http://www.php.net/manual/en/function.curl-setopt.php#refsect1-function.curl-setopt-notes
 		// Upload HTML source
-		// TODO: Handle $sResponse
-		$sResponse = Http::post(
+		$ret = MediaWikiServices::getInstance()->getHttpRequestFactory()->post(
 			$this->aParams['soap-service-url'] . '/UploadAsset',
 			$aOptions
 		);
+		// TODO: Handle $sResponse
+		$sResponse = is_string( $ret ) ? $ret : false;
 
 		// Now do the rendering
 		// We re-send the parameters but this time without the file.
@@ -87,11 +86,10 @@ class BsPDFServlet {
 		unset( $aOptions['postData']['fileType'] );
 		// We do not want the request to be multipart/formdata because that's more difficult to handle on Servlet-side
 		$aOptions['postData'] = wfArrayToCgi( $aOptions['postData' ] );
-		$vPdfByteArray = Http::post(
+		$vPdfByteArray = MediaWikiServices::getInstance()->getHttpRequestFactory()->post(
 			$this->aParams['soap-service-url'] . '/RenderPDF',
 			$aOptions
 		);
-		Http::$httpEngine = $vHttpEngine;
 
 		if ( $vPdfByteArray == false ) {
 			wfDebugLog(
@@ -288,15 +286,11 @@ class BsPDFServlet {
 
 		$aOptions['postData'] = $aPostData;
 
-		$vHttpEngine = Http::$httpEngine;
-		Http::$httpEngine = 'curl';
 		$requestFactory = MediaWikiServices::getInstance()->getHttpRequestFactory();
 		$response = $requestFactory->post(
 			$this->aParams['soap-service-url'] . '/UploadAsset',
 			$aOptions
 		);
-
-		Http::$httpEngine = $vHttpEngine;
 
 		if ( $response !== null ) {
 			wfDebugLog(
