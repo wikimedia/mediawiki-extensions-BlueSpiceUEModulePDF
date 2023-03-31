@@ -40,10 +40,10 @@ class Extension extends \BlueSpice\Extension {
 	 */
 	public static function onRegistration() {
 		/**
-		 * Allows modification for CURL request. E.g. setting an CA file for
+		 * Allows modification for Guzzle request. E.g. setting an CA file for
 		 * HTTPS
 		 */
-		$GLOBALS['bsgUEModulePDFCURLOptions'] = [];
+		$GLOBALS['bsgUEModulePDFRequestOptions'] = [];
 
 		/**
 		 * This value is considered when asseta are being uploaded to the PDF
