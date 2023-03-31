@@ -13,6 +13,7 @@
  */
 
 use BlueSpice\UEModulePDF\PDFServletHookRunner;
+use GuzzleHttp\Client;
 use MediaWiki\MediaWikiServices;
 
 /**
@@ -44,54 +45,46 @@ class BsPDFServlet {
 		$sTmpPDFFile  = "{$status->getValue()}/{$this->aParams['document-token']}.pdf";
 		file_put_contents( $sTmpHtmlFile, $sHtmlDOM );
 
-		$aOptions = [
-			'timeout' => 120,
-			'postData' => [
-				'fileType' => '', // Need to stay empty so UploadAsset servlet saves file to document root directory
-				'documentToken' => $this->aParams['document-token'],
-				'sourceHtmlFile_name' => basename( $sTmpHtmlFile ),
-				'sourceHtmlFile' => class_exists( 'CURLFile' ) ? new CURLFile( $sTmpHtmlFile ) : '@' . $sTmpHtmlFile,
-				'wikiId' => WikiMap::getCurrentWikiId(),
-			]
+		$postData = [
+			'fileType' => '', // Need to stay empty so UploadAsset servlet saves file to document root directory
+			'documentToken' => $this->aParams['document-token'],
+			'sourceHtmlFile_name' => basename( $sTmpHtmlFile ),
+			'sourceHtmlFile' => $sTmpHtmlFile,
+			'wikiId' => WikiMap::getCurrentWikiId(),
 		];
 
 		$config = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' );
 
 		if ( $config->get( 'TestMode' ) ) {
-			$aOptions['postData']['debug'] = "true";
+			$postData['debug'] = "true";
 		}
-
-		global $bsgUEModulePDFCURLOptions;
-		$aOptions = array_merge_recursive( $aOptions, $bsgUEModulePDFCURLOptions );
 
 		$this->hookRunner->onBSUEModulePDFCreatePDFBeforeSend(
 			$this,
-			$aOptions,
+			$GLOBALS['bsgUEModulePDFRequestOptions'],
 			$oHtmlDOM
 		);
 
-		// HINT: http://www.php.net/manual/en/function.curl-setopt.php#refsect1-function.curl-setopt-notes
+		$multipartPostData = $this->convertToMultipart( $postData );
+		unset( $postData['sourceHtmlFile'] );
+		unset( $postData['fileType'] );
+		// We do not want the request to be multipart/form-data because that's more difficult to handle on Servlet-side
+		$renderData = wfArrayToCgi( $postData );
+
 		// Upload HTML source
-		$ret = MediaWikiServices::getInstance()->getHttpRequestFactory()->post(
-			$this->aParams['soap-service-url'] . '/UploadAsset',
-			$aOptions
-		);
-		// TODO: Handle $sResponse
-		$sResponse = is_string( $ret ) ? $ret : false;
-
-		// Now do the rendering
-		// We re-send the parameters but this time without the file.
-		unset( $aOptions['postData']['sourceHtmlFile'] );
-		unset( $aOptions['postData']['fileType'] );
-		// We do not want the request to be multipart/formdata because that's more difficult to handle on Servlet-side
-		$aOptions['postData'] = wfArrayToCgi( $aOptions['postData' ] );
-		$vPdfByteArray = MediaWikiServices::getInstance()->getHttpRequestFactory()->post(
-			$this->aParams['soap-service-url'] . '/RenderPDF',
-			$aOptions
+		$this->request(
+			$this->aParams['soap-service-url'] . '/UploadAsset', $multipartPostData
 		);
 
-		if ( $vPdfByteArray == false ) {
+		// Render PDF
+		$vPdfByteArray = $this->request(
+			$this->aParams['soap-service-url'] . '/RenderPDF', [ 'body' => $renderData ], [
+				'Content-Type' => 'application/x-www-form-urlencoded'
+			]
+		);
+
+		if ( !$vPdfByteArray ) {
 			wfDebugLog(
 				'BS::UEModulePDF',
 				'BsPDFServlet::createPDF: Failed creating "' . $this->aParams['document-token'] . '"'
@@ -126,39 +119,49 @@ class BsPDFServlet {
 				$sType = 'stylesheets';
 			}
 
-			$aPostData = [
-				'fileType'	=> $sType,
-				'documentToken' => $this->aParams['document-token'],
-				'wikiId'        => WikiMap::getCurrentWikiId()
+			$postData = [
+				'multipart' => [
+					[
+						'name' => 'fileType',
+						'contents' => $sType,
+					],
+					[
+						'name' => 'documentToken',
+						'contents' => $this->aParams['document-token'],
+					],
+					[
+						'name' => 'wikiId',
+						'contents' => WikiMap::getCurrentWikiId(),
+					],
+				],
 			];
 
 			$aErrors = [];
-			$aPostFiles = [];
-			$iCounter = 0;
 			$iCurrentUploadSize = 0;
 			foreach ( $aFiles as $sFileName => $sFilePath ) {
-				if ( file_exists( $sFilePath ) == false ) {
+				if ( !file_exists( $sFilePath ) ) {
 					$aErrors[] = $sFilePath;
 					continue;
 				}
 
 				$iFileSize = filesize( $sFilePath );
 				if ( $iCurrentUploadSize >= $bsgUEModulePDFUploadThreshold ) {
-					$this->doFilesUpload( array_merge( $aPostFiles, $aPostData ), $aErrors );
+					$this->doFilesUpload( $postData, $aErrors );
 
 					// Reset all loop variables
 					$aErrors = [];
-					$aPostFiles = [];
-					$iCounter = 0;
 					$iCurrentUploadSize = $iFileSize;
 				}
 
-				$aPostFiles['file' . $iCounter . '_name'] = $sFileName;
-				$aPostFiles['file' . $iCounter] = class_exists( 'CURLFile' ) ? new CURLFile( $sFilePath ) : '@' . $sFilePath;
-				$iCounter++;
+				$postData['multipart'][] = [
+					'name' => $sFileName,
+					'contents' => file_get_contents( $sFilePath ),
+					'filename' => $sFileName
+				];
+
 				$iCurrentUploadSize += $iFileSize;
 			}
-			$this->doFilesUpload( array_merge( $aPostFiles, $aPostData ), $aErrors ); // For last iteration contents
+			$this->doFilesUpload( $postData, $aErrors ); // For last iteration contents
 		}
 	}
 
@@ -263,13 +266,13 @@ class BsPDFServlet {
 	 * @return array|null
 	 */
 	protected function doFilesUpload( $aPostData, $aErrors = [] ) {
-		global $bsgUEModulePDFCURLOptions;
-		$aOptions = [
-			'timeout' => 120,
-		];
-		$aOptions = array_merge_recursive( $aOptions, $bsgUEModulePDFCURLOptions );
-
-		$sType = $aPostData['fileType'];
+		$sType = null;
+		foreach ( $aPostData['multipart'] as $aFile ) {
+			if ( $aFile['name'] === 'fileType' ) {
+				$sType = $aFile['contents'];
+				break;
+			}
+		}
 
 		if ( !empty( $aErrors ) ) {
 			wfDebugLog(
@@ -284,12 +287,8 @@ class BsPDFServlet {
 			$sType
 		);
 
-		$aOptions['postData'] = $aPostData;
-
-		$requestFactory = MediaWikiServices::getInstance()->getHttpRequestFactory();
-		$response = $requestFactory->post(
-			$this->aParams['soap-service-url'] . '/UploadAsset',
-			$aOptions
+		$response = $this->request(
+			$this->aParams['soap-service-url'] . '/UploadAsset', $aPostData
 		);
 
 		if ( $response !== null ) {
@@ -329,5 +328,49 @@ class BsPDFServlet {
 		}
 	}
 
-	// </editor-fold>
+	/**
+	 * @param array $postData in form_params format
+	 *
+	 * @return array
+	 */
+	private function convertToMultipart( $postData ): array {
+		$multipart = [];
+		foreach ( $postData as $postItemKey => $postItem ) {
+			if ( $postItemKey === 'multipart' ) {
+				return $postData;
+			}
+			if ( $postItemKey === 'sourceHtmlFile' ) {
+				$multipart[] = [
+					'name' => $postItemKey,
+					'filename' => basename( $postItem ),
+					'contents' => file_get_contents( $postItem ),
+				];
+				continue;
+			}
+			$multipart[] = [ 'name' => $postItemKey, 'contents' => $postItem ];
+		}
+		return [ 'multipart' => $multipart ];
+	}
+
+	/**
+	 * @param string $url
+	 * @param array $options
+	 * @param array|null $headers
+	 *
+	 * @return string
+	 * @throws \GuzzleHttp\Exception\GuzzleException
+	 */
+	private function request( string $url, array $options, ?array $headers = [] ): string {
+		$config = array_merge( [
+			'headers' => $headers,
+			'timeout' => 120
+		], $GLOBALS['bsgUEModulePDFRequestOptions'] );
+		$config['headers']['User-Agent'] = MediaWikiServices::getInstance()->getHttpRequestFactory()->getUserAgent();
+
+		// Create client manually, since calling `createGuzzleClient` on httpFactory will throw a fatal
+		// complaining `$this->options` is NULL. Which should not happen, but I cannot find why it happens
+		$client = new Client( $config );
+		$response = $client->request( 'POST', $url, $options );
+		return $response->getBody()->getContents();
+	}
 }
