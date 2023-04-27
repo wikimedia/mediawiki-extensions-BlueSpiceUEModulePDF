@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eitvys200"
+			"Eitvys200",
+			"Nokeoo"
 		]
 	},
 	"bs-uemodulepdf-desc": "Leidžia MediaWiki eksportuoti puslapius PDF formatu",
 	"prefs-uemodulepdf": "Universalus PDF eksporto modulis",
 	"uemodulepdf": "Universalus PDF eksporto modulis",
+	"bs-uemodulepdf-pref-suppressns": "Slėpti vardų srities priešdėlį PDF",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "PDF vienas puslapis",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Eksporto šį puslapį kaip PDF.",
 	"bs-uemodulepdf-overview-title": "Portable Document Format (PDF)",
@@ -17,5 +19,20 @@
 	"soap-service-url-not-valid": "URL į PDF generuojančią internetinę paslaugą yra negalima. Prašome patikrinti vikį konfigūraciją.",
 	"soap-service-url-not-set": "URL į PDF generuojančią internetinę paslaugą yra nenustatyta. Prašome patikrinti vikį konfigūraciją.",
 	"bs-uemodulepdf-overview-webservice-webadmin": "Posistemės internetinė sąsaja",
-	"bs-uemodulepdf-widgetlink-subpages-text": "PDF puslapis su polapiais"
+	"action-uemodulepdf-export": "eksportuojamas puslapis kaip PDF",
+	"right-uemodulepdf-export": "Eksportuoti puslapį į PDF",
+	"bs-uemodulepdf-widgetlink-subpages-text": "PDF puslapis su polapiais",
+	"bs-uemodulepdf-widgetlink-subpages-title": "Eksportuoti šį puslapį ir visus polapius kaip PDF.",
+	"action-uemodulepdfsubpages-export": "eksportuojamas puslapis, įskaitant visus polapius, kaip PDF.",
+	"right-uemodulepdfsubpages-export": "Eksportuoti puslapį, įskaitant visus polapius, kaip PDF.",
+	"bs-uemodulepdf-widgetlink-recursive-text": "PDF puslapis su susietais puslapiais",
+	"bs-uemodulepdf-widgetlink-recursive-title": "Eksportuoti šį puslapį ir visus susietus puslapius kaip PDF.",
+	"right-uemodulepdfrecursive-export": "Eksportuoti puslapį, įskaitant visus susietus puslapius, kaip PDF.",
+	"action-uemodulepdfrecursive-export": "eksportuoti puslapį, įskaitant visus susietus puslapius, kaip PDF.",
+	"bs-uemodulepdf-pref-suppressns-help": "Puslapio vardų sritis PDF pavadinime praleidžiama.",
+	"bs-uemodulepdf-export-dialog-label-module-name": "PDF puslapis",
+	"bs-uemodulepdf-export-dialog-label-select-submodule": "Apimtis",
+	"bs-uemodulepdf-export-dialog-label-select-template": "Išdėstymas",
+	"bs-uemodulepdf-export-dialog-label-submodule-default": "Tik šis puslapis",
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Įtraukti polapius"
 }
