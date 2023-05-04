@@ -11,7 +11,7 @@ class RemoveTemporaryFiles implements IBSUEModulePDFCreatePDFBeforeSend {
 	public function onBSUEModulePDFCreatePDFBeforeSend( $sender, &$options, $htmlDOM ): bool {
 		global $wgUploadDirectory;
 
-		rmdir( "$wgUploadDirectory/cache/pdf_files" );
+		wfRecursiveRemoveDir( "$wgUploadDirectory/cache/pdf_files" );
 
 		return true;
 	}
