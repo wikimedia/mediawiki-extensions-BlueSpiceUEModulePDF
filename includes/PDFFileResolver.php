@@ -69,15 +69,27 @@ class PDFFileResolver {
 	protected $user = null;
 
 	/**
+	 * @var RepoGroup
+	 */
+	protected $repoGroup = null;
+
+	/**
+	 * @var Config
+	 */
+	protected $mainConfig = null;
+
+	/**
 	 *
 	 * @param DOMElement $oImgEl
 	 * @param string $sWebrootFileSystemPath
 	 * @param string $sSourceAttribute
 	 * @param PermissionManager|null $permissionManager
 	 * @param User|null $user
+	 * @param RepoGroup|null $repoGroup
+	 * @param Config|null $mainConfig
 	 */
 	public function __construct( $oImgEl, $sWebrootFileSystemPath, $sSourceAttribute = 'src',
-		$permissionManager = null, $user = null ) {
+		$permissionManager = null, $user = null, $repoGroup = null, $mainConfig = null ) {
 		$this->oImgNode = $oImgEl;
 		$this->sWebrootFileSystemPath = $sWebrootFileSystemPath;
 		$this->sSourceAttribute = $sSourceAttribute;
@@ -89,8 +101,58 @@ class PDFFileResolver {
 		if ( $this->user === null ) {
 			$this->user = RequestContext::getMain()->getUser();
 		}
+		$this->repoGroup = $repoGroup;
+		if ( $this->repoGroup === null ) {
+			$this->repoGroup = MediaWikiServices::getInstance()->getRepoGroup();
+		}
+		$this->mainConfig = $mainConfig;
+		if ( $this->mainConfig === null ) {
+			$this->mainConfig = MediaWikiServices::getInstance()->getMainConfig();
+		}
 
 		$this->init();
+	}
+
+	/**
+	 * Factory method for file resolvers.
+	 *
+	 * @param DOMElement $oImgEl
+	 * @param string $sWebrootFileSystemPath
+	 * @param string $sSourceAttribute
+	 * @param PermissionManager|null $permissionManager
+	 * @param User|null $user
+	 * @param RepoGroup|null $repoGroup
+	 * @param Config|null $mainConfig
+	 *
+	 * @return PDFFileResolver
+	 * @throws Exception
+	 */
+	public static function factory( $oImgEl, $sWebrootFileSystemPath, $sSourceAttribute = 'src',
+		$permissionManager = null, $user = null, $repoGroup = null, $mainConfig = null ) {
+		$attrName = 'BlueSpiceUEModulePDFFileResolverRegistry';
+		$fileResolverRegistry = ExtensionRegistry::getInstance()->getAttribute( $attrName );
+
+		$bsConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
+
+		$fileResolverKey = $bsConfig->get( 'UEModulePDFFileResolver' );
+
+		if ( empty( $fileResolverRegistry[$fileResolverKey] ) ) {
+			throw new Exception( 'Specified file resolver does not exist!' );
+		}
+
+		$class = $fileResolverRegistry[$fileResolverKey];
+
+		$resolver = new $class(
+			$oImgEl,
+			$sWebrootFileSystemPath,
+			$sSourceAttribute,
+			$permissionManager,
+			$user,
+			$repoGroup,
+			$mainConfig
+		);
+
+		return $resolver;
 	}
 
 	protected function init() {
@@ -105,12 +167,11 @@ class PDFFileResolver {
 	}
 
 	protected function extractSourceFilename() {
-		global $wgServer, $wgThumbnailScriptPath, $wgUploadPath, $wgScriptPath;
 		$aForPreg = [
-			$wgServer,
-			$wgThumbnailScriptPath . "?f=",
-			$wgUploadPath,
-			$wgScriptPath
+			$this->mainConfig->get( 'Server' ),
+			$this->mainConfig->get( 'ThumbnailScriptPath' ) . "?f=",
+			$this->mainConfig->get( 'UploadPath' ),
+			$this->mainConfig->get( 'ScriptPath' )
 		];
 
 		$sOrigUrl = $this->oImgNode->getAttribute( $this->sSourceAttribute );
@@ -164,7 +225,7 @@ class PDFFileResolver {
 			'latest' => true
 		];
 
-		$this->oFileObject = MediaWikiServices::getInstance()->getRepoGroup()->findFile(
+		$this->oFileObject = $this->repoGroup->findFile(
 			$this->oFileTitle,
 			$aOptions
 		);
@@ -191,8 +252,6 @@ class PDFFileResolver {
 	}
 
 	protected function setAbsoluteFilesystemPath() {
-		global $wgUploadDirectory;
-
 		if ( !$this->isAllowed ) {
 			$this->sAbsoluteFilesystemPath = $this->accessDeniedImage();
 			return;
@@ -227,7 +286,8 @@ class PDFFileResolver {
 				$this->sSourceFileName = wfBaseName( $this->sAbsoluteFilesystemPath );
 			}
 		} else {
-			$this->sAbsoluteFilesystemPath = $this->getFileSystemPath( $wgUploadDirectory . $this->sSourceFilePath );
+			$uploadDirectory = $this->mainConfig->get( 'UploadDirectory' );
+			$this->sAbsoluteFilesystemPath = $this->getFileSystemPath( $uploadDirectory . $this->sSourceFilePath );
 		}
 	}
 
@@ -287,7 +347,7 @@ class PDFFileResolver {
 	 * @return string
 	 */
 	private function accessDeniedImage() {
-		return $GLOBALS['wgExtensionDirectory']
+		return $this->mainConfig->get( 'ExtensionDirectory' )
 			. "/BlueSpiceFoundation/resources/assets/ue-module-pdf/access_denied.png";
 	}
 
