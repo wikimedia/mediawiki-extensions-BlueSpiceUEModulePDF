@@ -234,7 +234,7 @@ class BsPDFServlet {
 		// Find all images
 		$oImageElements = $oHtml->getElementsByTagName( 'img' );
 		foreach ( $oImageElements as $oImageElement ) {
-			$oFileResolver = new PDFFileResolver( $oImageElement, $this->aParams['webroot-filesystempath'] );
+			$oFileResolver = PDFFileResolver::factory( $oImageElement, $this->aParams['webroot-filesystempath'] );
 
 			$sFileName = $oFileResolver->getFileName();
 			$sAbsoluteFileSystemPath = $oFileResolver->getAbsoluteFilesystemPath();
