@@ -54,6 +54,12 @@
 					"factory": "\\BlueSpice\\UEModulePDF\\ExportDialogPluginPage::factory"
 				}
 			}
+		},
+		"BlueSpiceUEModulePDF": {
+			"FileResolverRegistry": {
+				"standard-resolver": "\\PDFFileResolver",
+				"strip-special-characters-resolver": "\\BlueSpice\\UEModulePDF\\PdfFileResolver\\StripSpecialCharsResolver"
+			}
 		}
 	},
 	"callback": "\\BlueSpice\\UEModulePDF\\Extension::onRegistration",
@@ -77,6 +83,9 @@
 	"AutoloadNamespaces": {
 		"BlueSpice\\UEModulePDF\\": "src/"
 	},
+	"TestAutoloadNamespaces": {
+		"BlueSpice\\UEModulePDF\\Tests\\": "tests/phpunit"
+	},
 	"AutoloadClasses": {
 		"BsPDFPageProvider": "includes/PDFPageProvider.class.php",
 		"BsPDFTemplateProvider": "includes/PDFTemplateProvider.class.php",
@@ -84,8 +93,14 @@
 		"BsExportModulePDF": "includes/ExportModulePDF.class.php",
 		"PDFFileResolver": "includes/PDFFileResolver.php"
 	},
+	"HookHandlers": {
+		"remove-temporary-files": {
+			"class": "\\BlueSpice\\UEModulePDF\\Hook\\BSUEModulePDFCreatePDFBeforeSend\\RemoveTemporaryFiles"
+		}
+	},
 	"Hooks": {
-		"BSMigrateSettingsFromDeviatingNames": "\\BlueSpice\\UEModulePDF\\Hook\\BSMigrateSettingsFromDeviatingNames\\SkipServiceSettings::callback"
+		"BSMigrateSettingsFromDeviatingNames": "\\BlueSpice\\UEModulePDF\\Hook\\BSMigrateSettingsFromDeviatingNames\\SkipServiceSettings::callback",
+		"BSUEModulePDFCreatePDFBeforeSend": "remove-temporary-files"
 	},
 	"config_prefix": "bsg",
 	"config": {
@@ -105,6 +120,9 @@
 		},
 		"UEModulePDFAllowPartialExport": {
 			"value": false
+		},
+		"UEModulePDFFileResolver": {
+			"value": "standard-resolver"
 		}
 	},
 	"ResourceModules": {
