@@ -82,6 +82,9 @@ class Subpages extends SubpagesBase {
 	 */
 	protected function makeBookmarks( &$template, $includedTitles ) {
 		foreach ( $includedTitles as $name => $content ) {
+			if ( $name == $this->rootTitle->getFullText() ) {
+				continue;
+			}
 			$bookmarkNode = BsUniversalExportHelper::getBookmarkElementForPageDOM(
 				$content['dom']
 			);
