@@ -153,10 +153,16 @@ class BsPDFServlet {
 					$iCurrentUploadSize = $iFileSize;
 				}
 
+				// 'myfile.css' => {file_contents}
+				// 'myfile.css_name' => 'myfile.css'
 				$postData['multipart'][] = [
 					'name' => $sFileName,
 					'contents' => file_get_contents( $sFilePath ),
 					'filename' => $sFileName
+				];
+				$postData['multipart'][] = [
+					'name' => "{$sFileName}_name",
+					'contents' => $sFileName
 				];
 
 				$iCurrentUploadSize += $iFileSize;
