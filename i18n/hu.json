@@ -1,10 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Csega"
+			"Csega",
+			"Hanna Tardos"
 		]
 	},
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Lap exportálása PDF-be.",
 	"bs-uemodulepdf-overview-webservice-state-ok": "elérhető",
-	"bs-uemodulepdf-overview-webservice-state-not-ok": "nem elérhető"
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "nem elérhető",
+	"action-uemodulepdf-export": "lap exportálása PDF-be",
+	"action-uemodulepdfsubpages-export": "oldal PDF-be exportálása, aloldalakkal együtt"
 }
