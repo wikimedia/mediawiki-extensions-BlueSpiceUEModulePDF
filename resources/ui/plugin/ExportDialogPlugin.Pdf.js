@@ -2,6 +2,7 @@ bs.ue.ui.plugin.Pdf = function ( config ) {
 	bs.ue.ui.plugin.Pdf.parent.call( this, config );
 
 	this.config = config || {};
+	this.dialog = config.dialog || null;
 
 	this.subModule = '';
 	this.template = '';
@@ -77,7 +78,7 @@ bs.ue.ui.plugin.Pdf.prototype.getPanel = function () {
 	/* Select template */
 	this.templateSelect = new OO.ui.DropdownInputWidget( {
 		options: templates,
-		$overlay: true
+		$overlay: this.dialog ? this.dialog.$overlay : true
 	} );
 
 	if ( templates.length > 0 ) {
