@@ -15,5 +15,6 @@
 	"bs-uemodulepdf-overview-webservice-webadmin": "バックエンドの Web インターフェイス:",
 	"bs-uemodulepdf-export-dialog-label-module-name": "PDFページ",
 	"bs-uemodulepdf-export-dialog-label-select-submodule": "スコープ",
-	"bs-uemodulepdf-export-dialog-label-select-template": "レイアウト"
+	"bs-uemodulepdf-export-dialog-label-select-template": "レイアウト",
+	"action-uemodulepdf-export": "ページをPDFにエクスポートする"
 }
