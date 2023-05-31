@@ -60,9 +60,15 @@ class BsPDFServlet {
 			$postData['debug'] = "true";
 		}
 
+		$requestOptions = $GLOBALS['bsgUEModulePDFRequestOptions'] ?? [];
 		$this->hookRunner->onBSUEModulePDFCreatePDFBeforeSend(
 			$this,
-			$GLOBALS['bsgUEModulePDFRequestOptions'],
+			array_merge(
+				[
+					'postData' => $postData
+				],
+				$requestOptions
+			),
 			$oHtmlDOM
 		);
 
