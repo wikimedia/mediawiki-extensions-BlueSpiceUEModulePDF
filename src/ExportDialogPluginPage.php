@@ -34,6 +34,7 @@ class ExportDialogPluginPage implements IExportDialogPlugin {
 
 		$defaultTemplate = $config->get( 'UEModulePDFDefaultTemplate' );
 		$defaultTemplatePath = $config->get( 'UEModulePDFTemplatePath' );
+		$excludeList = $config->get( 'UEModulePDFExportDialogExcludeTemplates' );
 
 		$availableTemplates = [];
 		$dir = opendir( $defaultTemplatePath );
@@ -50,6 +51,11 @@ class ExportDialogPluginPage implements IExportDialogPlugin {
 			}
 
 			if ( !is_dir( "{$defaultTemplatePath}/{$subDir}" ) ) {
+				$subDir = readdir( $dir );
+				continue;
+			}
+
+			if ( in_array( $subDir, $excludeList ) ) {
 				$subDir = readdir( $dir );
 				continue;
 			}
