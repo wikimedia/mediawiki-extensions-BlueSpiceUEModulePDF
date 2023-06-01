@@ -123,6 +123,9 @@
 		},
 		"UEModulePDFFileResolver": {
 			"value": "standard-resolver"
+		},
+		"UEModulePDFExportDialogExcludeTemplates": {
+			"value": []
 		}
 	},
 	"ResourceModules": {
