@@ -34,7 +34,7 @@ bs.ue.ui.plugin.Pdf.prototype.getPanel = function () {
 	for ( var index = 0; index < availableTemplates.length; index++ ) {
 		templates.push(
 			{
-				label: availableTemplates[ index ].replace( '_', ' ' ),
+				label: availableTemplates[ index ],
 				data: availableTemplates[ index ]
 			}
 		);
