@@ -46,7 +46,7 @@ class BsPDFTemplateProvider {
 				$aOptions[$aTemplate['info']['name']] = $sDirName;
 			}
 		}
-		catch ( Exception $e ) {
+		catch ( Throwable $e ) {
 			wfDebugLog( 'BS::UEModulePDF', 'BsPDFTemplateProvider::getTemplatesForSelectOptions: Error: ' . $e->getMessage() );
 			return [ '-' => '-' ];
 		}
