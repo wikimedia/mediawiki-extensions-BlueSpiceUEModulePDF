@@ -2,12 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Csega",
-			"Hanna Tardos"
+			"Hanna Tardos",
+			"Krisztina"
 		]
 	},
+	"bs-uemodulepdf-desc": "Lehetővé teszi a MediaWiki lapok exportálását PDF formátumba",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Lap exportálása PDF-be.",
 	"bs-uemodulepdf-overview-webservice-state-ok": "elérhető",
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "nem elérhető",
 	"action-uemodulepdf-export": "lap exportálása PDF-be",
-	"action-uemodulepdfsubpages-export": "oldal PDF-be exportálása, aloldalakkal együtt"
+	"action-uemodulepdfsubpages-export": "lap PDF-be exportálása, allapokkal együtt"
 }
