@@ -194,7 +194,7 @@ class BsPDFServlet {
 	 *
 	 * @var PDFServletHookRunner
 	 */
-	private $hookRunner = null;
+	protected $hookRunner = null;
 
 	/**
 	 * The contructor method forthis class.
