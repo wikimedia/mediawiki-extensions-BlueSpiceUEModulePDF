@@ -294,11 +294,17 @@ class BsPDFPageProvider {
 			. "and not(starts-with(@href, '#'))]"
 		);
 		foreach ( $oInternalAnchorElements as $oInternalAnchorElement ) {
-			$sRelativePath = $oInternalAnchorElement->getAttribute( 'href' );
-			$oInternalAnchorElement->setAttribute(
-				'href',
-				$wgServer . $sRelativePath
-			);
+			$path = $oInternalAnchorElement->getAttribute( 'href' );
+
+			// $path is usually a relative path but it can already contain a full url
+			// in case of foreign file repo
+			$parsedUrl = wfParseUrl( $path );
+			if ( !$parsedUrl ) {
+				$oInternalAnchorElement->setAttribute(
+					'href',
+					$wgServer . $path
+				);
+			}
 		}
 
 		/**
