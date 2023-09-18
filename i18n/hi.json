@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Archana mathur",
 			"Sukanya121",
 			"संजीव कुमार"
 		]
 	},
 	"right-uemodulepdfrecursive-export": "सभी जुड़े हुए पृष्ठों सहित एक पृष्ठ को पीडीएफ में निर्यात करें",
-	"action-uemodulepdfrecursive-export": "सभी जुड़े हुए  पृष्ठों सहित एक पृष्ठ को पीडीएफ में निर्यात करें"
+	"action-uemodulepdfrecursive-export": "सभी जुड़े हुए पृष्ठों सहित एक पृष्ठ को पीडीएफ में निर्यात करें"
 }
