@@ -145,6 +145,7 @@ class BsPDFServlet {
 				}
 
 				$iFileSize = filesize( $sFilePath );
+				$iCurrentUploadSize += $iFileSize;
 				if ( $iCurrentUploadSize >= $bsgUEModulePDFUploadThreshold ) {
 					$this->doFilesUpload( array_merge( $aPostFiles, $aPostData ), $aErrors );
 
@@ -158,7 +159,6 @@ class BsPDFServlet {
 				$aPostFiles['file' . $iCounter . '_name'] = $sFileName;
 				$aPostFiles['file' . $iCounter] = class_exists( 'CURLFile' ) ? new CURLFile( $sFilePath ) : '@' . $sFilePath;
 				$iCounter++;
-				$iCurrentUploadSize += $iFileSize;
 			}
 			$this->doFilesUpload( array_merge( $aPostFiles, $aPostData ), $aErrors ); // For last iteration contents
 		}
