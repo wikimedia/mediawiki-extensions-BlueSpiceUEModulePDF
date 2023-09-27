@@ -152,6 +152,7 @@ class BsPDFServlet {
 				}
 
 				$iFileSize = filesize( $sFilePath );
+				$iCurrentUploadSize += $iFileSize;
 				if ( $iCurrentUploadSize >= $bsgUEModulePDFUploadThreshold ) {
 					$this->doFilesUpload( $postData, $aErrors );
 
@@ -171,8 +172,6 @@ class BsPDFServlet {
 					'name' => "{$sFileName}_name",
 					'contents' => $sFileName
 				];
-
-				$iCurrentUploadSize += $iFileSize;
 			}
 			$this->doFilesUpload( $postData, $aErrors ); // For last iteration contents
 		}
