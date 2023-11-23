@@ -9,5 +9,6 @@
 	"bs-uemodulepdf-overview-webservice-state": "Бэкендан статус",
 	"bs-uemodulepdf-overview-webservice-state-ok": "тӀекхочу",
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "тӀекхочехь йац",
-	"bs-uemodulepdf-overview-webservice-webadmin": "Интерфейсан бэкенд веб"
+	"bs-uemodulepdf-overview-webservice-webadmin": "Интерфейсан бэкенд веб",
+	"bs-uemodulepdf-export-dialog-label-module-name": "PDF агӀо"
 }

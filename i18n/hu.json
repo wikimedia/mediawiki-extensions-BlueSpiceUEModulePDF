@@ -1,10 +1,31 @@
 {
 	"@metadata": {
 		"authors": [
-			"Csega"
+			"Csega",
+			"Hanna Tardos",
+			"Krisztina"
 		]
 	},
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Lap exportálása PDF-be.",
 	"bs-uemodulepdf-overview-webservice-state-ok": "elérhető",
-	"bs-uemodulepdf-overview-webservice-state-not-ok": "nem elérhető"
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "nem elérhető",
+	"bs-uemodulepdf-desc": "Lehetővé teszi a MediaWiki lapok exportálását PDF formátumba",
+	"prefs-uemodulepdf": "Univerzális PDF export modul",
+	"uemodulepdf": "Univerzális PDF export modul",
+	"bs-uemodulepdf-pref-suppressns": "Névtér előtag elrejtése a PDF-ben",
+	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "egyoldalas PDF",
+	"bs-uemodulepdf-overview-title": "Portable Document Format (PDF)",
+	"bs-uemodulepdf-overview-desc": "Az oldalakat (speciális oldalak és tartalmi oldalak) PDF-be exportálja.",
+	"action-uemodulepdf-export": "lap exportálása PDF-be",
+	"right-uemodulepdf-export": "Lap exportálása PDF-be",
+	"bs-uemodulepdf-widgetlink-subpages-text": "PDF lap allapokkal",
+	"bs-uemodulepdf-widgetlink-subpages-title": "A lap és az összes allap exportálása PDF-be.",
+	"action-uemodulepdfsubpages-export": "lap PDF-be exportálása, allapokkal együtt",
+	"right-uemodulepdfsubpages-export": "A lap és az összes allap exportálása PDF-be.",
+	"bs-uemodulepdf-widgetlink-recursive-title": "A lap és az összes allap exportálása PDF-be.",
+	"bs-uemodulepdf-pref-suppressns-help": "A lap névtere nem szerepel a PDF nevében.",
+	"bs-uemodulepdf-export-dialog-label-module-name": "PDF lap",
+	"bs-uemodulepdf-export-dialog-label-select-template": "Elrendezés",
+	"bs-uemodulepdf-export-dialog-label-submodule-default": "Csak ez a lap",
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Tartalmazza az allapokat"
 }

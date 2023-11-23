@@ -1,10 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dogogos123",
 			"NikosLikomitros",
 			"Nikosgranturismogt"
 		]
 	},
 	"bs-uemodulepdf-overview-webservice-state-ok": "διαθέσιμοι",
-	"bs-uemodulepdf-overview-webservice-state-not-ok": "μη διαθέσιμοι"
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "μη διαθέσιμοι",
+	"action-uemodulepdf-export": "εξαγωγή μιας σελίδας σε PDF",
+	"action-uemodulepdfsubpages-export": "εξαγωγή μιας σελίδας, συμπεριλαμβανομένων όλων των υποσέλιδων, σε PDF"
 }
