@@ -25,5 +25,7 @@
 	"bs-uemodulepdf-export-dialog-label-module-name": "PDF lap",
 	"bs-uemodulepdf-export-dialog-label-select-template": "Elrendezés",
 	"bs-uemodulepdf-export-dialog-label-submodule-default": "Csak ez a lap",
-	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Tartalmazza az allapokat"
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Tartalmazza az allapokat",
+	"action-uemodulepdf-export": "lap exportálása PDF-be",
+	"action-uemodulepdfsubpages-export": "lap PDF-be exportálása, allapokkal együtt"
 }

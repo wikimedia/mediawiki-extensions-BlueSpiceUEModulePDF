@@ -22,7 +22,7 @@
 	"soap-service-url-not-valid": "L’URL du service web de génération du PDF n’est pas valide. Veuillez vérifier la configuration du wiki.",
 	"soap-service-url-not-set": "L’URL du service web de génération du PDF n’est pas définie. Veuillez vérifier la configuration du wiki.",
 	"bs-uemodulepdf-overview-webservice-webadmin": "Interface web du serveur",
-	"action-uemodulepdf-export": "exportation d’une page en PDF",
+	"action-uemodulepdf-export": "réaliser l’exportation d’une page en PDF",
 	"right-uemodulepdf-export": "Exporter une page en PDF",
 	"bs-uemodulepdf-widgetlink-subpages-text": "Page PDF avec ses sous-pages",
 	"bs-uemodulepdf-widgetlink-subpages-title": "Exporter cette page et toutes ses sous-pages au format PDF.",
