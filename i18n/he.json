@@ -33,5 +33,7 @@
 	"bs-uemodulepdf-export-dialog-label-select-template": "עיצוב דף",
 	"bs-uemodulepdf-export-dialog-label-submodule-default": "רק הדף הזה",
 	"bs-uemodulepdf-export-dialog-label-submodule-recursive": "לכלול מקושרים רקורסיביים",
-	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "לכלול דפי־משנה"
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "לכלול דפי־משנה",
+	"action-uemodulepdf-export": "לייצא דף ל־PDF",
+	"action-uemodulepdfsubpages-export": "לייצא דף ואת כל דפי־המשנה שלו כ־PDF"
 }
