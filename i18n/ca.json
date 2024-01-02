@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"SMP",
 			"Vfc"
 		]
 	},
-	"right-uemodulepdf-export": "Exportació la pàgina a PDF"
+	"right-uemodulepdf-export": "Exportar una pàgina a PDF"
 }
