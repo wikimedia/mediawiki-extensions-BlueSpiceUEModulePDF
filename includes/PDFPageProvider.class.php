@@ -206,7 +206,7 @@ class BsPDFPageProvider {
 		}
 
 		// If it's a normal article
-		if ( !in_array( $oTitle->getNamespace(), [ NS_SPECIAL, NS_FILE, NS_CATEGORY ] ) ) {
+		if ( !in_array( $oTitle->getNamespace(), [ NS_SPECIAL, NS_FILE, NS_CATEGORY ] ) && $oTitle->canExist() ) {
 			$oWikiPage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $oTitle );
 			$aMeta['author'] = $oWikiPage->getUserText(); // TODO RBV (14.12.10 12:19): Realname/Username -> DisplayName
 			$aMeta['date']   = $wgLang->sprintfDate( 'd.m.Y', $oWikiPage->getTouched() );
