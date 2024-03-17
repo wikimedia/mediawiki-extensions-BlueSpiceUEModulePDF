@@ -75,10 +75,10 @@ class StandardResolverTest extends TestCase {
 		$expectedFileName,
 		$expectedAbsoluteFileSystemPath
 	) {
-		list( $imageTitle, $imageUrl, $imageWidth ) = $imageInfo;
+		[ $imageTitle, $imageUrl, $imageWidth ] = $imageInfo;
 
 		if ( $isLocalFile ) {
-			list( $fileName, $fileLocalPath, $fileBackendPath ) = $fileInfo;
+			[ $fileName, $fileLocalPath, $fileBackendPath ] = $fileInfo;
 		}
 
 		$permissionManagerMock = $this->createMock( PermissionManager::class );

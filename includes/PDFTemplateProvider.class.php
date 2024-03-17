@@ -98,7 +98,7 @@ class BsPDFTemplateProvider {
 		$oMsgTags = $oTemplateDOM->getElementsByTagName( 'msg' );
 
 		$messages = [];
-		list( $mainLang ) = explode( '-', $aParams['language'] );
+		[ $mainLang ] = explode( '-', $aParams['language'] );
 		foreach ( [ 'en', $mainLang, $aParams['language'] ] as $lang ) {
 			if ( !isset( $aTemplate['messages'][$lang] ) ) {
 				continue;

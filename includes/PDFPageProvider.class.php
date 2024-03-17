@@ -421,7 +421,7 @@ class BsPDFPageProvider {
 		foreach ( $oTableRows as $oTableRow ) {
 			// Filter for <tr>
 			if ( $oTableRow instanceof DOMElement && $oTableRow->tagName == 'tr' ) {
-			$aRows[] = $oTableRow;
+				$aRows[] = $oTableRow;
 			}
 		}
 	}

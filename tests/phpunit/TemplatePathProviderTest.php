@@ -7,12 +7,12 @@ use Exception;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers TemplatePathProvider
+ * @covers \BlueSpice\UEModulePDF\TemplatePathProvider
  */
 class TemplatePathProviderTest extends TestCase {
 
 	/**
-	 * @covers TemplatePathProvider::getPath
+	 * @covers \BlueSpice\UEModulePDF\TemplatePathProvider::getPath
 	 * @dataProvider provideTestGetPathData
 	 *
 	 * @param string $IP
@@ -60,7 +60,7 @@ class TemplatePathProviderTest extends TestCase {
 	}
 
 	/**
-	 * @covers TemplatePathProvider::getPath
+	 * @covers \BlueSpice\UEModulePDF\TemplatePathProvider::getPath
 	 */
 	public function testGetPathException() {
 		$this->expectException( Exception::class );
