@@ -2,6 +2,7 @@
 
 use BlueSpice\Tests\BSApiTestCase;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Permissions\PermissionManager;
 
 /**
  * @group medium
@@ -38,8 +39,10 @@ class PDFFileResolverTest extends BSApiTestCase {
 				$webrootPath = implode( '/', $parts );
 			}
 		}
+		$permissionManagerMock = $this->createMock( PermissionManager::class );
+		$permissionManagerMock->method( 'userCan' )->willReturn( true );
 		foreach ( $oImageElements as $oImageElement ) {
-			$oResolver = new PDFFileResolver( $oImageElement, $webrootPath );
+			$oResolver = new PDFFileResolver( $oImageElement, $webrootPath, 'src', $permissionManagerMock );
 			$sFileName = $oResolver->getFileName();
 			$sAbsoluteFilesystemPath = $oResolver->getAbsoluteFilesystemPath();
 
