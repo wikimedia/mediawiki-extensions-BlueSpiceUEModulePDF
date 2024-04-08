@@ -29,6 +29,7 @@ bs.ue.ui.plugin.Pdf.prototype.getLabel = function () {
 bs.ue.ui.plugin.Pdf.prototype.getPanel = function () {
 	this.defaultTemplate = mw.config.get( 'bsUEModulePDFDefaultTemplate' );
 	var availableTemplates = mw.config.get( 'bsUEModulePDFAvailableTemplates' );
+	availableTemplates.sort();
 
 	var templates = [];
 	for ( var index = 0; index < availableTemplates.length; index++ ) {
