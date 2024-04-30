@@ -5,16 +5,16 @@
 			"Shirayuki"
 		]
 	},
-	"bs-uemodulepdf-desc": "MediaWiki \u304c\u30da\u30fc\u30b8\u3092 PDF \u5f62\u5f0f\u3067\u66f8\u304d\u51fa\u305b\u308b\u3088\u3046\u306b\u3059\u308b",
-	"bs-uemodulepdf-overview-desc": "\u30da\u30fc\u30b8 (\u7279\u5225\u30da\u30fc\u30b8\u304a\u3088\u3073\u672c\u6587\u30da\u30fc\u30b8) \u3092 PDF \u306b\u66f8\u304d\u51fa\u3057\u307e\u3059\u3002",
-	"bs-uemodulepdf-overview-webservice-state": "\u30d0\u30c3\u30af\u30a8\u30f3\u30c9\u306e\u72b6\u614b",
-	"bs-uemodulepdf-overview-webservice-state-ok": "\u5229\u7528\u53ef\u80fd",
-	"bs-uemodulepdf-overview-webservice-state-not-ok": "\u5229\u7528\u4e0d\u53ef",
-	"soap-service-url-not-valid": "PDF \u3092\u751f\u6210\u3059\u308b\u30a6\u30a7\u30d6 \u30b5\u30fc\u30d3\u30b9\u306e URL \u304c\u6709\u52b9\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u30a6\u30a3\u30ad\u306e\u8a2d\u5b9a\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
-	"soap-service-url-not-set": "PDF \u3092\u751f\u6210\u3059\u308b\u30a6\u30a7\u30d6 \u30b5\u30fc\u30d3\u30b9\u306e URL \u304c\u8a2d\u5b9a\u3055\u308c\u3066\u3044\u307e\u305b\u3093\u3002\u30a6\u30a3\u30ad\u306e\u8a2d\u5b9a\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
-	"bs-uemodulepdf-overview-webservice-webadmin": "\u30d0\u30c3\u30af\u30a8\u30f3\u30c9\u306e Web \u30a4\u30f3\u30bf\u30fc\u30d5\u30a7\u30a4\u30b9:",
-	"bs-uemodulepdf-export-dialog-label-module-name": "PDF\u30da\u30fc\u30b8",
-	"bs-uemodulepdf-export-dialog-label-select-submodule": "\u30b9\u30b3\u30fc\u30d7",
-	"bs-uemodulepdf-export-dialog-label-select-template": "\u30ec\u30a4\u30a2\u30a6\u30c8",
-	"action-uemodulepdf-export": "\u30da\u30fc\u30b8\u3092PDF\u306b\u30a8\u30af\u30b9\u30dd\u30fc\u30c8\u3059\u308b"
+	"bs-uemodulepdf-desc": "MediaWiki がページを PDF 形式で書き出せるようにする",
+	"bs-uemodulepdf-overview-desc": "ページ (特別ページおよび本文ページ) を PDF に書き出します。",
+	"bs-uemodulepdf-overview-webservice-state": "バックエンドの状態",
+	"bs-uemodulepdf-overview-webservice-state-ok": "利用可能",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "利用不可",
+	"soap-service-url-not-valid": "PDF を生成するウェブ サービスの URL が有効ではありません。ウィキの設定を確認してください。",
+	"soap-service-url-not-set": "PDF を生成するウェブ サービスの URL が設定されていません。ウィキの設定を確認してください。",
+	"bs-uemodulepdf-overview-webservice-webadmin": "バックエンドの Web インターフェイス:",
+	"bs-uemodulepdf-export-dialog-label-module-name": "PDFページ",
+	"bs-uemodulepdf-export-dialog-label-select-submodule": "スコープ",
+	"bs-uemodulepdf-export-dialog-label-select-template": "レイアウト",
+	"action-uemodulepdf-export": "ページをPDFにエクスポートする"
 }
