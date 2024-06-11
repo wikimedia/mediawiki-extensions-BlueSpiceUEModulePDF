@@ -28,6 +28,7 @@ return [
 			'../common/stylesheets/geshi-php.css',
 			'../common/stylesheets/bluespice.css',
 			'../common/stylesheets/tables.css',
+			'stylesheets/tables-landscape.css',
 			'../common/stylesheets/fonts.css',
 			// '../common/stylesheets/debug.css',
 			'../common/fonts/DejaVuSans.ttf',
