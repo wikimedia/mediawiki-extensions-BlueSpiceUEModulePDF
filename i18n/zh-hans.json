@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Huajing",
 			"Liuxinyu970226",
 			"Vikarna",
 			"Wzl19371",
@@ -37,5 +38,7 @@
 	"bs-uemodulepdf-export-dialog-label-select-submodule": "范围",
 	"bs-uemodulepdf-export-dialog-label-select-template": "布局",
 	"bs-uemodulepdf-export-dialog-label-submodule-default": "仅此页面",
-	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "包含子页面"
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "包含子页面",
+	"bs-uemodulepdf-pref-suppressns-help": "PDF 标题中省略了页面的命名空间。",
+	"bs-uemodulepdf-export-dialog-label-submodule-recursive": "包括递归链接"
 }
