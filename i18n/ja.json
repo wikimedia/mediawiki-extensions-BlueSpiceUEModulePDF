@@ -16,5 +16,5 @@
 	"bs-uemodulepdf-export-dialog-label-module-name": "PDFページ",
 	"bs-uemodulepdf-export-dialog-label-select-submodule": "スコープ",
 	"bs-uemodulepdf-export-dialog-label-select-template": "レイアウト",
-	"action-uemodulepdf-export": "ページをPDFにエクスポートする"
+	"action-uemodulepdf-export": "ページのPDFへのエクスポート"
 }
