@@ -1,0 +1,9 @@
+/* fix to avoid cutting of image */
+.bs-correct-image-width {
+	width: 26.1cm !important;
+}
+
+.rotated .bs-correct-image-width,
+.bs-rotated .bs-correct-image-width {
+	width: 17.4cm !important;
+}
