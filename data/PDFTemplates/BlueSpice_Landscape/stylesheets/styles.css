@@ -124,3 +124,8 @@ div.bs-tableofcontentspage .toc > ul > li.toclevel-6 { margin-left: 10em; }
 td.bs-wiki-article-ancestors-table-left,
 td.bs-wiki-article-ancestors-table-right { width: 50%;}
 td.bs-wiki-article-ancestors-table-right { text-align: right; }
+
+.tocnumber.hidden,
+.mw-headline-number.hidden {
+	display: none;
+}
