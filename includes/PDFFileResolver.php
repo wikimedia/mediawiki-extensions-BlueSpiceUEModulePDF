@@ -247,7 +247,8 @@ class PDFFileResolver {
 			$this->oImgNode->removeAttribute( 'height' );
 
 			$sClasses = $this->oImgNode->getAttribute( 'class' );
-			$this->oImgNode->setAttribute( 'class', $sClasses . ' maxwidth' );
+			// TODO: remove class maxwidth
+			$this->oImgNode->setAttribute( 'class', $sClasses . 'bs-correct-image-width maxwidth' );
 		}
 	}
 
