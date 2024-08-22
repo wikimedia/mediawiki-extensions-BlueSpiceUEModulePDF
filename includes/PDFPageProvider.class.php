@@ -249,7 +249,8 @@ class BsPDFPageProvider {
 		global $wgServer;
 		$aClassesToRemove = [ 'editsection', 'bs-universalexport-exportexclude' ];
 		$oDOMXPath = new DOMXPath( $oPageDOM );
-		MediaWikiServices::getInstance()->getHookContainer()->run( 'BSUEModulePDFcleanUpDOM', [
+		$services = MediaWikiServices::getInstance();
+		$services->getHookContainer()->run( 'BSUEModulePDFcleanUpDOM', [
 			$oTitle,
 			$oPageDOM,
 			&$aParams,
@@ -293,12 +294,13 @@ class BsPDFPageProvider {
 			"//a[not(contains(@class, 'external')) and not(contains(@class, 'extiw')) "
 			. "and not(starts-with(@href, '#'))]"
 		);
+		$urlUtils = $services->getUrlUtils();
 		foreach ( $oInternalAnchorElements as $oInternalAnchorElement ) {
 			$path = $oInternalAnchorElement->getAttribute( 'href' );
 
 			// $path is usually a relative path but it can already contain a full url
 			// in case of foreign file repo
-			$parsedUrl = wfParseUrl( $path );
+			$parsedUrl = $urlUtils->parse( $path );
 			if ( !$parsedUrl ) {
 				$oInternalAnchorElement->setAttribute(
 					'href',
