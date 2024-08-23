@@ -164,7 +164,7 @@ class BsPDFServlet {
 				// 'myfile.css' => {file_contents}
 				// 'myfile.css_name' => 'myfile.css'
 				$postData['multipart'][] = [
-					'name' => $sFileName,
+					'name' => md5( $sFileName ),
 					'contents' => file_get_contents( $sFilePath ),
 					'filename' => $sFileName
 				];
