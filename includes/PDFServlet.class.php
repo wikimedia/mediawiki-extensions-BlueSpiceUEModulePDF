@@ -161,15 +161,17 @@ class BsPDFServlet {
 					$iCurrentUploadSize = $iFileSize;
 				}
 
+				$fieldname = md5( $sFileName );
+
 				// 'myfile.css' => {file_contents}
 				// 'myfile.css_name' => 'myfile.css'
 				$postData['multipart'][] = [
-					'name' => md5( $sFileName ),
+					'name' => $fieldname,
 					'contents' => file_get_contents( $sFilePath ),
 					'filename' => $sFileName
 				];
 				$postData['multipart'][] = [
-					'name' => "{$sFileName}_name",
+					'name' => "{$fieldname}_name",
 					'contents' => $sFileName
 				];
 			}
