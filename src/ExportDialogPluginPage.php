@@ -5,9 +5,20 @@ namespace BlueSpice\UEModulePDF;
 use BlueSpice\UniversalExport\IExportDialogPlugin;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Permissions\PermissionManager;
 use MWException;
+use RequestContext;
+use Title;
 
 class ExportDialogPluginPage implements IExportDialogPlugin {
+
+	/** @var PermissionManager */
+	private $permissionManager = null;
+
+	public function __construct() {
+		$services = MediaWikiServices::getInstance();
+		$this->permissionManager = $services->getPermissionManager();
+	}
 
 	/**
 	 * @return void
@@ -78,8 +89,18 @@ class ExportDialogPluginPage implements IExportDialogPlugin {
 
 		$jsConfigVars = [
 			'bsUEModulePDFDefaultTemplate' => $defaultTemplate,
-			'bsUEModulePDFAvailableTemplates' => $availableTemplates
+			'bsUEModulePDFAvailableTemplates' => $availableTemplates,
+			'UEModulePDFAllowSubpages' => false,
+			'UEModulePDFAllowRecursive' => false
 		];
+
+		$context = RequestContext::getMain();
+		if ( $this->permissionManager->userCan( 'uemodulepdfsubpages-export', $context->getUser(), $context->getTitle() ) ) {
+			$jsConfigVars['UEModulePDFAllowSubpages'] = true;
+		}
+		if ( $this->permissionManager->userCan( 'uemodulepdfrecursive-export', $context->getUser(), $context->getTitle() ) ) {
+			$jsConfigVars['UEModulePDFAllowRecursive'] = true;
+		}
 
 		return $jsConfigVars;
 	}
@@ -90,6 +111,20 @@ class ExportDialogPluginPage implements IExportDialogPlugin {
 	 * @return bool
 	 */
 	public function skip( IContextSource $context ): bool {
+		$title = $context->getSkin()->getRelevantTitle();
+
+		if ( $title instanceof Title === false ) {
+			return true;
+		}
+
+		if ( $title->getContentModel() !== CONTENT_MODEL_WIKITEXT ) {
+			return true;
+		}
+
+		if ( !$this->permissionManager->userCan( 'uemodulepdf-export', $context->getUser(), $title ) ) {
+			return true;
+		}
+
 		return false;
 	}
 }

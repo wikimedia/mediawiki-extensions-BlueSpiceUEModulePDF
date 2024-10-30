@@ -48,20 +48,33 @@ bs.ue.ui.plugin.Pdf.prototype.getPanel = function () {
 		$content: ''
 	} );
 
+	var allowSubpages = mw.config.get( 'UEModulePDFAllowSubpages' );
+	var allowRecursive = mw.config.get( 'UEModulePDFAllowRecursive' );
+
 	var fieldset = new OO.ui.FieldsetLayout();
+
+	let options =  [ {
+		data: 'default',
+		label: mw.message( 'bs-uemodulepdf-export-dialog-label-submodule-default' ).text()
+	} ];
+
+	if ( allowSubpages ) {
+		options.push( {
+			data: 'subpages',
+			label: mw.message( 'bs-uemodulepdf-export-dialog-label-submodule-subpages' ).text()
+		} );
+	}
+
+	if ( allowRecursive ) {
+		options.push( {
+			data: 'recursive',
+			label: mw.message( 'bs-uemodulepdf-export-dialog-label-submodule-recursive' ).text()
+		} );
+	}
 
 	/* Select submodule */
 	this.subModuleSelect = new OO.ui.RadioSelectInputWidget( {
-		options: [ {
-			data: 'default',
-			label: mw.message( 'bs-uemodulepdf-export-dialog-label-submodule-default' ).text()
-		}, {
-			data: 'subpages',
-			label: mw.message( 'bs-uemodulepdf-export-dialog-label-submodule-subpages' ).text()
-		}, {
-			data: 'recursive',
-			label: mw.message( 'bs-uemodulepdf-export-dialog-label-submodule-recursive' ).text()
-		} ]
+		options: options
 	} );
 
 	this.subModuleSelect.setValue( 'default' );
