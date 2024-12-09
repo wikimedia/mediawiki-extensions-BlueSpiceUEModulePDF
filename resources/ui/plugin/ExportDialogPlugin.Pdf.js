@@ -53,7 +53,7 @@ bs.ue.ui.plugin.Pdf.prototype.getPanel = function () {
 
 	var fieldset = new OO.ui.FieldsetLayout();
 
-	let options =  [ {
+	var options = [ {
 		data: 'default',
 		label: mw.message( 'bs-uemodulepdf-export-dialog-label-submodule-default' ).text()
 	} ];
