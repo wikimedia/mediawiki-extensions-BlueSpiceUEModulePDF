@@ -1,5 +1,6 @@
 <?php
 
+use BlueSpice\UEModulePDF\ThumbFilenameExtractor;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Permissions\PermissionManager;
 
@@ -194,12 +195,13 @@ class PDFFileResolver {
 			$sSrcFilename = $oAnchor->getAttribute( 'data-bs-title' );
 		}
 
-		$bIsThumb = UploadBase::isThumbName( $sSrcFilename );
+		$thumbFilenameExtractor = new ThumbFilenameExtractor();
+		$bIsThumb = $thumbFilenameExtractor->isThumb( $sSrcUrl );
 		$sTmpFilename = $sSrcFilename;
 		if ( $bIsThumb ) {
 			// HINT: Thumbname-to-filename-conversion taken from includes/Upload/UploadBase.php
 			// Check for filenames like 50px- or 180px-, these are mostly thumbnails
-			$sTmpFilename = substr( $sTmpFilename, strpos( $sTmpFilename, '-' ) + 1 );
+			$sTmpFilename = $thumbFilenameExtractor->extractFilename( $sSrcUrl );
 		}
 
 		$this->sSourceFileName = $sTmpFilename;
