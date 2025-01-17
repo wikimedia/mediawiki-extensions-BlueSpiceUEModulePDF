@@ -5,8 +5,8 @@ namespace BlueSpice\UEModulePDF\ExportSubaction;
 use BlueSpice\UEModulePDF\ExportSubaction\Subpages as PDFSubpages;
 use BlueSpice\UniversalExport\ExportSpecification;
 use BsPDFPageProvider;
+use MediaWiki\Title\Title;
 use Message;
-use Title;
 use WebRequest;
 
 class Recursive extends PDFSubpages {

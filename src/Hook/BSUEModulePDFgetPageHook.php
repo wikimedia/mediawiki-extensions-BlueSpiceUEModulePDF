@@ -3,7 +3,7 @@
 namespace BlueSpice\UEModulePDF\Hook;
 
 use DOMXPath;
-use Title;
+use MediaWiki\Title\Title;
 
 interface BSUEModulePDFgetPageHook {
 	/**
