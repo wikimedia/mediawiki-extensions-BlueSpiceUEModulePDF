@@ -14,6 +14,7 @@
 
 use BlueSpice\UEModulePDF\TemplatePathProvider;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 
 /**
  * UniversalExport BsPDFTemplateProvider class.

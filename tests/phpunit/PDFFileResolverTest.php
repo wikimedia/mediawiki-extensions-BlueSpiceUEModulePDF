@@ -3,6 +3,7 @@
 use BlueSpice\Tests\BSApiTestCase;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Permissions\PermissionManager;
+use MediaWiki\Title\Title;
 
 /**
  * @group medium

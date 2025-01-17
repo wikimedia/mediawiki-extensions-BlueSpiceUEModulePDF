@@ -26,11 +26,13 @@
  */
 namespace BlueSpice\UEModulePDF\Hook;
 
+use MediaWiki\Title\Title;
+
 abstract class BSUEModulePDFgetPage extends \BlueSpice\Hook {
 
 	/**
 	 *
-	 * @var \Title
+	 * @var Title
 	 */
 	protected $title = null;
 
@@ -54,7 +56,7 @@ abstract class BSUEModulePDFgetPage extends \BlueSpice\Hook {
 
 	/**
 	 *
-	 * @param \Title $title
+	 * @param Title $title
 	 * @param array &$page
 	 * @param array &$params
 	 * @param \DOMXPath $DOMXPath
@@ -77,7 +79,7 @@ abstract class BSUEModulePDFgetPage extends \BlueSpice\Hook {
 	 *
 	 * @param \IContextSource $context
 	 * @param \Config $config
-	 * @param \Title $title
+	 * @param Title $title
 	 * @param array &$page
 	 * @param array &$params
 	 * @param \DOMXPath $DOMXPath

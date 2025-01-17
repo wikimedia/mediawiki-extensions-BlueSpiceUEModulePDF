@@ -6,9 +6,9 @@ use BlueSpice\UniversalExport\IExportDialogPlugin;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Permissions\PermissionManager;
+use MediaWiki\Title\Title;
 use MWException;
 use RequestContext;
-use Title;
 
 class ExportDialogPluginPage implements IExportDialogPlugin {
 

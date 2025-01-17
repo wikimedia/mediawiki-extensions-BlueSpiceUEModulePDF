@@ -16,6 +16,7 @@ use BlueSpice\UEModulePDF\ExportSubaction\Subpages;
 use BlueSpice\UEModulePDF\PDFServletHookRunner;
 use BlueSpice\UniversalExport\ExportModule;
 use BlueSpice\UniversalExport\ExportSpecification;
+use MediaWiki\Title\Title;
 
 /**
  * UniversalExport BsExportModulePDF class.

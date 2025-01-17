@@ -3,6 +3,7 @@
 use BlueSpice\UEModulePDF\ThumbFilenameExtractor;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Permissions\PermissionManager;
+use MediaWiki\Title\Title;
 
 class PDFFileResolver {
 
