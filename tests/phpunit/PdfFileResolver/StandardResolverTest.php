@@ -9,10 +9,10 @@ use File;
 use FileRepo;
 use FSFile;
 use MediaWiki\Permissions\PermissionManager;
+use MediaWiki\User\User;
 use PDFFileResolver;
 use PHPUnit\Framework\TestCase;
 use RepoGroup;
-use User;
 
 /**
  * @covers PDFFileResolver
