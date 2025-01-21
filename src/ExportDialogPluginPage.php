@@ -4,11 +4,11 @@ namespace BlueSpice\UEModulePDF;
 
 use BlueSpice\UniversalExport\IExportDialogPlugin;
 use IContextSource;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Title\Title;
 use MWException;
-use RequestContext;
 
 class ExportDialogPluginPage implements IExportDialogPlugin {
 
