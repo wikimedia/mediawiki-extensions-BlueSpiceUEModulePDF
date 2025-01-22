@@ -10,8 +10,8 @@ use BsUniversalExportHelper;
 use DOMDocument;
 use DOMNode;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Message\Message;
 use MediaWiki\Title\Title;
-use Message;
 
 class Subpages extends SubpagesBase {
 	/** @var MediaWikiServices */
