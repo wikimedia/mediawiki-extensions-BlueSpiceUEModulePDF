@@ -1,6 +1,7 @@
 <?php
 
 use BlueSpice\UEModulePDF\ThumbFilenameExtractor;
+use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Permissions\PermissionManager;

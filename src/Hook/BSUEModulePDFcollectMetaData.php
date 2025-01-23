@@ -26,6 +26,7 @@
  */
 namespace BlueSpice\UEModulePDF\Hook;
 
+use MediaWiki\Config\Config;
 use MediaWiki\Title\Title;
 
 abstract class BSUEModulePDFcollectMetaData extends \BlueSpice\Hook {
@@ -86,7 +87,7 @@ abstract class BSUEModulePDFcollectMetaData extends \BlueSpice\Hook {
 	/**
 	 *
 	 * @param \IContextSource $context
-	 * @param \Config $config
+	 * @param Config $config
 	 * @param Title $title
 	 * @param \DOMDocument $pageDOM
 	 * @param array &$params
