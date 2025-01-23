@@ -30,9 +30,9 @@ namespace BlueSpice\UEModulePDF\Hook;
 use BlueSpice\Hook;
 use BlueSpice\UniversalExport\ExportSpecification;
 use BsUniversalExportModule;
-use Config;
 use DOMDocument;
 use IContextSource;
+use MediaWiki\Config\Config;
 
 /**
  * Description of BSUEModulePDFBeforeCreatePDF

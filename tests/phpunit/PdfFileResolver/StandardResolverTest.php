@@ -2,12 +2,12 @@
 
 namespace BlueSpice\UEModulePDF\Tests\PdfFileResolver;
 
-use Config;
 use DOMDocument;
 use DOMElement;
 use File;
 use FileRepo;
 use FSFile;
+use MediaWiki\Config\Config;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\User\User;
 use PDFFileResolver;
