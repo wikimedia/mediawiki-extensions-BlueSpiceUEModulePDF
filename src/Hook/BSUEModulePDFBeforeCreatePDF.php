@@ -31,8 +31,8 @@ use BlueSpice\Hook;
 use BlueSpice\UniversalExport\ExportSpecification;
 use BsUniversalExportModule;
 use DOMDocument;
-use IContextSource;
 use MediaWiki\Config\Config;
+use MediaWiki\Context\IContextSource;
 
 /**
  * Description of BSUEModulePDFBeforeCreatePDF

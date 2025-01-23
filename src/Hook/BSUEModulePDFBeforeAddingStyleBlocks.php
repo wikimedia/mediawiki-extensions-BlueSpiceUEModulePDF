@@ -27,6 +27,7 @@
 namespace BlueSpice\UEModulePDF\Hook;
 
 use MediaWiki\Config\Config;
+use MediaWiki\Context\IContextSource;
 
 abstract class BSUEModulePDFBeforeAddingStyleBlocks extends \BlueSpice\Hook {
 
@@ -61,7 +62,7 @@ abstract class BSUEModulePDFBeforeAddingStyleBlocks extends \BlueSpice\Hook {
 
 	/**
 	 *
-	 * @param \IContextSource $context
+	 * @param IContextSource $context
 	 * @param Config $config
 	 * @param array &$template
 	 * @param array &$styleBlocks
