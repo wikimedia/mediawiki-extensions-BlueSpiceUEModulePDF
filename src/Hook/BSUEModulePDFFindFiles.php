@@ -27,6 +27,7 @@
 namespace BlueSpice\UEModulePDF\Hook;
 
 use MediaWiki\Config\Config;
+use MediaWiki\Context\IContextSource;
 
 abstract class BSUEModulePDFFindFiles extends \BlueSpice\Hook {
 
@@ -77,7 +78,7 @@ abstract class BSUEModulePDFFindFiles extends \BlueSpice\Hook {
 
 	/**
 	 *
-	 * @param \IContextSource $context
+	 * @param IContextSource $context
 	 * @param Config $config
 	 * @param \BsPDFServlet $pdfServlet
 	 * @param \DOMElement $imageEl

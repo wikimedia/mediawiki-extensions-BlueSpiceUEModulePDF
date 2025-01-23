@@ -28,8 +28,8 @@ namespace BlueSpice\UEModulePDF\Hook;
 
 use BlueSpice\Hook;
 use BlueSpice\UniversalExport\ExportSpecification;
-use IContextSource;
 use MediaWiki\Config\Config;
+use MediaWiki\Context\IContextSource;
 
 abstract class BSUEModulePDFBeforeAddingContent extends Hook {
 
