@@ -7,12 +7,12 @@ use PHPUnit\Framework\TestCase;
  * @group medium
  * @group BlueSpice
  * @group BlueSpiceExtensions
- * @covers ThumbFilenameExtractor
+ * @covers \BlueSpice\UEModulePDF\ThumbFilenameExtractor
  */
 class ThumbFilenameExtractorTest extends TestCase {
 
 	/**
-	 * @covers ThumbFilenameExtractor::isThumb
+	 * @covers \BlueSpice\UEModulePDF\ThumbFilenameExtractor::isThumb
 	 */
 	public function testIsThumb() {
 		$extractor = new ThumbFilenameExtractor();
@@ -31,7 +31,7 @@ class ThumbFilenameExtractorTest extends TestCase {
 	}
 
 	/**
-	 * @covers ThumbFilenameExtractor::extractFilename
+	 * @covers \BlueSpice\UEModulePDF\ThumbFilenameExtractor::extractFilename
 	 */
 	public function testExtractFilename() {
 		$extractor = new ThumbFilenameExtractor();
