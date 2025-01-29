@@ -14,6 +14,7 @@
 
 use BlueSpice\UEModulePDF\PDFServletHookRunner;
 use GuzzleHttp\Client;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\MediaWikiServices;
 
 /**
