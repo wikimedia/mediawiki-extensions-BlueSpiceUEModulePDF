@@ -6,6 +6,7 @@ use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Title\Title;
 
 /**
+ * @group Database
  * @group medium
  * @group BlueSpice
  * @group BlueSpiceExtensions
