@@ -13,6 +13,7 @@
  */
 
 use MediaWiki\Api\ApiMain;
+use MediaWiki\Api\ApiResult;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 
@@ -149,7 +150,7 @@ class BsPDFPageProvider {
 				}
 			}
 
-			if ( defined( 'ApiResult::META_CONTENT' ) ) {
+			if ( defined( ApiResult::class . '::META_CONTENT' ) ) {
 				$aResult = $oAPI->getResult()->getResultData( null, [
 					'BC' => [],
 					'Types' => [],
