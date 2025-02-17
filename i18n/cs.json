@@ -5,8 +5,8 @@
 			"Jrobicek"
 		]
 	},
-	"bs-uemodulepdf-pref-suppressns-help": "Jmenný prostor stránky je z tohoto souboru PDF vynechán.",
 	"bs-uemodulepdf-overview-webservice-state-ok": "dostupný",
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "nedostupný",
+	"bs-uemodulepdf-pref-suppressns-help": "Jmenný prostor stránky je z tohoto souboru PDF vynechán.",
 	"bs-uemodulepdf-export-dialog-label-select-template": "Rozložení"
 }
