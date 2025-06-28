@@ -84,7 +84,7 @@
 		"BlueSpice\\UEModulePDF\\": "src/"
 	},
 	"TestAutoloadNamespaces": {
-		"BlueSpice\\UEModulePDF\\Tests\\": "tests/phpunit"
+		"BlueSpice\\UEModulePDF\\Tests\\": "tests/phpunit/"
 	},
 	"AutoloadClasses": {
 		"BsPDFPageProvider": "includes/PDFPageProvider.class.php",
