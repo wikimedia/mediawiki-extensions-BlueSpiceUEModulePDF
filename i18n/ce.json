@@ -10,5 +10,13 @@
 	"bs-uemodulepdf-overview-webservice-state-ok": "тӀекхочу",
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "тӀекхочехь йац",
 	"bs-uemodulepdf-overview-webservice-webadmin": "Интерфейсан бэкенд веб",
-	"bs-uemodulepdf-export-dialog-label-module-name": "PDF агӀо"
+	"action-uemodulepdf-export": "агӀо PDF тӀе экспорт йар",
+	"right-uemodulepdf-export": "АгӀо PDF тӀе экспорт йар",
+	"bs-uemodulepdf-widgetlink-subpages-text": "PDF агӀо бухара агӀонашца",
+	"bs-uemodulepdf-export-dialog-label-module-name": "PDF агӀо",
+	"bs-uemodulepdf-export-dialog-label-select-submodule": "Кхоче",
+	"bs-uemodulepdf-export-dialog-label-select-template": "Макет",
+	"bs-uemodulepdf-export-dialog-label-submodule-default": "ХӀара агӀо бен",
+	"bs-uemodulepdf-export-dialog-label-submodule-recursive": "Рекурсиван хьажорг дӀахӀоттайе",
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Бухара агӀонаш дӀахӀиттайе"
 }
