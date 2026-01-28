@@ -15,6 +15,7 @@ use MediaWiki\Title\Title;
 class PDFFileResolverTest extends BSApiTestCase {
 	protected $aFiles = null;
 	protected $oDOM = null;
+	protected $oFileTitle = null;
 
 	protected $aNames = [
 		'Test.JPG' => 'test.JPG',
