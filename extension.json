@@ -126,6 +126,9 @@
 		},
 		"UEModulePDFExportDialogExcludeTemplates": {
 			"value": []
+		},
+		"UEModulePDFUploadThresholdCount": {
+			"value": 20
 		}
 	},
 	"ResourceModules": {
