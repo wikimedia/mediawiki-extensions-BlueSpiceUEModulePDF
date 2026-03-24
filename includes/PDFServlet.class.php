@@ -126,7 +126,7 @@ class BsPDFServlet {
 				$sType = 'stylesheets';
 			}
 
-			$postData = [
+			$initialPostData = [
 				'multipart' => [
 					[
 						'name' => 'fileType',
@@ -143,8 +143,10 @@ class BsPDFServlet {
 				],
 			];
 
+			$postData = $initialPostData;
 			$aErrors = [];
 			$iCurrentUploadSize = 0;
+			$currentUploadCount = 0;
 			foreach ( $aFiles as $sFileName => $sFilePath ) {
 				if ( !file_exists( $sFilePath ) ) {
 					$aErrors[] = $sFilePath;
@@ -153,12 +155,18 @@ class BsPDFServlet {
 
 				$iFileSize = filesize( $sFilePath );
 				$iCurrentUploadSize += $iFileSize;
-				if ( $iCurrentUploadSize >= $bsgUEModulePDFUploadThreshold ) {
+				$currentUploadCount++;
+				if (
+					$iCurrentUploadSize >= $bsgUEModulePDFUploadThreshold ||
+					$currentUploadCount >= $GLOBALS['bsgUEModulePDFUploadThresholdCount'] ?? 20
+				) {
 					$this->doFilesUpload( $postData, $aErrors );
 
 					// Reset all loop variables
 					$aErrors = [];
 					$iCurrentUploadSize = $iFileSize;
+					$currentUploadCount = 1;
+					$postData = $initialPostData;
 				}
 
 				// 'myfile.css' => {file_contents}
