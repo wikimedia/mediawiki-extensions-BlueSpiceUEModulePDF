@@ -5,7 +5,8 @@
 			"HarpyWar",
 			"Meshkov.a",
 			"Okras",
-			"Pacha Tchernof"
+			"Pacha Tchernof",
+			"Yurina Tatiana"
 		]
 	},
 	"bs-uemodulepdf-desc": "Разрешить MediaWiki экспортировать страницы в PDF-формат",
@@ -21,5 +22,19 @@
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "недоступно",
 	"soap-service-url-not-valid": "Адрес веб-службы по созданию PDF не действителен. Пожалуйста, проверьте настройки вики.",
 	"soap-service-url-not-set": "Не установлен адрес для веб-службы по созданию PDF. Пожалуйста, проверьте настройки вики.",
-	"bs-uemodulepdf-overview-webservice-webadmin": "Бэкенд веб интерфейса"
+	"bs-uemodulepdf-overview-webservice-webadmin": "Бэкенд веб интерфейса",
+	"action-uemodulepdf-export": "экспортировать страницу в PDF",
+	"right-uemodulepdf-export": "Экспорт страницы в PDF",
+	"bs-uemodulepdf-widgetlink-subpages-text": "Страница PDF с подстраницами",
+	"bs-uemodulepdf-widgetlink-subpages-title": "Экспортировать эту страницу и все подстраницы как PDF.",
+	"action-uemodulepdfsubpages-export": "экспортировать страницу, включая все подстраницы, в PDF",
+	"right-uemodulepdfsubpages-export": "Экспорт страницы, включая все подстраницы, в PDF",
+	"bs-uemodulepdf-widgetlink-recursive-text": "Страница PDF со связанными страницами",
+	"bs-uemodulepdf-widgetlink-recursive-title": "Экспортировать эту страницу и все связанные страницы как PDF.",
+	"right-uemodulepdfrecursive-export": "Экспорт страницы, включая все связанные страницы, в PDF",
+	"action-uemodulepdfrecursive-export": "экспортировать страницу, включая все связанные страницы, в PDF",
+	"bs-uemodulepdf-export-dialog-label-module-name": "PDF-страница",
+	"bs-uemodulepdf-export-dialog-label-submodule-default": "Только эта страница",
+	"bs-uemodulepdf-export-dialog-label-submodule-recursive": "Включить рекурсивную ссылку",
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Включить подстраницы"
 }

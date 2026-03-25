@@ -2,21 +2,39 @@
 	"@metadata": {
 		"authors": [
 			"Banjo",
-			"Elisardojm"
+			"Elisardojm",
+			"Toliño"
 		]
 	},
-	"bs-uemodulepdf-desc": "Permite que o MediaWiki exporte páxinas en formato PDF",
-	"prefs-uemodulepdf": "Módulo universal de exportación PDF",
-	"uemodulepdf": "Módulo universal de exportación PDF",
+	"bs-uemodulepdf-desc": "Permite que MediaWiki exporte as páxinas a formato PDF",
+	"prefs-uemodulepdf": "Módulo universal de exportación a PDF",
+	"uemodulepdf": "Módulo universal de exportación a PDF",
 	"bs-uemodulepdf-pref-suppressns": "Ocultar o prefixo do espazo de nomes no PDF",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-text": "PDF dunha soa páxina",
 	"bs-uemodulepdf-widgetlink-single-no-attachments-title": "Exportar esta páxina a un PDF.",
-	"bs-uemodulepdf-overview-title": "Formato de Documento Portable (PDF)",
+	"bs-uemodulepdf-overview-title": "Formato de documento portable (PDF)",
 	"bs-uemodulepdf-overview-desc": "Exporta páxinas (páxinas especiais e páxinas de contido) a PDF.",
 	"bs-uemodulepdf-overview-webservice-state": "Estado do servidor",
 	"bs-uemodulepdf-overview-webservice-state-ok": "dispoñible",
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "non dispoñible",
-	"soap-service-url-not-valid": "A URL do servizo web xenerador de PDF non é válida. Comprobe a configuración da wiki.",
-	"soap-service-url-not-set": "A URL do servizo web xenerador de PDF non está establecida. Comprobe a configuración da wiki.",
-	"bs-uemodulepdf-overview-webservice-webadmin": "Interface web do servidor"
+	"soap-service-url-not-valid": "O enderezo URL do servizo web para a xeración do PDF non é válido. Comproba a configuración do wiki.",
+	"soap-service-url-not-set": "O enderezo URL do servizo web para a xeración do PDF non está definido. Comproba a configuración do wiki.",
+	"bs-uemodulepdf-overview-webservice-webadmin": "Interface web do servidor",
+	"action-uemodulepdf-export": "exportar unha páxina a PDF",
+	"right-uemodulepdf-export": "Exportar unha páxina a PDF",
+	"bs-uemodulepdf-widgetlink-subpages-text": "Páxina PDF con subpáxinas",
+	"bs-uemodulepdf-widgetlink-subpages-title": "Exportar esta páxina e todas as subpáxinas a PDF.",
+	"action-uemodulepdfsubpages-export": "exportar unha páxina, incluídas todas as subpáxinas, a PDF",
+	"right-uemodulepdfsubpages-export": "Exportar unha páxina, incluídas todas as subpáxinas, a PDF",
+	"bs-uemodulepdf-widgetlink-recursive-text": "Páxina PDF con páxinas ligadas",
+	"bs-uemodulepdf-widgetlink-recursive-title": "Exportar esta páxina e todas as páxinas ligadas a PDF.",
+	"right-uemodulepdfrecursive-export": "Exportar unha páxina, incluídas todas as páxinas ligadas, a PDF",
+	"action-uemodulepdfrecursive-export": "exportar unha páxina, incluídas todas as páxinas ligadas, a PDF",
+	"bs-uemodulepdf-pref-suppressns-help": "O espazo de nomes da páxina omítese no título do PDF.",
+	"bs-uemodulepdf-export-dialog-label-module-name": "Páxina PDF",
+	"bs-uemodulepdf-export-dialog-label-select-submodule": "Alcance",
+	"bs-uemodulepdf-export-dialog-label-select-template": "Maquetación",
+	"bs-uemodulepdf-export-dialog-label-submodule-default": "Só esta páxina",
+	"bs-uemodulepdf-export-dialog-label-submodule-recursive": "Incluír as páxinas ligadas recursivamente",
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "Incluír as subpáxinas"
 }
