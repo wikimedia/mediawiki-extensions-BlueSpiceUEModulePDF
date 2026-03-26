@@ -4,5 +4,6 @@
 			"Cabal"
 		]
 	},
-	"bs-uemodulepdf-export-dialog-label-module-name": "PDF ਵਰਕਾ"
+	"bs-uemodulepdf-export-dialog-label-module-name": "PDF ਵਰਕਾ",
+	"bs-uemodulepdf-export-dialog-label-select-submodule": "ਕਾਰਜ-ਖੇਤਰ"
 }
