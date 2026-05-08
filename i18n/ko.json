@@ -34,5 +34,7 @@
 	"bs-uemodulepdf-export-dialog-label-module-name": "PDF 문서",
 	"bs-uemodulepdf-export-dialog-label-select-template": "레이아웃",
 	"bs-uemodulepdf-export-dialog-label-submodule-default": "이 문서만",
-	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "하위 문서 포함"
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "하위 문서 포함",
+	"bs-uemodulepdf-export-dialog-label-select-submodule": "범위",
+	"bs-uemodulepdf-export-dialog-label-submodule-recursive": "재귀 링크를 포함하기"
 }
