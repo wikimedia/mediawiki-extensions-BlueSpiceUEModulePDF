@@ -32,7 +32,9 @@
 	"action-uemodulepdfrecursive-export": "링크된 모든 문서를 포함하여 문서를 PDF로 내보낼",
 	"bs-uemodulepdf-pref-suppressns-help": "문서의 이름공간은 PDF 제목에서 생략됩니다.",
 	"bs-uemodulepdf-export-dialog-label-module-name": "PDF 문서",
+	"bs-uemodulepdf-export-dialog-label-select-submodule": "범위",
 	"bs-uemodulepdf-export-dialog-label-select-template": "레이아웃",
 	"bs-uemodulepdf-export-dialog-label-submodule-default": "이 문서만",
+	"bs-uemodulepdf-export-dialog-label-submodule-recursive": "재귀 링크를 포함하기",
 	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "하위 문서 포함"
 }
