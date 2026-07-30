@@ -10,5 +10,7 @@
 	"bs-uemodulepdf-overview-webservice-state-ok": "disponibel",
 	"bs-uemodulepdf-overview-webservice-state-not-ok": "net disponibel",
 	"action-uemodulepdf-export": "eng Säit als PDF exportéieren",
-	"bs-uemodulepdf-widgetlink-subpages-text": "PDF-Säit mat Ënnersäiten"
+	"bs-uemodulepdf-widgetlink-subpages-text": "PDF-Säit mat Ënnersäiten",
+	"bs-uemodulepdf-export-dialog-label-module-name": "PDF-Säit",
+	"bs-uemodulepdf-export-dialog-label-submodule-default": "Nëmmen dës Säit"
 }
