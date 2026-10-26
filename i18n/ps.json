@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"bs-uemodulepdf-overview-webservice-state-ok": "د لاسرسي وړ",
+	"bs-uemodulepdf-overview-webservice-state-not-ok": "د لاسرسي وړ نه دی",
+	"action-uemodulepdf-export": "يو مخ پي‌ډي‌اېف ته بهرلېږل",
+	"right-uemodulepdf-export": "يو مخ پي‌ډي‌اېف ته بهرلېږل",
+	"bs-uemodulepdf-widgetlink-subpages-text": "پي‌ډي‌اېف له څېرمه‌مخونو سره",
+	"bs-uemodulepdf-widgetlink-subpages-title": "دا مخ او ټول څېرمه‌مخونه پي‌ډي‌اېف ته بهرلېږل.",
+	"action-uemodulepdfsubpages-export": "يو مخ د هغې د ټولو څېرمه‌مخونو په گډون پي‌ډي‌اېف ته بهرلېږل",
+	"bs-uemodulepdf-widgetlink-recursive-text": "پي‌ډي‌اېف مخ له تړوني ورکړل شويو مخونو سره",
+	"bs-uemodulepdf-widgetlink-recursive-title": "دا مخ او ټول تړوني‌شوي څېرمه‌مخونه پي‌ډي‌اېف ته بهرلېږل.",
+	"right-uemodulepdfrecursive-export": "يو مخ د هغې د ټولو تړوني ورکړل شويو مخونو په گډون پي‌ډي‌اېف ته بهرلېږل",
+	"bs-uemodulepdf-export-dialog-label-module-name": "پي‌ډي‌اېف مخ",
+	"bs-uemodulepdf-export-dialog-label-select-submodule": "سيمه",
+	"bs-uemodulepdf-export-dialog-label-select-template": "هډوانه",
+	"bs-uemodulepdf-export-dialog-label-submodule-default": "يوازې دا مخ",
+	"bs-uemodulepdf-export-dialog-label-submodule-recursive": "د تړوني‌شوي څوځلي په گډون",
+	"bs-uemodulepdf-export-dialog-label-submodule-subpages": "د څېرمه‌مخونو په گډون"
+}
